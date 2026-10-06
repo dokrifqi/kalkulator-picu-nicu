@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalkulator NICU PICU</title>
+<meta name="description" content="Kalkulator koreksi, obat drip, dan obat emergency untuk NICU dan PICU.">
+<meta name="theme-color" content="#1d5c4d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NICU PICU">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: aplikasi bergaya mobile. Header hijau gradasi, kartu putih membulat di atas latar mint, menu ikon 4 kolom, navigasi tab di bawah. */
+:root{
+  --bg:#eef6f4; --surface:#ffffff; --fg:#17332c; --muted:#6b8a82; --line:#dbe9e5;
+  --hdr1:#1d5c4d; --hdr2:#3b8c75; --glass:rgba(255,255,255,.14); --hdr-fg:#ffffff;
+  --primary:#1f6b57; --primary-soft:#e2f1ec; --good:#2f9a4f; --result-bg:#f3f9f7;
+  --warn-bg:#fde9df; --warn-fg:#8a3a12; --step-bg:#fff8e6; --step-line:#f0d58a; --step-fg:#5a4310; --shadow:0 2px 10px rgba(23,75,62,.08);
+  --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-num:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1a17; --surface:#14272c; --fg:#e3f2ee; --muted:#8fb0a7; --line:#24413b;
+  --hdr1:#12372e; --hdr2:#1f5a4a; --glass:rgba(255,255,255,.1);
+  --primary:#5fd0a6; --primary-soft:#183a33; --good:#6fdc8e; --result-bg:#102226;
+  --warn-bg:#3a1f14; --warn-fg:#f2b79a; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1a17; --surface:#14272c; --fg:#e3f2ee; --muted:#8fb0a7; --line:#24413b;
+  --hdr1:#12372e; --hdr2:#1f5a4a; --glass:rgba(255,255,255,.1);
+  --primary:#5fd0a6; --primary-soft:#183a33; --good:#6fdc8e; --result-bg:#102226;
+  --warn-bg:#3a1f14; --warn-fg:#f2b79a; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+body{-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.5;padding:0;min-height:100%}
+.app{max-width:560px;margin:0 auto;min-height:100vh;background:var(--bg);padding-bottom:96px}
+button{font-family:var(--font-body);cursor:pointer}
+button:focus-visible,.tile:focus-visible,.nav button:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+/* HEADER */
+.hdr{background:linear-gradient(160deg,var(--hdr1),var(--hdr2));color:var(--hdr-fg);padding:calc(18px + env(safe-area-inset-top,0px)) 16px 20px;border-radius:0 0 28px 28px;display:flex;flex-direction:column;gap:14px}
+.hrow{display:flex;align-items:center;gap:10px}
+.hrow .name{flex:1;font-size:1.5rem;font-weight:800;min-width:0;display:flex;align-items:center;gap:8px}
+.pill{border:0;background:var(--glass);color:var(--hdr-fg);border-radius:999px;font-weight:800;font-size:.95rem;padding:10px 16px;min-height:44px}
+.pill.round{width:44px;padding:0;font-size:1.2rem}
+.hcard{background:var(--glass);border-radius:20px;padding:14px;display:flex;align-items:center;gap:14px}
+.avatar{width:58px;height:58px;border-radius:50%;background:var(--glass);border:3px solid rgba(255,255,255,.35);display:grid;place-items:center;font-size:1.9rem;flex:none}
+.hcard b{display:block;font-size:1.2rem;font-weight:800}
+.hcard span{font-size:.9rem;opacity:.85}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{background:var(--glass);border-radius:16px;padding:12px 6px;text-align:center}
+.stat b{display:block;font-size:1.25rem;font-weight:800}
+.stat span{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+/* BODY */
+.pad{padding:16px;display:flex;flex-direction:column;gap:18px}
+.tip{background:var(--surface);border-radius:20px;border-left:6px solid var(--primary);box-shadow:var(--shadow);padding:14px 16px;display:flex;gap:12px}
+.tip .ic{font-size:1.5rem}
+.tip b{color:var(--primary);font-size:1rem}
+.tip p{margin:2px 0 0;font-size:.95rem}
+h2.sec{margin:0;font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:8px}
+.group{display:flex;flex-direction:column;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:340px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tile{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:12px 4px 10px;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;text-align:center;min-width:0}
+.tile:active{transform:scale(.97)}
+.tile:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.tile i{font-style:normal;font-size:1.9rem;line-height:1.1}
+.tile span{font-size:.7rem;font-weight:700;color:var(--muted);overflow-wrap:anywhere;line-height:1.2}
+/* CALC */
+.card{background:var(--surface);border-radius:22px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card .ct{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.hint{font-size:.84rem;color:var(--muted);margin:0;overflow-wrap:anywhere}
+.inputs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted);font-weight:700;min-width:0}
+.fw{display:flex;align-items:center;border:2px solid var(--line);border-radius:14px;background:var(--result-bg);min-width:0}
+.fw:focus-within{border-color:var(--primary)}
+.fw input{flex:1;min-width:0;width:100%;border:0;background:transparent;color:var(--fg);font:600 1.1rem var(--font-num);padding:10px 12px;outline:none}
+.fw span{padding-right:12px;font-size:.72rem;color:var(--muted);font-weight:700}
+.res{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:2px solid var(--primary-soft)}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 14px;border-top:1px solid var(--line);align-items:baseline;background:var(--result-bg)}
+.row:first-child{border-top:0}
+.row .l{font-size:.92rem;min-width:0;overflow-wrap:anywhere;font-weight:700}
+.row .v{font:600 1.15rem var(--font-num);text-align:right;font-variant-numeric:tabular-nums;color:var(--good)}
+.row .v small{font:700 .72rem var(--font-body);color:var(--muted);margin-left:4px}
+.row .v.alt{font-size:.95rem;color:var(--muted)}
+.row .ref{grid-column:1/-1;font:.66rem var(--font-num);color:var(--muted)}
+.grp{padding:7px 14px;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;background:var(--primary-soft);color:var(--primary);font-weight:800}
+.info{margin:0;padding:10px 14px;font-size:.84rem;color:var(--muted);border-radius:14px;background:var(--primary-soft);overflow-wrap:anywhere}
+.info.warn{background:var(--warn-bg);color:var(--warn-fg);font-weight:700}
+label.f.wide{grid-column:1/-1}
+.fw select{flex:1;min-width:0;width:100%;border:0;background:transparent;color:var(--fg);font:700 .95rem var(--font-body);padding:11px 10px;outline:none}
+.fw select option{color:#17332c;background:#fff}
+.toggle{border:2px solid var(--primary);background:transparent;color:var(--primary);border-radius:999px;font-weight:800;font-size:.8rem;padding:6px 14px;min-height:36px}
+.steps{background:var(--step-bg);border:2px solid var(--step-line)}
+.steps h2.sec{color:var(--step-fg)}
+.steps .toggle{border-color:var(--step-fg);color:var(--step-fg)}
+.steps ol{list-style:none;counter-reset:s;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.steps li{counter-increment:s;display:flex;gap:10px;color:var(--step-fg);align-items:flex-start}
+.steps li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--step-line);display:grid;place-items:center;font:800 .8rem var(--font-body)}
+.steps .body{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.steps .t{font-weight:800;font-size:.92rem}
+.steps .m{font:500 .85rem var(--font-num);overflow-wrap:anywhere}
+.steps .n{font-size:.82rem;opacity:.85}
+.note{font-size:.76rem;color:var(--muted);text-align:center;padding:0 8px}
+/* NAV */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:5}
+.nav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.78rem;color:var(--muted);padding:4px;border-radius:12px;min-height:52px}
+.nav button i{font-style:normal;font-size:1.5rem;line-height:1.1}
+.nav button.on{color:var(--primary)}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="hdr">
+    <div class="hrow">
+      <button id="back" class="pill round" type="button" aria-label="Kembali" hidden>&larr;</button>
+      <div class="name"><span id="hicon">🧮</span><span id="htitle">Kalkulator NICU PICU</span></div>
+      <button id="theme" class="pill round" type="button" aria-label="Ganti tema">🌙</button>
+    </div>
+    <div id="hextra">
+      <div class="hcard" style="margin-bottom:10px"><div class="avatar">👶</div><div><b>Kalkulator NICU dan PICU</b><span>Rumus dari Excel KOREKSI NEO dan catatan PICU</span></div></div>
+      <div class="stats">
+        <div class="stat"><b id="sN">14</b><span>Koreksi</span></div>
+        <div class="stat"><b>4</b><span>Kelompok</span></div>
+        <div class="stat"><b>📖</b><span>Cara hitung</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="pad">
+    <div class="tip"><div class="ic">💡</div><div><b>Batas koreksi natrium</b><p>Kenaikan Na maksimal 10 meq per hari, ditambah 2 meq maintenance per hari.</p></div></div>
+    <div id="groups" class="pad" style="padding:0"></div>
+  </main>
+
+  <main id="calc" class="pad" hidden>
+    <section class="card" id="cardCalc"></section>
+    <section class="card steps" id="cardSteps">
+      <div class="ct"><h2 class="sec"><span>📖</span>Cara hitung</h2><button id="togSteps" class="toggle" type="button" aria-expanded="true">Sembunyikan</button></div>
+      <ol id="stepList"></ol>
+    </section>
+  </main>
+
+  <p class="note">Hasil tidak dibulatkan saat dihitung, hanya tampilannya (maks 3 desimal). Alat bantu hitung, keputusan dosis tetap oleh DPJP.</p>
+</div>
+
+<nav class="nav" id="nav" aria-label="Kelompok">
+  <button type="button" data-tab="all" class="on"><i>🏠</i>Beranda</button>
+  <button type="button" data-tab="darah"><i>🩸</i>Darah</button>
+  <button type="button" data-tab="elek"><i>🧂</i>Cairan</button>
+  <button type="button" data-tab="obat"><i>💊</i>Drip</button>
+  <button type="button" data-tab="picu"><i>🚨</i>PICU</button>
+</nav>
+
+<script>
+/* ===== LOGIKA (identik dengan Excel Sheet1) ===== */
+const I=(id,label,unit,def)=>({id,label,unit,def});
+const O=(l,u,f,ref,alt)=>({l,u,f,ref,alt});
+const G=h=>({h});
+const S=(t,m,n)=>({t,m:[].concat(m),n});
+const fmt=n=>Number.isFinite(n)?n.toLocaleString('id-ID',{maximumFractionDigits:3}):'-';
+const n=fmt;
+const NA_FLUIDS=[['NaCl 3% (500 meq/L)',500,'I12'],['NS 0,9% (154 meq/L)',154,'I13'],['D1/2 NS (77 meq/L)',77,'I14'],['D1/4 NS (37,5 meq/L)',37.5,'I15']];
+const naTot=v=>(v.na_t-v.na_m)*v.na_bb*0.6+2*v.na_bb;
+const fwd=v=>(v.hn_bb*0.6)*1-(v.hn_t-v.hn_p);
+const bic1=v=>v.bic_d*v.bic_bb, bic2=v=>0.3*v.bic_bb*v.bic_be;
+
+const VOLS=[[4,'4 ml'],[8,'8 ml'],[12,'12 ml']];
+const Sel=(id,label,opts,def,showIf)=>({id,label,opts,def,sel:true,unit:'',showIf});
+const Num=(id,label,unit,def,showIf)=>({id,label,unit,def,showIf});
+const conc=(v,p)=>v[p+'_sed']>0?v[p+'_sed']:v[p+'_cm']/v[p+'_cv'];
+const custom=id=>v=>v[id]<0;
+const NEW='Tambahan, tidak ada di Excel';
+const WARN_TXT='Volume obat dari ampul lebih besar dari volume pengenceran. Pilih volume lebih besar atau sediaan yang lebih pekat.';
+const dobMg=v=>(v.dob_bb*v.dob_d*24*60)/1000;
+const fenMc=v=>v.fen_d*v.fen_bb*24;
+const midMg=v=>v.mid_bb*v.mid_d*24;
+const midTot=v=>v.mid_V>0?v.mid_V:midMg(v)/conc(v,'mid');
+const epiMg=v=>(v.epi_bb*v.epi_d*24*60)/1000;
+const sections=[
+/* ---------- DARAH ---------- */
+{id:'eritrosit',cat:'darah',title:'Koreksi Eritrosit',tag:'1,6 × BB × (HCT target − HCT)',hint:'1,6 x BB x (Target HCT - HCT)',
+ inputs:[I('ery_bb','BB','kg',1),I('ery_t','HCT target','%',40),I('ery_n','HCT sekarang','%',25)],
+ outs:[O('Koreksi eritrosit','ml',v=>1.6*v.ery_bb*(v.ery_t-v.ery_n),'C5')],
+ info:['Maksimal transfusi: 20 ml/kg/hari'],
+ steps:v=>[
+  S('Tulis rumus','Koreksi = 1,6 × BB × (HCT target − HCT sekarang)','Rumus dari Excel: 1,6 adalah faktor ml darah per kg BB untuk tiap kenaikan 1 poin HCT.'),
+  S('Cari selisih HCT',`${n(v.ery_t)} − ${n(v.ery_n)} = ${n(v.ery_t-v.ery_n)} %`,'Selisih ini adalah berapa poin HCT yang harus dinaikkan.'),
+  S('Kalikan dengan faktor dan BB',[`1,6 × ${n(v.ery_bb)} × ${n(v.ery_t-v.ery_n)}`,`= ${n(1.6*v.ery_bb*(v.ery_t-v.ery_n))} ml`]),
+  S('Cek batas harian',`Maksimal 20 ml/kg/hari = 20 × ${n(v.ery_bb)} = ${n(20*v.ery_bb)} ml/hari`,'Jika hasil koreksi lebih besar dari batas ini, bagi menjadi beberapa hari.')]},
+{id:'trombosit',cat:'darah',title:'Koreksi Trombosit',tag:'20 ml × BB (serial 3 hari)',hint:'20 ml x BB (serial 3 hari)',
+ inputs:[I('tc_bb','BB','kg',1)],
+ outs:[O('Koreksi TC','ml',v=>20*v.tc_bb,'C8')],
+ info:['PRETERM < 30.000','ATERM < 20.000'],
+ steps:v=>[
+  S('Tulis rumus','Koreksi TC = 20 ml × BB'),
+  S('Masukkan BB',[`20 × ${n(v.tc_bb)}`,`= ${n(20*v.tc_bb)} ml`],'Diberikan serial selama 3 hari.'),
+  S('Tentukan ambang trombosit','Preterm: trombosit < 30.000. Aterm: trombosit < 20.000.','Ambang ini dari catatan di Excel, sebagai patokan kapan koreksi dipertimbangkan.')]},
+{id:'ffp',cat:'darah',title:'Koreksi FFP',tag:'20 ml × BB (serial 3 hari)',hint:'20 ml x BB (serial 3 hari)',
+ inputs:[I('ffp_bb','BB','kg',1.2)],
+ outs:[O('Koreksi FFP','ml',v=>20*v.ffp_bb,'C13')],
+ info:['Indikasi: hiperbilirubin, tidak kuat LT, pemanjangan PT/APTT'],
+ steps:v=>[
+  S('Tulis rumus','Koreksi FFP = 20 ml × BB'),
+  S('Masukkan BB',[`20 × ${n(v.ffp_bb)}`,`= ${n(20*v.ffp_bb)} ml`],'Diberikan serial selama 3 hari.'),
+  S('Pastikan indikasinya ada','Hiperbilirubin, tidak kuat LT, atau pemanjangan PT/APTT.')]},
+{id:'albumin',cat:'darah',title:'Koreksi Albumin',tag:'0,8 × BB × (Alb target − Alb sekarang)',hint:'0,8 x BB x (Alb target - Alb sekarang)   |   x 5 (sediaan 20%)   |   x 4 (sediaan 25%)',
+ inputs:[I('alb_bb','BB','kg',1.2),I('alb_t','Target albumin','g/dl',4),I('alb_n','Albumin sekarang','g/dl',2.2)],
+ outs:[O('Sediaan 20%','ml',v=>0.8*v.alb_bb*(v.alb_t-v.alb_n)*5,'C19'),O('Sediaan 25%','ml',v=>0.8*v.alb_bb*(v.alb_t-v.alb_n)*4,'C20')],
+ steps:v=>{const d=v.alb_t-v.alb_n,g=0.8*v.alb_bb*d;return[
+  S('Cari selisih albumin',`${n(v.alb_t)} − ${n(v.alb_n)} = ${n(d)} g/dl`),
+  S('Hitung kebutuhan albumin dalam gram',[`0,8 × BB × selisih`,`0,8 × ${n(v.alb_bb)} × ${n(d)} = ${n(g)} g`],'Faktor 0,8 dari rumus Excel (perkiraan distribusi albumin per kg BB).'),
+  S('Ubah gram menjadi ml, sediaan 20%',[`20% = 0,2 g per ml, jadi ml = gram ÷ 0,2 = gram × 5`,`${n(g)} × 5 = ${n(g*5)} ml`]),
+  S('Ubah gram menjadi ml, sediaan 25%',[`25% = 0,25 g per ml, jadi ml = gram ÷ 0,25 = gram × 4`,`${n(g)} × 4 = ${n(g*4)} ml`])]}},
+/* ---------- ELEKTROLIT ---------- */
+{id:'hipona',cat:'elek',title:'Koreksi Natrium (Hiponatremi)',tag:'(Target − Na terukur) × BB × 0,6',hint:'1. Kebutuhan = (Target - Na terukur) x BB x 0,6   2. Tentukan berapa hari   3. Tentukan cairan',
+ inputs:[I('na_bb','BB','kg',3),I('na_t','Na target','meq/L',119),I('na_m','Na terukur','meq/L',109),I('na_d','Berapa hari?','hari',2)],
+ outs:[
+  G('1. Kebutuhan natrium'),
+  O('Kebutuhan','meq',v=>(v.na_t-v.na_m)*v.na_bb*0.6,'G8'),
+  O('Maintenance','meq',v=>2*v.na_bb,'G9'),
+  O('Total','meq',v=>naTot(v),'G10'),
+  G('2. Pembanding: Darrow'),
+  O('BB < 10 kg','ml/24 jam',v=>v.na_bb<10?v.na_bb*100:0,'J7'),
+  O('BB 10-20 kg (BB > 10 dan < 20)','ml/24 jam',v=>(v.na_bb>10&&v.na_bb<20)?1000+((v.na_bb-10)*50):0,'J8'),
+  O('BB > 20 kg','ml/24 jam',v=>v.na_bb>20?1500+((v.na_bb-20)*20):0,'J9'),
+  G('2. Pembanding: kebutuhan cairan'),
+  O('KC/hari (100 ml x BB)','ml',v=>100*v.na_bb,'K11 (J11 = 100)'),
+  G('3. Cairan yang dipakai'),
+  ...NA_FLUIDS.map(([nm,c,r])=>O(nm,'ml/hari',v=>(naTot(v)/c)*1000/v.na_d,r+' / K'+r.slice(1),{u:'ml/j',f:v=>((naTot(v)/c)*1000/v.na_d)/24}))
+ ],
+ info:['Max kenaikan 10 meq dan 2 meq maintenance per hari'],
+ steps:v=>{const k=(v.na_t-v.na_m)*v.na_bb*0.6,mt=2*v.na_bb,t=k+mt;return[
+  S('Hitung kebutuhan natrium',[`(Target − Na terukur) × BB × 0,6`,`(${n(v.na_t)} − ${n(v.na_m)}) × ${n(v.na_bb)} × 0,6 = ${n(k)} meq`],'0,6 × BB adalah perkiraan total cairan tubuh (liter) pada neonatus. Selisih Na dikali volume itu = jumlah Na yang kurang.'),
+  S('Tambahkan maintenance',`2 × BB = 2 × ${n(v.na_bb)} = ${n(mt)} meq`,'Kebutuhan harian natrium 2 meq/kg.'),
+  S('Jumlahkan jadi total',`${n(k)} + ${n(mt)} = ${n(t)} meq`,'Batas aman: kenaikan Na maksimal 10 meq per hari, ditambah 2 meq maintenance per hari. Karena itu tentukan berapa hari koreksinya.'),
+  S('Bagi dengan jumlah hari',`${n(t)} meq ÷ ${n(v.na_d)} hari = ${n(t/v.na_d)} meq/hari`),
+  S('Ubah meq menjadi volume cairan',[`ml/hari = (total meq ÷ meq per L cairan) × 1000 ÷ hari`,...NA_FLUIDS.map(([nm,c])=>`${nm}: (${n(t)} ÷ ${n(c)}) × 1000 ÷ ${n(v.na_d)} = ${n((t/c)*1000/v.na_d)} ml/hari`)],'Makin rendah kadar natrium cairan, makin besar volume yang dibutuhkan untuk meq yang sama.'),
+  S('Ubah menjadi kecepatan per jam',NA_FLUIDS.map(([nm,c])=>`${nm}: ${n((t/c)*1000/v.na_d)} ÷ 24 = ${n(((t/c)*1000/v.na_d)/24)} ml/jam`)),
+  S('Bandingkan dengan Darrow dan kebutuhan cairan',[`KC/hari = 100 × BB = ${n(100*v.na_bb)} ml`,`Darrow: ${v.na_bb<10?`BB < 10 kg → BB × 100 = ${n(v.na_bb*100)} ml/24 jam`:(v.na_bb>10&&v.na_bb<20)?`BB 10-20 kg → 1000 + (BB − 10) × 50 = ${n(1000+(v.na_bb-10)*50)} ml/24 jam`:v.na_bb>20?`BB > 20 kg → 1500 + (BB − 20) × 20 = ${n(1500+(v.na_bb-20)*20)} ml/24 jam`:'BB tepat 10 atau 20 kg: kondisi di Excel tidak ada yang terpenuhi, hasil 0'}`],'Dipakai sebagai pembanding agar total volume cairan wajar.')]}},
+{id:'hiperna',cat:'elek',title:'Koreksi Hipernatremia',tag:'Free water deficit (FWD)',hint:'FWD (1000 ml/L) : (BB x 0,6) x 1 - (Na target - Na pasien)   |   4 ml/kg free water menurunkan Na 1 meq/L',
+ inputs:[I('hn_bb','BB','kg',0.97),I('hn_t','Na target','meq/L',150),I('hn_p','Na pasien','meq/L',160),I('hn_d','Koreksi dalam','hari',1)],
+ outs:[
+  O('FWD','ml',v=>fwd(v),'G23'),
+  G('Cairan: D1/2 NS (1 L = 500 ml)'),
+  O('Volume','ml',v=>(fwd(v)/500)*1000,'K21',{u:'ml/j',f:v=>((fwd(v)/500)*1000)/v.hn_d/24}),
+  G('Cairan: D1/4 NS (1 L = 750 ml)'),
+  O('Volume','ml',v=>(fwd(v)/750)*1000,'K22',{u:'ml/j',f:v=>((fwd(v)/750)*1000)/v.hn_d/24})],
+ info:['Rumus FWD ditulis persis seperti di Excel (sel G23). Keterangan "4 ml/kg free water" di Excel tidak dipakai dalam rumus.'],
+ steps:v=>{const sel=v.hn_t-v.hn_p,F=fwd(v);return[
+  S('Cari selisih Na',`Na target − Na pasien = ${n(v.hn_t)} − ${n(v.hn_p)} = ${n(sel)} meq/L`),
+  S('Hitung FWD sesuai Excel',[`FWD = (BB × 0,6) × 1 − (Na target − Na pasien)`,`(${n(v.hn_bb)} × 0,6) × 1 − (${n(sel)}) = ${n(v.hn_bb*0.6)} − (${n(sel)}) = ${n(F)} ml`],'0,6 × BB adalah perkiraan total cairan tubuh. Rumus ini disalin apa adanya dari sel G23.'),
+  S('Ubah FWD menjadi volume D1/2 NS',[`D1/2 NS: 1 L = 500 ml, jadi (FWD ÷ 500) × 1000`,`(${n(F)} ÷ 500) × 1000 = ${n((F/500)*1000)} ml`]),
+  S('Ubah FWD menjadi volume D1/4 NS',[`D1/4 NS: 1 L = 750 ml, jadi (FWD ÷ 750) × 1000`,`(${n(F)} ÷ 750) × 1000 = ${n((F/750)*1000)} ml`]),
+  S('Bagi dengan hari dan 24 jam',[`D1/2 NS: ${n((F/500)*1000)} ÷ ${n(v.hn_d)} ÷ 24 = ${n(((F/500)*1000)/v.hn_d/24)} ml/jam`,`D1/4 NS: ${n((F/750)*1000)} ÷ ${n(v.hn_d)} ÷ 24 = ${n(((F/750)*1000)/v.hn_d/24)} ml/jam`],'Koreksi dibagi merata sepanjang hari yang dipilih.')]}},
+{id:'bicnat',cat:'elek',title:'BicNat',tag:'Rumus 1 (dosis × BB) dan rumus 2 (0,3 × BB × BE)',hint:'Sediaan 8,4% = 1 meq/ml.  Rumus 1: dosis 1-2 meq/kg.  Rumus 2: 0,3 x BB x BE',
+ inputs:[I('bic_bb','BB','kg',1.2),I('bic_be','BE','',3.2),I('bic_d','Dosis dipakai','meq/kg',0.15)],
+ outs:[
+  G('Rumus 1 (dosis x BB)'),
+  O('Total','meq',v=>bic1(v),'G36'),
+  O('Setengah dosis, habis 4 jam','meq',v=>bic1(v)*0.5,'F39'),
+  O('Setengah dosis, habis 20 jam','meq',v=>bic1(v)*0.5,'F40'),
+  O('Jumlah D5% (4 x)','ml',v=>(bic1(v)*0.5)*4,'F41'),
+  G('Rumus 2 (0,3 x BB x BE)'),
+  O('Total','meq',v=>bic2(v),'G37'),
+  O('Setengah dosis, habis 4 jam','meq',v=>bic2(v)*0.5,'I39'),
+  O('Setengah dosis, habis 20 jam','meq',v=>bic2(v)*0.5,'I40'),
+  O('Jumlah D5% (4 x)','ml',v=>(bic2(v)*0.5)*4,'I41')],
+ info:['Bolus IV pelan selama 30 menit, BicNat 4,2% (0,5 meq/ml)','Diencerkan dextrose hingga 0,5 meq/ml, habis dalam 2 jam, kecepatan maksimum 1 meq/kg/jam','Yang sering dipakai: setengah dosis + D5% 4x-nya selama 4 jam, setengah dosis sisanya dengan infus selama 20 jam berikutnya'],
+ steps:v=>{const a=bic1(v),b=bic2(v);return[
+  S('Rumus 1: dosis × BB',[`${n(v.bic_d)} × ${n(v.bic_bb)} = ${n(a)} meq`],'Dosis lazim 1-2 meq/kg. Angka dosis diisi sendiri di kolom input.'),
+  S('Rumus 2: berdasarkan BE',[`0,3 × BB × BE`,`0,3 × ${n(v.bic_bb)} × ${n(v.bic_be)} = ${n(b)} meq`],'Faktor 0,3 × BB adalah perkiraan ruang distribusi bikarbonat; dikali defisit basa (BE).'),
+  S('Bagi dua dosis (rumus 1)',[`Habis 4 jam: ${n(a)} × 0,5 = ${n(a*0.5)} meq`,`Habis 20 jam: ${n(a)} × 0,5 = ${n(a*0.5)} meq`,`D5% = 4 × ${n(a*0.5)} = ${n((a*0.5)*4)} ml`],'Cara yang sering dipakai: setengah dosis + D5% 4 kali volumenya selama 4 jam, setengah sisanya lewat infus 20 jam berikutnya.'),
+  S('Bagi dua dosis (rumus 2)',[`Habis 4 jam: ${n(b)} × 0,5 = ${n(b*0.5)} meq`,`Habis 20 jam: ${n(b)} × 0,5 = ${n(b*0.5)} meq`,`D5% = 4 × ${n(b*0.5)} = ${n((b*0.5)*4)} ml`]),
+  S('Cara pemberian','Sediaan 8,4% = 1 meq/ml. Bolus IV pelan 30 menit memakai BicNat 4,2% (0,5 meq/ml), diencerkan dextrose sampai 0,5 meq/ml, habis dalam 2 jam, kecepatan maksimum 1 meq/kg/jam.')]}},
+{id:'kcl',cat:'elek',title:'Hipokalemia: KCl',tag:'0,5 meq/kg, encerkan NS 10×',hint:'KCl (0,5 meq/kg) = mg : 2 ml + NS s.d. 10x dosis habis dalam 2 jam',
+ inputs:[I('k_bb','BB','kg',1.2)],
+ outs:[O('Koreksi KCl','ml',v=>(0.5*v.k_bb)/2,'Q5'),O('+ NS','ml',v=>((0.5*v.k_bb)/2)*10,'T5')],
+ steps:v=>{const m=0.5*v.k_bb,ml=m/2;return[
+  S('Hitung dosis dalam meq',`0,5 meq/kg × ${n(v.k_bb)} kg = ${n(m)} meq`),
+  S('Ubah meq menjadi ml KCl',`${n(m)} ÷ 2 = ${n(ml)} ml`,'Dibagi 2 sesuai rumus Excel (KCl 2 meq per ml).'),
+  S('Hitung volume NS pengencer',`${n(ml)} × 10 = ${n(ml*10)} ml`,'Encerkan sampai 10 kali volume KCl, habis dalam 2 jam.')]}},
+{id:'mgso4',cat:'elek',title:'Hipokalemia: MgSO4',tag:'(50 × BB) ÷ 200, encerkan D5%',hint:'Koreksi MgSO4 = (50 x BB) / 200, dilarutkan D5%',
+ inputs:[I('mg_bb','BB','kg',1.2)],
+ outs:[O('Koreksi MgSO4','ml',v=>(50*v.mg_bb)/200,'Q10'),O('+ D5%','ml',v=>((50*v.mg_bb)/200)*10,'T10')],
+ steps:v=>{const mg=50*v.mg_bb,ml=mg/200;return[
+  S('Hitung dosis dalam mg',`50 mg/kg × ${n(v.mg_bb)} kg = ${n(mg)} mg`),
+  S('Ubah mg menjadi ml MgSO4',`${n(mg)} ÷ 200 = ${n(ml)} ml`,'Dibagi 200 sesuai rumus Excel (200 mg per ml).'),
+  S('Hitung volume D5% pengencer',`${n(ml)} × 10 = ${n(ml*10)} ml`)]}},
+{id:'ca',cat:'elek',title:'Koreksi Ca Glukonat',tag:'0,5 - 2 ml/kg, encerkan NS 10×',hint:'Dosis 0,5 - 2 ml/kg',
+ inputs:[I('ca_bb','BB','kg',1.2),I('ca_d','Koreksi ml/kg','ml/kg',0.5)],
+ outs:[O('Koreksi Ca Glukonat','ml',v=>v.ca_d*v.ca_bb,'Q15'),O('+ NS','ml',v=>(v.ca_d*v.ca_bb)*10,'S15')],
+ steps:v=>{const ml=v.ca_d*v.ca_bb;return[
+  S('Tentukan dosis per kg','Rentang dosis 0,5 - 2 ml/kg. Isi di kolom input.'),
+  S('Kalikan dengan BB',`${n(v.ca_d)} × ${n(v.ca_bb)} = ${n(ml)} ml`),
+  S('Hitung volume NS pengencer',`${n(ml)} × 10 = ${n(ml*10)} ml`)]}},
+/* ---------- OBAT DRIP ---------- */
+{id:'dobutamin',cat:'obat',title:'Dobutamin / Dopamin',tag:'Start 5 mcg/kg/menit',hint:'Start 5 mcg/kg/menit',
+ inputs:[I('dob_bb','BB','kg',2.9),I('dob_d','Dosis yang dipakai','mcg/kg/mnt',5),
+  Sel('dob_V','Diencerkan jadi',VOLS,8),
+  Sel('dob_sed','Sediaan ampul',[[50,'Dobutamin 250 mg / 5 ml (50 mg/ml)'],[12.5,'Dobutamin 250 mg / 20 ml (12,5 mg/ml)'],[40,'Dopamin 200 mg / 5 ml (40 mg/ml)'],[-1,'Lainnya (isi sendiri)']],50),
+  Num('dob_cm','Isi ampul','mg',250,custom('dob_sed')),Num('dob_cv','Volume ampul','ml',5,custom('dob_sed'))],
+ outs:[
+  O(v=>`Total obat 24 jam (dalam ${n(v.dob_V)} ml)`,'mg',v=>dobMg(v),'Q21'),
+  G('Ampul dan pengenceran'),
+  O('Ambil dari ampul','ml (cc)',v=>dobMg(v)/conc(v,'dob'),NEW),
+  O('Tambah NS','ml',v=>v.dob_V-dobMg(v)/conc(v,'dob'),NEW),
+  O('Total volume spuit','ml',v=>v.dob_V,NEW),
+  O('Jalan syringe pump','ml/j',v=>v.dob_V/24,'Q22')],
+ info:['Di Excel satuan dosis tertulis "mcg"; rumusnya membagi 1000, sehingga dosis dibaca sebagai mcg/kg/menit.','Daftar sediaan hanya contoh yang umum. Cocokkan konsentrasi dengan label ampul yang dipakai, atau pilih "Lainnya".'],
+ warn:v=>(v.dob_V-dobMg(v)/conc(v,'dob')<0)?WARN_TXT:'',
+ steps:v=>{const mg=dobMg(v),c=conc(v,'dob'),ml=mg/c;return[
+  S('Hitung mcg per menit',`BB × dosis = ${n(v.dob_bb)} × ${n(v.dob_d)} = ${n(v.dob_bb*v.dob_d)} mcg/menit`),
+  S('Hitung untuk 24 jam',[`× 60 menit × 24 jam`,`${n(v.dob_bb*v.dob_d)} × 60 × 24 = ${n(v.dob_bb*v.dob_d*24*60)} mcg`]),
+  S('Ubah mcg menjadi mg',`${n(v.dob_bb*v.dob_d*24*60)} ÷ 1000 = ${n(mg)} mg`,'Ini jumlah obat untuk 24 jam, dilarutkan dengan NS sampai volume pengenceran yang dipilih.'),
+  S('Hitung volume obat dari ampul',[`Konsentrasi sediaan = ${n(c)} mg/ml`,`${n(mg)} ÷ ${n(c)} = ${n(ml)} ml (cc)`],'Konsentrasi = isi ampul ÷ volume ampul.'),
+  S('Tambah NS sampai volume pengenceran',[`${n(v.dob_V)} − ${n(ml)} = ${n(v.dob_V-ml)} ml NS`,`Total volume spuit ${n(v.dob_V)} ml`]),
+  S('Hitung kecepatan syringe pump',`${n(v.dob_V)} ml ÷ 24 jam = ${n(v.dob_V/24)} ml/jam`,'Spuit habis dalam 24 jam.')]}},
+{id:'fentanyl',cat:'obat',title:'Fentanyl',tag:'0,5 - 2 mcg/kg/jam',hint:'Sediaan 100 mcg / 2 ml, 1 ml = 50 mcg.  Dosis 0,5 - 2 mcg/kg/jam',
+ inputs:[I('fen_bb','BB','kg',1.3),I('fen_d','Dosis yang dipakai','mcg/kg/j',1),
+  Sel('fen_V','Diencerkan jadi',VOLS,8),
+  Sel('fen_sed','Sediaan ampul',[[50,'Fentanyl 100 mcg / 2 ml (50 mcg/ml)'],[-1,'Lainnya (isi sendiri)']],50),
+  Num('fen_cm','Isi ampul','mcg',100,custom('fen_sed')),Num('fen_cv','Volume ampul','ml',2,custom('fen_sed'))],
+ outs:[
+  O(v=>`Total obat 24 jam (dalam ${n(v.fen_V)} ml)`,'mcg',v=>fenMc(v),'W22'),
+  G('Ampul dan pengenceran'),
+  O('Ambil dari ampul (sediaan di spuit)','ml (cc)',v=>fenMc(v)/conc(v,'fen'),'W23'),
+  O('Tambah NS','ml',v=>v.fen_V-fenMc(v)/conc(v,'fen'),NEW),
+  O('Total volume spuit','ml',v=>v.fen_V,NEW),
+  O('Syringe pump','ml/j',v=>v.fen_V/24,'W24')],
+ info:['Daftar sediaan hanya contoh yang umum. Cocokkan konsentrasi dengan label ampul yang dipakai, atau pilih "Lainnya".'],
+ warn:v=>(v.fen_V-fenMc(v)/conc(v,'fen')<0)?WARN_TXT:'',
+ steps:v=>{const mc=fenMc(v),c=conc(v,'fen'),ml=mc/c;return[
+  S('Hitung mcg untuk 24 jam',[`dosis × BB × 24 jam`,`${n(v.fen_d)} × ${n(v.fen_bb)} × 24 = ${n(mc)} mcg`]),
+  S('Hitung volume obat dari ampul',[`Konsentrasi sediaan = ${n(c)} mcg/ml`,`${n(mc)} ÷ ${n(c)} = ${n(ml)} ml (cc)`],'Untuk fentanyl 100 mcg / 2 ml: konsentrasi 50 mcg/ml, sama dengan rumus Excel (mcg ÷ 100) × 2.'),
+  S('Tambah NS sampai volume pengenceran',[`${n(v.fen_V)} − ${n(ml)} = ${n(v.fen_V-ml)} ml NS`,`Total volume spuit ${n(v.fen_V)} ml`]),
+  S('Hitung kecepatan syringe pump',`${n(v.fen_V)} ml ÷ 24 jam = ${n(v.fen_V/24)} ml/jam`,'Spuit habis dalam 24 jam.')]}},
+{id:'midazolam',cat:'obat',title:'Midazolam',tag:'0,1 - 0,5 mg/kg/jam',hint:'Dosis 0,1 - 0,5 mg/kg/jam. Pilihan "Murni" sama dengan Excel (tanpa pengenceran).',
+ inputs:[I('mid_bb','BB','kg',1),I('mid_d','Dosis yang dipakai','mg/kg/j',0.1),
+  Sel('mid_V','Diencerkan jadi',[[0,'Murni (tanpa pengenceran)'],...VOLS],0),
+  Sel('mid_sed','Sediaan ampul',[[1,'Midazolam 5 mg / 5 ml (1 mg/ml)'],[5,'Midazolam 15 mg / 3 ml (5 mg/ml)'],[-1,'Lainnya (isi sendiri)']],1),
+  Num('mid_cm','Isi ampul','mg',5,custom('mid_sed')),Num('mid_cv','Volume ampul','ml',5,custom('mid_sed'))],
+ outs:[
+  O('Dosis midazolam 24 jam','mg',v=>midMg(v),'Q27'),
+  G('Ampul dan pengenceran'),
+  O('Ambil dari ampul','ml (cc)',v=>midMg(v)/conc(v,'mid'),'Q28 / Q30'),
+  O('Tambah NS','ml',v=>v.mid_V>0?v.mid_V-midMg(v)/conc(v,'mid'):0,NEW),
+  O('Total volume spuit','ml',v=>midTot(v),NEW),
+  O('Jalan syringe pump','ml/j',v=>midTot(v)/24,'Q29 / Q31')],
+ info:['Daftar sediaan hanya contoh yang umum. Cocokkan konsentrasi dengan label ampul yang dipakai, atau pilih "Lainnya".'],
+ warn:v=>(v.mid_V>0&&v.mid_V-midMg(v)/conc(v,'mid')<0)?WARN_TXT:'',
+ steps:v=>{const mg=midMg(v),c=conc(v,'mid'),ml=mg/c,tot=midTot(v);return[
+  S('Hitung dosis 24 jam',[`BB × dosis × 24 jam`,`${n(v.mid_bb)} × ${n(v.mid_d)} × 24 = ${n(mg)} mg`]),
+  S('Hitung volume obat dari ampul',[`Konsentrasi sediaan = ${n(c)} mg/ml`,`${n(mg)} ÷ ${n(c)} = ${n(ml)} ml (cc)`],'5 mg / 5 ml = 1 mg/ml. 15 mg / 3 ml = 5 mg/ml. Sama dengan rumus Excel (mg ÷ 1) dan (mg ÷ 15) × 3.'),
+  v.mid_V>0?S('Tambah NS sampai volume pengenceran',[`${n(v.mid_V)} − ${n(ml)} = ${n(v.mid_V-ml)} ml NS`,`Total volume spuit ${n(v.mid_V)} ml`]):S('Tanpa pengenceran','Obat diberikan murni, volume spuit = volume obat dari ampul.'),
+  S('Hitung kecepatan syringe pump',`${n(tot)} ml ÷ 24 jam = ${n(tot/24)} ml/jam`,'Spuit habis dalam 24 jam.')]}},
+{id:'epinefrin',cat:'obat',title:'Epinefrin',tag:'Start 0,1 - 0,3 mcg/kg/menit',hint:'Start 0,1 - 0,3 mcg/kg/menit (di Excel tertulis mg/kg/menit)',
+ inputs:[I('epi_bb','BB','kg',0.7),I('epi_d','Dosis yang dipakai','mcg/kg/mnt',1),
+  Sel('epi_V','Diencerkan jadi',VOLS,8),
+  Sel('epi_sed','Sediaan ampul',[[1,'Epinefrin 1 mg / 1 ml (1 mg/ml)'],[-1,'Lainnya (isi sendiri)']],1),
+  Num('epi_cm','Isi ampul','mg',1,custom('epi_sed')),Num('epi_cv','Volume ampul','ml',10,custom('epi_sed'))],
+ outs:[
+  O(v=>`Total obat 24 jam (dalam ${n(v.epi_V)} ml)`,'mg',v=>epiMg(v),'Q37'),
+  G('Ampul dan pengenceran'),
+  O('Ambil dari ampul','ml (cc)',v=>epiMg(v)/conc(v,'epi'),NEW),
+  O('Tambah NS','ml',v=>v.epi_V-epiMg(v)/conc(v,'epi'),NEW),
+  O('Total volume spuit','ml',v=>v.epi_V,NEW),
+  O('Jalan syringe pump','ml/j',v=>v.epi_V/24,'Q38')],
+ info:['Di Excel satuan dosis tertulis "mg"; rumusnya membagi 1000, sehingga dosis dibaca sebagai mcg/kg/menit.','Daftar sediaan hanya contoh yang umum. Cocokkan konsentrasi dengan label ampul yang dipakai, atau pilih "Lainnya".'],
+ warn:v=>(v.epi_V-epiMg(v)/conc(v,'epi')<0)?WARN_TXT:'',
+ steps:v=>{const mg=epiMg(v),c=conc(v,'epi'),ml=mg/c;return[
+  S('Hitung per menit',`BB × dosis = ${n(v.epi_bb)} × ${n(v.epi_d)} = ${n(v.epi_bb*v.epi_d)} mcg/menit`),
+  S('Hitung untuk 24 jam',[`× 60 menit × 24 jam`,`${n(v.epi_bb*v.epi_d)} × 60 × 24 = ${n(v.epi_bb*v.epi_d*24*60)} mcg`]),
+  S('Ubah mcg menjadi mg',`${n(v.epi_bb*v.epi_d*24*60)} ÷ 1000 = ${n(mg)} mg`,'Jumlah obat untuk 24 jam, dilarutkan dengan NS sampai volume pengenceran yang dipilih.'),
+  S('Hitung volume obat dari ampul',[`Konsentrasi sediaan = ${n(c)} mg/ml`,`${n(mg)} ÷ ${n(c)} = ${n(ml)} ml (cc)`],'Volume sangat kecil: pakai spuit 1 ml atau lakukan pengenceran bertahap sesuai protokol unit.'),
+  S('Tambah NS sampai volume pengenceran',[`${n(v.epi_V)} − ${n(ml)} = ${n(v.epi_V-ml)} ml NS`,`Total volume spuit ${n(v.epi_V)} ml`]),
+  S('Hitung kecepatan syringe pump',`${n(v.epi_V)} ml ÷ 24 jam = ${n(v.epi_V/24)} ml/jam`,'Spuit habis dalam 24 jam.')]}}
+];
+/* ===== OBAT EMERGENCY PICU (dari catatan PICU) ===== */
+const PIC='Catatan PICU';
+const VOL3=[[4,'4 ml'],[8,'8 ml'],[12,'12 ml']];
+const VOLM=[[0,'Murni (tanpa pengenceran)'],[4,'4 ml'],[8,'8 ml'],[12,'12 ml'],[24,'24 ml'],[48,'48 ml']];
+const sedOf=(v,p,t)=>v[p+'_sed']<0?{m:v[p+'_cm'],ml:v[p+'_cv']}:t[v[p+'_sed']];
+const SedSel=(p,t)=>Sel(p+'_sed','Sediaan ampul',t.map((a,i)=>[i,a.l]).concat([[-1,'Lainnya (isi sendiri)']]),0);
+const SedNum=(p,t,u)=>[Num(p+'_cm','Isi ampul',u,t[0].m,custom(p+'_sed')),Num(p+'_cv','Volume ampul','ml',t[0].ml,custom(p+'_sed'))];
+const ceilN=x=>Math.ceil(x-1e-9);
+const cOf=(v,p,t)=>{const s=sedOf(v,p,t);return s.m/s.ml};
+const T={
+ mid:[{l:'Midazolam 5 mg / 5 ml (1 mg/ml)',m:5,ml:5},{l:'Midazolam 15 mg / 3 ml (5 mg/ml)',m:15,ml:3}],
+ ne:[{l:'Norepinefrin 4 mg / 4 ml (1 mg/ml)',m:4,ml:4}],
+ dop:[{l:'Dopamin 250 mg / 5 ml (50 mg/ml)',m:250,ml:5}],
+ dob:[{l:'Dobutamin 250 mg / 5 ml (50 mg/ml)',m:250,ml:5}],
+ ami:[{l:'Amiodaron 150 mg / 3 ml (50 mg/ml)',m:150,ml:3}],
+ ket:[{l:'Ketamin 500 mg / 10 ml (50 mg/ml)',m:500,ml:10}],
+ fen:[{l:'Fentanyl 100 mcg / 2 ml (50 mcg/ml)',m:100,ml:2}],
+ pro:[{l:'Propofol 200 mg / 20 ml (10 mg/ml)',m:200,ml:20}],
+ epi:[{l:'Epinefrin 1 mg / 1 ml',m:1,ml:1}],
+ dex:[{l:'Dexmedetomidin 200 mcg / 2 ml (100 mcg/ml)',m:200,ml:2}],
+ mil:[{l:'Milrinon 10 mg / 10 ml (1 mg/ml, contoh)',m:10,ml:10}],
+ pht:[{l:'Fenitoin 100 mg / 2 ml (50 mg/ml)',m:100,ml:2}],
+ pb:[{l:'Fenobarbital 100 mg / 1 ml (contoh, sesuaikan)',m:100,ml:1}],
+ fur:[{l:'Furosemid 20 mg / 2 ml (10 mg/ml)',m:20,ml:2}]
+};
+const menit=p=>v=>v[p+'_bb']*v[p+'_d']*60/1000;
+const jam=p=>v=>v[p+'_bb']*v[p+'_d'];
+const stepMenit=p=>(v,A)=>S('Hitung total obat 24 jam',[`BB × dosis × 24 × 60 ÷ 1000`,`${n(v[p+'_bb'])} × ${n(v[p+'_d'])} × 24 × 60 ÷ 1000 = ${n(A)} mg`],'Satuan mcg/kg/menit: selalu × 24 × 60 ÷ 1000 untuk mendapat mg per 24 jam.');
+const stepJam=(p,u)=>(v,A)=>S('Hitung total obat 24 jam',[`BB × dosis = ${n(v[p+'_bb'])} × ${n(v[p+'_d'])} = ${n(v[p+'_bb']*v[p+'_d'])} ${u}/jam`,`× 24 jam = ${n(A)} ${u}`]);
+
+function makeDrip(c){
+ const p=c.p,u=c.unit;
+ const ph=c.perHour,a24=v=>ph(v)*24;
+ const sd=v=>sedOf(v,p,c.table);
+ const dml=v=>a24(v)/cOf(v,p,c.table);
+ const V=v=>v[p+'_V'];
+ const tot=v=>V(v)>0?V(v):dml(v);
+ const ns=v=>V(v)>0?V(v)-dml(v):0;
+ return {id:c.id,cat:'picu',title:c.title,hint:c.hint,
+  inputs:[I(p+'_bb','BB','kg',c.bb),...c.dIn,Sel(p+'_V','Diencerkan jadi',c.vols,c.V),SedSel(p,c.table),...SedNum(p,c.table,u)],
+  outs:[O('Obat per jam',u+'/jam',ph,PIC),O('Total obat 24 jam',u,a24,PIC),G('Ampul dan pengenceran'),
+   O('Ambil dari ampul','ml (cc)',dml,PIC),O('Ampul untuk 24 jam','ampul',v=>ceilN(a24(v)/sd(v).m),PIC),
+   O('Tambah NS','ml',ns,PIC),O('Total volume spuit (limit)','ml',tot,PIC),O('Jalan syringe pump','ml/j',v=>tot(v)/24,PIC)],
+  info:c.info||[],
+  warn:v=>[(V(v)>0&&ns(v)<0)?WARN_TXT:'',(c.max&&v[p+'_d']>c.max.v)?c.max.t:''].filter(Boolean).join(' '),
+  steps:v=>{
+   const A=a24(v),s=sd(v),cc=s.m/s.ml,ml=dml(v),Tt=tot(v),Vv=V(v);
+   return [c.doseStep(v,A),
+    S('Hitung volume obat dari ampul',[`Sediaan ${n(s.m)} ${u} / ${n(s.ml)} ml = ${n(cc)} ${u}/ml`,`${n(A)} ÷ ${n(cc)} = ${n(ml)} ml (cc)`]),
+    S('Hitung jumlah ampul',[`${n(A)} ÷ ${n(s.m)} = ${n(A/s.m)}`,`Dibulatkan ke atas: ${n(ceilN(A/s.m))} ampul untuk 24 jam`]),
+    Vv>0?S('Tambah NS sampai volume pengenceran',[`${n(Vv)} − ${n(ml)} = ${n(Vv-ml)} ml NS`,`Total volume spuit ${n(Vv)} ml`]):S('Tanpa pengenceran','Obat diberikan murni, total volume spuit = volume obat dari ampul.'),
+    S('Hitung kecepatan syringe pump',`${n(Tt)} ml ÷ 24 jam = ${n(Tt/24)} ml/jam`,'Spuit habis dalam 24 jam.')]}};
+}
+const D1=(p,u,d)=>[I(p+'_d','Dosis yang dipakai',u,d)];
+const picuSections=[
+ makeDrip({id:'p_mid',p:'pmid',title:'Midazolam (PICU)',hint:'Tidak diencerkan. Dosis 0,1 mg/kg/jam, maksimal 0,5 mg/kg/jam. Contoh catatan: BB 36 kg.',
+  unit:'mg',bb:36,dIn:D1('pmid','mg/kg/jam',0.1),perHour:jam('pmid'),doseStep:stepJam('pmid','mg'),vols:VOLM,V:0,table:T.mid,
+  max:{v:0.5,t:'Dosis melebihi batas maksimal 0,5 mg/kg/jam pada catatan.'},
+  info:['Boleh di-purge atau bolus, lalu dorong (flush) dengan maintenance 2 cc.','Jika intubasi: pakai midazolam murni 0,1 mg/kg bolus (lihat menu Midazolam bolus).']}),
+ {id:'p_midb',cat:'picu',title:'Midazolam Bolus (Intubasi)',hint:'Midazolam murni 0,1 mg/kg bolus',
+  inputs:[I('pmidb_bb','BB','kg',36),I('pmidb_d','Dosis bolus','mg/kg',0.1),SedSel('pmidb',T.mid),...SedNum('pmidb',T.mid,'mg')],
+  outs:[O('Dosis bolus','mg',v=>v.pmidb_bb*v.pmidb_d,PIC),O('Ambil dari ampul','ml (cc)',v=>v.pmidb_bb*v.pmidb_d/cOf(v,'pmidb',T.mid),PIC)],
+  info:['Midazolam murni, tanpa pengenceran.'],
+  steps:v=>{const mg=v.pmidb_bb*v.pmidb_d,c=cOf(v,'pmidb',T.mid);return[
+   S('Hitung dosis bolus',`BB × dosis = ${n(v.pmidb_bb)} × ${n(v.pmidb_d)} = ${n(mg)} mg`),
+   S('Hitung volume dari ampul',[`Konsentrasi = ${n(c)} mg/ml`,`${n(mg)} ÷ ${n(c)} = ${n(mg/c)} ml (cc)`])]}},
+ makeDrip({id:'p_ne',p:'pne',title:'Norepinefrin',hint:'0,1 mcg/kg/menit. Contoh catatan: BB 50 kg, pengenceran 12 ml.',
+  unit:'mg',bb:50,dIn:D1('pne','mcg/kg/mnt',0.1),perHour:menit('pne'),doseStep:stepMenit('pne'),vols:VOL3,V:12,table:T.ne,
+  info:['Judul di catatan tertulis "mcg/kgbb/jam", tetapi rumusnya memakai mcg/kg/menit (× 24 × 60 ÷ 1000). Aplikasi ini memakai mcg/kg/menit.']}),
+ makeDrip({id:'p_dop',p:'pdop',title:'Dopamin',hint:'Start 5 mcg/kg/menit. Contoh catatan: BB 15 kg, pengenceran 8 ml.',
+  unit:'mg',bb:15,dIn:D1('pdop','mcg/kg/mnt',5),perHour:menit('pdop'),doseStep:stepMenit('pdop'),vols:VOL3,V:8,table:T.dop,
+  info:['Sediaan 250 mg / 5 ml ditulis sesuai catatan. Pilih "Lainnya" jika ampul dopamin di unit berbeda (misalnya 200 mg / 5 ml).']}),
+ makeDrip({id:'p_dob',p:'pdob',title:'Dobutamin',hint:'Start 5 mcg/kg/menit. Contoh catatan: BB 10 kg, pengenceran 8 ml.',
+  unit:'mg',bb:10,dIn:D1('pdob','mcg/kg/mnt',5),perHour:menit('pdob'),doseStep:stepMenit('pdob'),vols:VOL3,V:8,table:T.dob}),
+ makeDrip({id:'p_ami',p:'pami',title:'Amiodaron',hint:'5 mcg/kg/menit. Contoh catatan: BB 20 kg, pengenceran 12 ml untuk 24 jam.',
+  unit:'mg',bb:20,dIn:D1('pami','mcg/kg/mnt',5),perHour:menit('pami'),doseStep:stepMenit('pami'),vols:VOL3,V:12,table:T.ami,
+  info:['Catatan Anda menyebut pengenceran dengan NS. Amiodaron umumnya dilarutkan dengan D5%, mohon pastikan sesuai protokol unit.']}),
+ {id:'p_pht',cat:'picu',title:'Fenitoin',hint:'Loading 20 mg/kg lalu 10 mg/kg, masing-masing dalam NS 20 ml selama 30 menit. Maintenance 5-7 mg/kg/hari dibagi 2.',
+  inputs:[I('ppht_bb','BB','kg',10),I('ppht_l1','Loading pertama','mg/kg',20),I('ppht_l2','Loading kedua','mg/kg',10),I('ppht_ns','NS pengencer','ml',20),I('ppht_t','Lama pemberian','menit',30),
+   I('ppht_mn','Maintenance minimal','mg/kg/hari',5),I('ppht_mx','Maintenance maksimal','mg/kg/hari',7),SedSel('ppht',T.pht),...SedNum('ppht',T.pht,'mg')],
+  outs:[...loadOuts('ppht',T.pht,'Loading pertama','ppht_l1'),...loadOuts('ppht',T.pht,'Loading kedua','ppht_l2'),
+   G('Maintenance (dibagi 2 dosis)'),
+   O('Minimal per hari','mg',v=>v.ppht_bb*v.ppht_mn,PIC),
+   O('Minimal per dosis (÷ 2)','mg',v=>v.ppht_bb*v.ppht_mn/2,PIC),
+   O('Minimal per dosis','ml (cc)',v=>v.ppht_bb*v.ppht_mn/2/cOf(v,'ppht',T.pht),PIC),
+   O('Maksimal per hari','mg',v=>v.ppht_bb*v.ppht_mx,PIC),
+   O('Maksimal per dosis (÷ 2)','mg',v=>v.ppht_bb*v.ppht_mx/2,PIC),
+   O('Maksimal per dosis','ml (cc)',v=>v.ppht_bb*v.ppht_mx/2/cOf(v,'ppht',T.pht),PIC)],
+  info:['Di catatan tertulis "dalam 20 cc NS". Aplikasi ini menambahkan NS 20 ml ke volume obat (total = obat + NS). Ubah kolom NS pengencer jika di unit berbeda.'],
+  steps:v=>loadSteps('ppht',T.pht,v,[`Maintenance: BB × dosis ÷ 2`,`Minimal ${n(v.ppht_bb)} × ${n(v.ppht_mn)} = ${n(v.ppht_bb*v.ppht_mn)} mg/hari, per dosis ${n(v.ppht_bb*v.ppht_mn/2)} mg`,`Maksimal ${n(v.ppht_bb)} × ${n(v.ppht_mx)} = ${n(v.ppht_bb*v.ppht_mx)} mg/hari, per dosis ${n(v.ppht_bb*v.ppht_mx/2)} mg`])},
+ {id:'p_pb',cat:'picu',title:'Fenobarbital',hint:'Loading 20 mg/kg lalu 10 mg/kg, masing-masing dalam NS 20 ml selama 30 menit. Maintenance 3 mg/kg setiap 12 jam.',
+  inputs:[I('ppb_bb','BB','kg',10),I('ppb_l1','Loading pertama','mg/kg',20),I('ppb_l2','Loading kedua','mg/kg',10),I('ppb_ns','NS pengencer','ml',20),I('ppb_t','Lama pemberian','menit',30),
+   I('ppb_m','Maintenance','mg/kg/dosis',3),I('ppb_i','Setiap','jam',12),SedSel('ppb',T.pb),...SedNum('ppb',T.pb,'mg')],
+  outs:[...loadOuts('ppb',T.pb,'Loading pertama','ppb_l1'),...loadOuts('ppb',T.pb,'Loading kedua','ppb_l2'),
+   G('Maintenance'),
+   O('Per dosis','mg',v=>v.ppb_bb*v.ppb_m,PIC),
+   O('Per dosis','ml (cc)',v=>v.ppb_bb*v.ppb_m/cOf(v,'ppb',T.pb),PIC),
+   O('Per hari','mg',v=>v.ppb_bb*v.ppb_m*(24/v.ppb_i),PIC)],
+  info:['Konsentrasi ampul fenobarbital tidak tertulis di catatan. Isi sesuai ampul yang dipakai (pilih "Lainnya").','Di catatan tertulis "dalam 20 cc NS". Aplikasi ini menambahkan NS 20 ml ke volume obat (total = obat + NS).'],
+  steps:v=>loadSteps('ppb',T.pb,v,[`Maintenance: BB × dosis`,`${n(v.ppb_bb)} × ${n(v.ppb_m)} = ${n(v.ppb_bb*v.ppb_m)} mg setiap ${n(v.ppb_i)} jam`,`Per hari = ${n(v.ppb_bb*v.ppb_m)} × (24 ÷ ${n(v.ppb_i)}) = ${n(v.ppb_bb*v.ppb_m*(24/v.ppb_i))} mg`])},
+ {id:'p_fur',cat:'picu',title:'Furosemid',hint:'Sediaan 20 mg / 2 ml. Dosis 1 mg/kg/8 jam. Untuk koreksi 0,5 - 1 mg/kg/bolus.',
+  inputs:[I('pfur_bb','BB','kg',10),I('pfur_d','Dosis rumatan','mg/kg/dosis',1),I('pfur_i','Setiap','jam',8),I('pfur_k1','Koreksi minimal','mg/kg',0.5),I('pfur_k2','Koreksi maksimal','mg/kg',1),SedSel('pfur',T.fur),...SedNum('pfur',T.fur,'mg')],
+  outs:[G('Rumatan'),
+   O('Per dosis','mg',v=>v.pfur_bb*v.pfur_d,PIC),
+   O('Per dosis','ml (cc)',v=>v.pfur_bb*v.pfur_d/cOf(v,'pfur',T.fur),PIC),
+   O('Per hari','mg',v=>v.pfur_bb*v.pfur_d*(24/v.pfur_i),PIC),
+   G('Koreksi bolus'),
+   O('Minimal','mg',v=>v.pfur_bb*v.pfur_k1,PIC),
+   O('Minimal','ml (cc)',v=>v.pfur_bb*v.pfur_k1/cOf(v,'pfur',T.fur),PIC),
+   O('Maksimal','mg',v=>v.pfur_bb*v.pfur_k2,PIC),
+   O('Maksimal','ml (cc)',v=>v.pfur_bb*v.pfur_k2/cOf(v,'pfur',T.fur),PIC)],
+  steps:v=>{const c=cOf(v,'pfur',T.fur),r=v.pfur_bb*v.pfur_d;return[
+   S('Hitung dosis rumatan',[`BB × dosis = ${n(v.pfur_bb)} × ${n(v.pfur_d)} = ${n(r)} mg setiap ${n(v.pfur_i)} jam`,`Per hari = ${n(r)} × (24 ÷ ${n(v.pfur_i)}) = ${n(r*(24/v.pfur_i))} mg`]),
+   S('Ubah mg menjadi ml',[`Konsentrasi = ${n(c)} mg/ml`,`${n(r)} ÷ ${n(c)} = ${n(r/c)} ml (cc) per dosis`]),
+   S('Hitung dosis koreksi',[`Minimal ${n(v.pfur_bb)} × ${n(v.pfur_k1)} = ${n(v.pfur_bb*v.pfur_k1)} mg = ${n(v.pfur_bb*v.pfur_k1/c)} ml`,`Maksimal ${n(v.pfur_bb)} × ${n(v.pfur_k2)} = ${n(v.pfur_bb*v.pfur_k2)} mg = ${n(v.pfur_bb*v.pfur_k2/c)} ml`])]}},
+ makeDrip({id:'p_ket',p:'pket',title:'Ketamin',hint:'1 mg/kg/jam. Contoh catatan: BB 13,6 kg. Catatan tidak menyebut pengenceran, awalnya murni.',
+  unit:'mg',bb:13.6,dIn:D1('pket','mg/kg/jam',1),perHour:jam('pket'),doseStep:stepJam('pket','mg'),vols:VOLM,V:0,table:T.ket}),
+ makeDrip({id:'p_fen',p:'pfen',title:'Fentanyl (PICU)',hint:'Dosis 0,5 mcg/kg/jam. Sediaan 100 mcg / 2 ml, 1 ml = 50 mcg.',
+  unit:'mcg',bb:10,dIn:D1('pfen','mcg/kg/jam',0.5),perHour:jam('pfen'),doseStep:stepJam('pfen','mcg'),vols:VOL3,V:8,table:T.fen,
+  info:['Di catatan tertulis "1 ml: 50 mg"; yang dimaksud 50 mcg per ml.']}),
+ makeDrip({id:'p_pro',p:'ppro',title:'Propofol',hint:'50 mcg/kg/menit (contoh BB 9 kg) atau 1 mg/kg/jam. Sediaan 200 mg / 20 ml, 1 ml = 10 mg. Awalnya murni.',
+  unit:'mg',bb:9,dIn:[I('ppro_d','Dosis yang dipakai','',50),Sel('ppro_m','Satuan dosis',[[1,'mcg/kg/menit'],[2,'mg/kg/jam']],1)],
+  perHour:v=>v.ppro_m==1?v.ppro_bb*v.ppro_d*60/1000:v.ppro_bb*v.ppro_d,
+  doseStep:(v,A)=>v.ppro_m==1?S('Hitung total obat 24 jam',[`BB × dosis × 24 × 60 ÷ 1000`,`${n(v.ppro_bb)} × ${n(v.ppro_d)} × 24 × 60 ÷ 1000 = ${n(A)} mg`],'Satuan mcg/kg/menit: selalu × 24 × 60 ÷ 1000.'):S('Hitung total obat 24 jam',[`BB × dosis = ${n(v.ppro_bb*v.ppro_d)} mg/jam`,`× 24 jam = ${n(A)} mg`]),
+  vols:VOLM,V:0,table:T.pro,
+  info:['Contoh catatan: 9 × 50 × 24 × 60 ÷ 1000 = 648 mg, murni 64,8 ml, jalan 2,7 ml/jam (di catatan tertulis 2,6).','Untuk dosis 1 mg/kg/jam pilih satuan mg/kg/jam (contoh catatan: BB 50 kg = 50 mg/jam).']}),
+ makeDrip({id:'p_epi',p:'pepi',title:'Epinefrin Drip',hint:'Inotropik 0,1 - 0,3 mcg/kg/menit. Maintenance 0,02 - 0,1, titrasi sampai 1 - 2 mcg/kg/menit. Contoh catatan: BB 30 kg.',
+  unit:'mg',bb:30,dIn:D1('pepi','mcg/kg/mnt',0.1),perHour:menit('pepi'),doseStep:stepMenit('pepi'),vols:VOL3,V:8,table:T.epi}),
+ {id:'p_epia',cat:'picu',title:'Epinefrin Henti Jantung',hint:'Epinefrin 1 ml (1 mg/ml) + NS 9 ml = 10 ml (0,1 mg/ml, 1:10.000). Atau 0,1 ml epinefrin + NS sampai 1 ml.',
+  inputs:[I('pepia_bb','BB','kg',10),I('pepia_d','Dosis','mg/kg',0.01)],
+  outs:[O('Dosis epinefrin','mg',v=>v.pepia_bb*v.pepia_d,PIC),
+   O('Volume dari larutan 1:10.000 (0,1 mg/ml)','ml',v=>v.pepia_bb*v.pepia_d/0.1,PIC)],
+  warn:v=>[v.pepia_d>0.01?'Dosis lebih besar dari 0,01 mg/kg (0,1 ml/kg larutan 1:10.000), dosis lazim henti jantung anak. Catatan Anda menulis 0,1 mg/kg, mohon dikonfirmasi.':'',v.pepia_bb*v.pepia_d>1?'Dosis lebih dari 1 mg per pemberian.':''].filter(Boolean).join(' '),
+  info:['Nilai awal 0,01 mg/kg (dosis lazim henti jantung anak). Di catatan tertulis 0,1 mg/kg; angka itu 10 kali lebih besar dan setara dosis endotrakeal larutan 1:1000. Ubah di kolom Dosis hanya bila memang disengaja.'],
+  steps:v=>{const mg=v.pepia_bb*v.pepia_d;return[
+   S('Hitung dosis',`BB × dosis = ${n(v.pepia_bb)} × ${n(v.pepia_d)} = ${n(mg)} mg`),
+   S('Buat larutan 1:10.000','1 ml epinefrin (1 mg/ml) + 9 ml NS 0,9% = 10 ml, konsentrasi 0,1 mg/ml. Cara lain: 0,1 ml epinefrin + NS sampai 1 ml.'),
+   S('Hitung volume yang diberikan',`${n(mg)} mg ÷ 0,1 mg/ml = ${n(mg/0.1)} ml`)]}},
+ makeDrip({id:'p_dex',p:'pdex',title:'Dexmedetomidin',hint:'0,2 mcg/kg/jam. Sediaan Kabimidin 0,2 mg / 2 ml (tutup atas pink), 100 mcg = 1 ml. Contoh catatan: BB 9 kg.',
+  unit:'mcg',bb:9,dIn:D1('pdex','mcg/kg/jam',0.2),perHour:jam('pdex'),doseStep:stepJam('pdex','mcg'),vols:VOL3,V:8,table:T.dex,
+  info:['Contoh catatan memakai 40 mcg (0,4 ml). Hitung persisnya 0,2 × 9 × 24 = 43,2 mcg (0,432 ml).']}),
+ {id:'p_man',cat:'picu',title:'Manitol',hint:'0,5 g/kg setiap 8 jam. Botol 500 ml berisi 100 g (20%), jadi 1 g = 5 ml.',
+  inputs:[I('pman_bb','BB','kg',10),I('pman_d','Dosis','g/kg',0.5),I('pman_i','Setiap','jam',8),I('pman_g','Isi botol','g',100),I('pman_v','Volume botol','ml',500)],
+  outs:[G('Per dosis'),O('Dosis manitol','g',v=>v.pman_bb*v.pman_d,PIC),O('Volume manitol','ml',v=>v.pman_bb*v.pman_d/(v.pman_g/v.pman_v),PIC),
+   G('Per hari'),O('Total manitol','g',v=>v.pman_bb*v.pman_d*(24/v.pman_i),PIC),O('Total volume','ml',v=>v.pman_bb*v.pman_d*(24/v.pman_i)/(v.pman_g/v.pman_v),PIC)],
+  info:['Di catatan tertulis "100 mg dalam 500 cc"; yang dimaksud 100 gram (500 ml berisi 100 g). Contoh: butuh 25 g = 125 ml.'],
+  steps:v=>{const g=v.pman_bb*v.pman_d,c=v.pman_g/v.pman_v;return[
+   S('Hitung dosis dalam gram',`BB × dosis = ${n(v.pman_bb)} × ${n(v.pman_d)} = ${n(g)} g`),
+   S('Hitung konsentrasi botol',`${n(v.pman_g)} g ÷ ${n(v.pman_v)} ml = ${n(c)} g/ml (1 g = ${n(1/c)} ml)`),
+   S('Ubah gram menjadi ml',`${n(g)} ÷ ${n(c)} = ${n(g/c)} ml per dosis`),
+   S('Hitung per hari',`${n(g)} g × (24 ÷ ${n(v.pman_i)}) = ${n(g*(24/v.pman_i))} g = ${n(g*(24/v.pman_i)/c)} ml`)]}},
+ makeDrip({id:'p_mil',p:'pmil',title:'Milrinon',hint:'0,75 mcg/kg/menit, NS sampai 8 ml, jalan 0,3 ml/jam. Contoh catatan: BB 2,9 kg (cold shock, inodilator).',
+  unit:'mg',bb:2.9,dIn:D1('pmil','mcg/kg/mnt',0.75),perHour:menit('pmil'),doseStep:stepMenit('pmil'),vols:VOL3,V:8,table:T.mil,
+  info:['Contoh catatan menulis "0,75 × 2,9 × 5 × 24 × 60 = 3,1 mg". Hasil 3,1 mg hanya didapat tanpa pengali 5 (0,75 × 2,9 × 24 × 60 ÷ 1000 = 3,132 mg), jadi pengali 5 tidak dipakai.','Konsentrasi ampul milrinon tidak tertulis di catatan; 10 mg / 10 ml hanya contoh. Pilih "Lainnya" jika berbeda.'].concat([])})
+];
+function loadOuts(p,t,lab,key){
+ const mg=v=>v[p+'_bb']*v[key],ml=v=>mg(v)/cOf(v,p,t),tv=v=>ml(v)+v[p+'_ns'];
+ return [G(lab),O('Dosis','mg',mg,PIC),O('Ambil dari ampul','ml (cc)',ml,PIC),O('Ampul','ampul',v=>ceilN(mg(v)/sedOf(v,p,t).m),PIC),
+  O('NS pengencer','ml',v=>v[p+'_ns'],PIC),O('Total volume','ml',tv,PIC),
+  O('Kecepatan','ml/j',v=>tv(v)/(v[p+'_t']/60),PIC),O('Laju obat','mg/kg/menit',v=>v[key]/v[p+'_t'],PIC)];
+}
+function loadSteps(p,t,v,maint){
+ const c=cOf(v,p,t),out=[];
+ [['Loading pertama',p+'_l1'],['Loading kedua',p+'_l2']].forEach(([lab,k])=>{
+  const mg=v[p+'_bb']*v[k],ml=mg/c,tv=ml+v[p+'_ns'];
+  out.push(S(lab,[`Dosis = BB × dosis = ${n(v[p+'_bb'])} × ${n(v[k])} = ${n(mg)} mg`,`Ambil dari ampul = ${n(mg)} ÷ ${n(c)} = ${n(ml)} ml (cc)`,`Total volume = ${n(ml)} + NS ${n(v[p+'_ns'])} = ${n(tv)} ml`,`Habis dalam ${n(v[p+'_t'])} menit: ${n(tv)} ÷ ${n(v[p+'_t']/60)} jam = ${n(tv/(v[p+'_t']/60))} ml/jam`],`Laju obat ${n(v[k]/v[p+'_t'])} mg/kg/menit.`));
+ });
+ out.push(S('Maintenance',maint));
+ return out;
+}
+
+sections.push(...picuSections);
+const CATS=[['darah','Darah'],['elek','Elektrolit dan cairan'],['obat','Obat drip'],['picu','Emergency PICU']];
+/*RENDER*/
+const META={eritrosit:['🩸','Eritrosit'],trombosit:['🧫','Trombosit'],ffp:['🧪','FFP'],albumin:['💧','Albumin'],
+ hipona:['🧂','Hipo-Na'],hiperna:['🌊','Hiper-Na'],bicnat:['⚗️','BicNat'],kcl:['🍌','KCl'],mgso4:['🧲','MgSO4'],ca:['🦴','Ca Glukonat'],
+ dobutamin:['❤️','Dobutamin'],fentanyl:['💊','Fentanyl'],midazolam:['😴','Midazolam'],epinefrin:['⚡','Epinefrin'],
+ p_mid:['😴','Midazolam'],p_midb:['💉','Midazolam bolus'],p_ne:['🫀','Norepinefrin'],p_dop:['❤️','Dopamin'],p_dob:['💗','Dobutamin'],p_ami:['⚡','Amiodaron'],p_pht:['🧠','Fenitoin'],p_pb:['🌙','Fenobarbital'],p_fur:['💧','Furosemid'],p_ket:['🌀','Ketamin'],p_fen:['💊','Fentanyl'],p_pro:['🥛','Propofol'],p_epi:['⚡','Epinefrin drip'],p_epia:['🚑','Epinefrin arrest'],p_dex:['😌','Dexmedetomidin'],p_man:['🧊','Manitol'],p_mil:['🫶','Milrinon']};
+const CATH={darah:'🩸 Darah',elek:'🧂 Elektrolit dan cairan',obat:'💊 Obat drip (Excel)',picu:'🚨 Obat emergency PICU'};
+const $=id=>document.getElementById(id);
+const vals={};const inEls={};const inLabels={};let outEls=[];let warnEl=null;let cur=null;let tab='all';let stepsOpen=true;
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+
+function renderHome(){
+  const g=$('groups');g.textContent='';
+  const cats=tab==='all'?CATS:CATS.filter(c=>c[0]===tab);
+  g.appendChild(el('h2','sec',tab==='all'?'🧩 Menu utama':CATH[tab]));
+  cats.forEach(([k,name])=>{
+    const box=el('div','group');
+    if(tab==='all')box.appendChild(el('h2','sec',CATH[k]));
+    const grid=el('div','grid');
+    sections.filter(s=>s.cat===k).forEach(s=>{
+      const m=META[s.id];const b=el('button','tile');b.type='button';b.setAttribute('aria-label',s.title);
+      b.append(el('i',null,m[0]),el('span',null,m[1]));
+      b.addEventListener('click',()=>openCalc(s));grid.appendChild(b);
+    });
+    box.appendChild(grid);g.appendChild(box);
+  });
+}
+function showHome(){
+  cur=null;$('calc').hidden=true;$('home').hidden=false;$('back').hidden=true;$('hextra').hidden=false;
+  $('hicon').textContent='🧮';$('htitle').textContent='Kalkulator NICU PICU';renderHome();window.scrollTo(0,0);
+}
+function setInputDefaults(s){s.inputs.forEach(i=>{inEls[i.id].value=i.def})}
+function openCalc(s){
+  cur=s;$('home').hidden=true;$('calc').hidden=false;$('back').hidden=false;$('hextra').hidden=true;
+  $('hicon').textContent=META[s.id][0];$('htitle').textContent=s.title;
+  const c=$('cardCalc');c.textContent='';
+  const ct=el('div','ct');ct.appendChild(el('h2','sec','🧮 Hitung'));
+  const rs=el('button','toggle','Nilai awal Excel');rs.type='button';
+  rs.addEventListener('click',()=>{setInputDefaults(s);calc()});
+  ct.appendChild(rs);c.appendChild(ct);
+  if(s.hint)c.appendChild(el('p','hint',s.hint));
+  const ins=el('div','inputs');
+  Object.keys(inEls).forEach(k=>{delete inEls[k];delete inLabels[k]});
+  s.inputs.forEach(i=>{
+    const l=el('label','f');l.htmlFor=i.id;l.append(i.label);
+    const w=el('div','fw');let inp;
+    if(i.sel){
+      inp=document.createElement('select');
+      i.opts.forEach(([val,txt])=>{const o=document.createElement('option');o.value=String(val);o.textContent=txt;inp.appendChild(o)});
+      l.classList.add('wide');
+    }else{
+      inp=document.createElement('input');inp.type='number';inp.step='any';inp.inputMode='decimal';
+    }
+    inp.id=i.id;inp.value=i.def;
+    inp.addEventListener('input',calc);inp.addEventListener('change',calc);
+    w.appendChild(inp);if(i.unit)w.appendChild(el('span',null,i.unit));
+    l.appendChild(w);ins.appendChild(l);inEls[i.id]=inp;inLabels[i.id]=l;
+  });
+  c.appendChild(ins);
+  const res=el('div','res');outEls=[];
+  s.outs.forEach(o=>{
+    if(o.h){res.appendChild(el('div','grp',o.h));return}
+    const r=el('div','row');const lb=el('div','l');const v=el('div','v');r.append(lb,v);
+    let v2=null;if(o.alt){v2=el('div','v alt');r.appendChild(v2)}
+    r.appendChild(el('div','ref',(/^[A-Z]\d/.test(o.ref)?'Excel ':'')+o.ref));res.appendChild(r);outEls.push({o,lb,v,v2});
+  });
+  c.appendChild(res);
+  warnEl=null;
+  if(s.warn){warnEl=el('p','info warn');warnEl.hidden=true;c.appendChild(warnEl)}
+  (s.info||[]).forEach(t=>c.appendChild(el('p','info',t)));
+  calc();window.scrollTo(0,0);
+}
+function setUnit(box,val,unit){box.textContent='';box.append(fmt(val));box.appendChild(el('small',null,unit))}
+function calc(){
+  if(!cur)return;
+  cur.inputs.forEach(i=>{const x=inEls[i.id].value;vals[i.id]=x===''?0:parseFloat(x)});
+  cur.inputs.forEach(i=>{if(i.showIf)inLabels[i.id].hidden=!i.showIf(vals)});
+  outEls.forEach(({o,lb,v,v2})=>{
+    lb.textContent=typeof o.l==='function'?o.l(vals):o.l;
+    setUnit(v,o.f(vals),o.u);if(v2)setUnit(v2,o.alt.f(vals),o.alt.u)});
+  if(warnEl){const w=cur.warn(vals);warnEl.textContent=w;warnEl.hidden=!w}
+  const ol=$('stepList');ol.textContent='';
+  cur.steps(vals).forEach(st=>{
+    const li=document.createElement('li');const bd=el('div','body');bd.appendChild(el('div','t',st.t));
+    st.m.forEach(m=>bd.appendChild(el('div','m',m)));
+    if(st.n)bd.appendChild(el('div','n',st.n));
+    li.appendChild(bd);ol.appendChild(li);
+  });
+}
+$('back').addEventListener('click',showHome);
+$('nav').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  tab=b.dataset.tab;[...$('nav').children].forEach(x=>x.classList.toggle('on',x===b));showHome();
+});
+$('togSteps').addEventListener('click',()=>{
+  stepsOpen=!stepsOpen;$('stepList').hidden=!stepsOpen;
+  $('togSteps').textContent=stepsOpen?'Sembunyikan':'Tampilkan';
+  $('togSteps').setAttribute('aria-expanded',String(stepsOpen));
+});
+$('theme').addEventListener('click',()=>{
+  const r=document.documentElement;
+  const dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
+  r.dataset.theme=dark?'light':'dark';$('theme').textContent=dark?'🌙':'☀️';
+});
+if(matchMedia('(prefers-color-scheme: dark)').matches)$('theme').textContent='☀️';
+$('sN').textContent=sections.length;
+showHome();
+
+/* PWA: daftar service worker agar bisa dipasang dan dipakai offline */
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').catch(()=>{})});
+}
+/* Update otomatis: bila index.html di server berubah, halaman memuat ulang sendiri tanpa perlu refresh manual */
+(function(){
+  if(!location.protocol.startsWith('http'))return;
+  let base=null,startedStale=false,busy=false;
+  const hash=t=>{let h=0;for(let i=0;i<t.length;i++)h=(h*31+t.charCodeAt(i))|0;return h};
+  async function fetchHash(){
+    const r=await fetch('./index.html',{cache:'no-store'});
+    if(!r.ok)throw new Error('http '+r.status);
+    return hash(await r.text());
+  }
+  async function check(){
+    if(busy)return;busy=true;
+    try{
+      const h=await fetchHash();
+      if(base===null){
+        if(startedStale){location.reload();return}   // halaman dibuka dari cache saat offline, sekarang sudah online
+        base=h;
+      }else if(h!==base){
+        const a=document.activeElement;
+        if(a&&(a.tagName==='INPUT'||a.tagName==='SELECT'))return;  // jangan ganggu saat sedang mengetik; dicek lagi nanti
+        location.reload();
+      }
+    }catch(e){ if(base===null)startedStale=true; }
+    finally{busy=false}
+  }
+  check();
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check()});
+  window.addEventListener('online',check);
+  window.addEventListener('focus',check);
+  setInterval(()=>{if(document.visibilityState==='visible')check()},30000);
+})();
+</script>
+</body>
+</html>

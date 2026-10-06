@@ -1,0 +1,18 @@
+{
+  "name": "Kalkulator NICU PICU",
+  "short_name": "NICU PICU",
+  "description": "Kalkulator koreksi, obat drip, dan obat emergency untuk NICU dan PICU.",
+  "lang": "id",
+  "id": "./",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#d6f1fc",
+  "theme_color": "#1d5c4d",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
