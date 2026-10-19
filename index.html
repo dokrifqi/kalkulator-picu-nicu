@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kalkulator NICU PICU</title>
+<title>Kalkulator Picu Nicu by @dokrifqi</title>
 <meta name="description" content="Kalkulator koreksi, obat drip, dan obat emergency untuk NICU dan PICU.">
 <meta name="theme-color" content="#1d5c4d">
 <meta name="mobile-web-app-capable" content="yes">
@@ -48,6 +48,8 @@ button:focus-visible,.tile:focus-visible,.nav button:focus-visible{outline:3px s
 .hdr{background:linear-gradient(160deg,var(--hdr1),var(--hdr2));color:var(--hdr-fg);padding:calc(18px + env(safe-area-inset-top,0px)) 16px 20px;border-radius:0 0 28px 28px;display:flex;flex-direction:column;gap:14px}
 .hrow{display:flex;align-items:center;gap:10px}
 .hrow .name{flex:1;font-size:1.5rem;font-weight:800;min-width:0;display:flex;align-items:center;gap:8px}
+.ttl{display:flex;flex-direction:column;min-width:0;line-height:1.15}
+.ttl .by{font-size:.8rem;font-weight:700;opacity:.85;letter-spacing:.02em}
 .pill{border:0;background:var(--glass);color:var(--hdr-fg);border-radius:999px;font-weight:800;font-size:.95rem;padding:10px 16px;min-height:44px}
 .pill.round{width:44px;padding:0;font-size:1.2rem}
 .hcard{background:var(--glass);border-radius:20px;padding:14px;display:flex;align-items:center;gap:14px}
@@ -110,10 +112,38 @@ label.f.wide{grid-column:1/-1}
 .steps .n{font-size:.82rem;opacity:.85}
 .note{font-size:.76rem;color:var(--muted);text-align:center;padding:0 8px}
 /* NAV */
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:5}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(7,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:5}
 .nav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.78rem;color:var(--muted);padding:4px;border-radius:12px;min-height:52px}
 .nav button i{font-style:normal;font-size:1.5rem;line-height:1.1}
 .nav button.on{color:var(--primary)}
+@media (max-width:480px){.nav button{font-size:.66rem;padding:4px 0}.nav button i{font-size:1.3rem}}
+/* USKOM */
+.row .v.dn,.row .v.up{color:var(--warn-fg)}
+.row .v .st{font:800 .72rem var(--font-body);margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary)}
+.row .v.dn .st,.row .v.up .st{background:var(--warn-bg);color:var(--warn-fg)}
+.big .v{font-size:1.3rem}
+.cheat{border:2px solid var(--primary-soft)}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.chip{background:var(--result-bg);border-radius:14px;padding:10px 12px;min-width:0}
+.chip b{display:block;font:600 1.05rem var(--font-num);color:var(--good)}
+.chip span{font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.chip small{display:block;font-size:.74rem;color:var(--muted);overflow-wrap:anywhere}
+.fab{position:fixed;right:max(16px,calc(50% - 264px));bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:6;border:0;border-radius:999px;background:var(--primary);color:#fff;font-weight:800;font-size:.9rem;padding:12px 16px;box-shadow:0 4px 14px rgba(0,0,0,.25);min-height:48px}
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center}
+.sheet .panel{background:var(--surface);color:var(--fg);width:min(560px,100%);max-height:88vh;overflow:auto;border-radius:22px 22px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+.tbl th{background:var(--primary);color:#fff;text-align:left;padding:8px;font-weight:800}
+.tbl td{padding:8px;border-bottom:1px solid var(--line);font-family:var(--font-num)}
+.tbl td.hl{background:var(--warn-bg);color:var(--warn-fg);font-weight:700}
+.tbl tr.hl td:first-child{font-weight:800}
+.kes{grid-column:1/-1;font-weight:800;font-size:.9rem;color:var(--primary)}
+.kes.ab{color:var(--warn-fg)}
+.wa{margin:0;padding:12px 14px;border-radius:14px;background:var(--result-bg);border:2px solid var(--line);font:500 .85rem/1.5 var(--font-num);white-space:pre-wrap;overflow-wrap:anywhere;color:var(--fg)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;background:var(--primary);color:#fff;font-weight:800;font-size:.9rem;padding:10px 18px;min-height:44px}
+.btn.ghost{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+.chk{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:var(--fg)}
+.chk input{width:20px;height:20px;accent-color:var(--primary)}
 </style>
 </head>
 <body>
@@ -122,7 +152,7 @@ label.f.wide{grid-column:1/-1}
   <header class="hdr">
     <div class="hrow">
       <button id="back" class="pill round" type="button" aria-label="Kembali" hidden>&larr;</button>
-      <div class="name"><span id="hicon">🧮</span><span id="htitle">Kalkulator NICU PICU</span></div>
+      <div class="name"><span id="hicon">🧮</span><span class="ttl"><span id="htitle">Kalkulator Picu Nicu</span><small class="by">by @dokrifqi</small></span></div>
       <button id="theme" class="pill round" type="button" aria-label="Ganti tema">🌙</button>
     </div>
     <div id="hextra">
@@ -148,6 +178,81 @@ label.f.wide{grid-column:1/-1}
     </section>
   </main>
 
+  <main id="uskom" class="pad" hidden>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>🫀</span>Data USCOM</h2><button id="uReset" class="toggle" type="button">Kosongkan</button></div>
+      <p class="hint">Isi dari kolom V (nilai saat ini) di layar Reports USCOM. Koma atau titik desimal sama saja.</p>
+      <div class="inputs" id="uIdent"></div>
+      <h2 class="sec" style="font-size:.85rem">Parameter</h2>
+      <div class="inputs" id="uParam"></div>
+      <label class="chk"><input type="checkbox" id="uPola">Tambahkan kesimpulan pola hemodinamik</label>
+    </section>
+    <p class="info warn" id="uWarn" hidden></p>
+    <section class="card" id="uHasil">
+      <div class="ct"><h2 class="sec"><span>📊</span>Interpretasi</h2><span class="hint" id="uKel"></span></div>
+      <div class="res" id="uRes"></div>
+    </section>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>💬</span>Teks laporan</h2></div>
+      <pre class="wa" id="uText"></pre>
+      <div class="btns"><button class="btn" id="uCopy" type="button">Salin teks</button><button class="btn ghost" id="uShare" type="button">Kirim ke WhatsApp</button></div>
+    </section>
+    <section class="card steps">
+      <div class="ct"><h2 class="sec"><span>📖</span>Cara baca</h2></div>
+      <ol>
+        <li><div class="body"><div class="t">Kelompok usia</div><div class="n">1 sampai &lt;3 th → tabel 1–2 th; 3 sampai &lt;8 → 3–7 th; 8 sampai &lt;16 → 8–16 th; 16–25 th. Usia &lt;1 th belum ada rentang normal.</div></div></li>
+        <li><div class="body"><div class="t">Tiap parameter</div><div class="n">Di bawah rentang = Turun, di atas = Naik, di dalam rentang (termasuk tepat di batas) = Normal.</div></div></li>
+        <li><div class="body"><div class="t">Kesan per domain</div><div class="n">Dua parameter sama → kesan itu. Satu abnormal satu normal → ikut yang abnormal (keterangan dalam kurung). Arah berlawanan → tidak sinkron, cek ulang kurva/input.</div></div></li>
+        <li><div class="body"><div class="t">Kualitas sinyal</div><div class="n">Angka hanya valid bila kurva Doppler tajam dan konsisten. BB/TB yang diinput ke alat dan tekanan darah memengaruhi SVI, CI, dan SVRI.</div></div></li>
+      </ol>
+    </section>
+  </main>
+
+  <main id="tpn" class="pad" hidden>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>👶</span>Data pasien</h2><button id="tReset" class="toggle" type="button">Nilai awal</button></div>
+      <p class="hint">Rumus dari Excel TPN HCU NEO (sheet MASTER TPN). Koma atau titik desimal sama saja.</p>
+      <div class="inputs" id="tIdent"></div>
+      <div class="inputs" id="tPasien"></div>
+    </section>
+    <section class="card cheat">
+      <div class="ct"><h2 class="sec"><span>📋</span>Contekan hari ini</h2><button id="cOpen" class="toggle" type="button">Tabel lengkap</button></div>
+      <p class="hint" id="cHead"></p>
+      <div class="chips" id="cChips"></div>
+      <div class="btns"><button class="btn ghost" id="cUse" type="button">Pakai cairan nilai tengah</button></div>
+    </section>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>🍼</span>Enteral dan pengurang cairan</h2></div>
+      <div class="inputs" id="tEnteral"></div>
+    </section>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>💉</span>Komposisi TPN</h2></div>
+      <p class="hint">Isi cairan TPN target hari ini sesuai rentang parenteral di bawah.</p>
+      <div class="inputs" id="tKomp"></div>
+    </section>
+    <p class="info warn" id="tWarn" hidden></p>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>📊</span>Hasil</h2></div>
+      <div class="res" id="tRes"></div>
+    </section>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>💬</span>Teks resep TPN</h2></div>
+      <pre class="wa" id="tText"></pre>
+      <div class="btns"><button class="btn" id="tCopy" type="button">Salin teks</button><button class="btn ghost" id="tShare" type="button">Kirim ke WhatsApp</button></div>
+    </section>
+    <section class="card steps">
+      <div class="ct"><h2 class="sec"><span>📖</span>Cara hitung</h2></div>
+      <ol id="tSteps"></ol>
+    </section>
+    <button class="fab" id="cFab" type="button">📋 Contekan</button>
+  </main>
+  <div class="sheet" id="cSheet" hidden role="dialog" aria-modal="true" aria-label="Contekan cairan dan kalori">
+    <div class="panel">
+      <div class="ct"><h2 class="sec"><span>📋</span>Contekan cairan dan kalori</h2><button id="cClose" class="toggle" type="button">Tutup</button></div>
+      <div id="cBody"></div>
+    </div>
+  </div>
+
   <p class="note">Hasil tidak dibulatkan saat dihitung, hanya tampilannya (maks 3 desimal). Alat bantu hitung, keputusan dosis tetap oleh DPJP.</p>
 </div>
 
@@ -157,6 +262,8 @@ label.f.wide{grid-column:1/-1}
   <button type="button" data-tab="elek"><i>🧂</i>Cairan</button>
   <button type="button" data-tab="obat"><i>💊</i>Drip</button>
   <button type="button" data-tab="picu"><i>🚨</i>PICU</button>
+  <button type="button" data-tab="uskom"><i>🫀</i>Uskom</button>
+  <button type="button" data-tab="tpn"><i>🧴</i>TPN</button>
 </nav>
 
 <script>
@@ -583,8 +690,9 @@ function renderHome(){
   });
 }
 function showHome(){
-  cur=null;$('calc').hidden=true;$('home').hidden=false;$('back').hidden=true;$('hextra').hidden=false;
-  $('hicon').textContent='🧮';$('htitle').textContent='Kalkulator NICU PICU';renderHome();window.scrollTo(0,0);
+  if($('cSheet'))$('cSheet').hidden=true;document.body.style.overflow='';
+  cur=null;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('home').hidden=false;$('back').hidden=true;$('hextra').hidden=false;
+  $('hicon').textContent='🧮';$('htitle').textContent='Kalkulator Picu Nicu';renderHome();window.scrollTo(0,0);
 }
 function setInputDefaults(s){s.inputs.forEach(i=>{inEls[i.id].value=i.def})}
 function openCalc(s){
@@ -644,10 +752,391 @@ function calc(){
     li.appendChild(bd);ol.appendChild(li);
   });
 }
+
+/* ===== USKOM: interpretasi USCOM ===== */
+const U_RANGES=[
+ {label:'1 - 2 Tahun',min:1,max:3,CI:[4.1,5.8],SVI:[34,57],FTc:[326,425],Vpk:[1.2,1.6],INO:[1.03,1.78],SVRI:[904,1356],PKR:[19,30]},
+ {label:'3 - 7 Tahun',min:3,max:8,CI:[4.1,5.7],SVI:[43,66],FTc:[345,409],Vpk:[1.3,1.7],INO:[1.37,2.26],SVRI:[876,1507],PKR:[13,26]},
+ {label:'8 - 16 Tahun',min:8,max:16,CI:[3.9,5.6],SVI:[49,71],FTc:[353,408],Vpk:[1.3,2.0],INO:[1.56,3.60],SVRI:[1078,1850],PKR:[15,28]},
+ {label:'16 - 25 Tahun',min:16,max:26,CI:[2.8,4.3],SVI:[40,58],FTc:[314,378],Vpk:[1.2,1.7],INO:[1.4,2.3],SVRI:[1507,2546],PKR:[17,36]}];
+const U_DOM=[{k:'sirkulasi',j:'Sirkulasi',p:['CI'],kl:'Kesan'},{k:'preload',j:'Preload',p:['SVI','FTc'],kl:'Kesan :'},
+ {k:'kontraktilitas',j:'*Kontraktilitas*',p:['Vpk','INO'],kl:'Kesan'},{k:'afterload',j:'Afterload',p:['SVRI','PKR'],kl:'Kesan'}];
+const U_LBL={CI:'CI',SVI:'SVI',FTc:'Ftc',Vpk:'VpK',INO:'INO',SVRI:'SVRI',PKR:'PKR'};
+const U_UNIT={CI:'l/mnt/m²',SVI:'ml/m²',FTc:'ms',Vpk:'m/s',INO:'W/m²',SVRI:'ds/cm⁵m²',PKR:'',SVV:'%'};
+const U_IDENT=[['u_nama','Nama pasien','',''],['u_tgl','Tanggal','',''],['u_jam','Jam','','08.00'],['u_th','Usia','tahun',''],['u_bl','+ bulan','bulan','']];
+const uNum=v=>{if(v==null||String(v).trim()==='')return null;const x=parseFloat(String(v).replace(',','.'));return isNaN(x)?null:x};
+const uKlas=(x,[lo,hi])=>x==null?null:x<lo?'Turun':x>hi?'Naik':'Normal';
+function uKesan(it){
+ const a=it.filter(i=>i.s);if(!a.length)return'-';if(a.length===1)return a[0].s;
+ const [x,y]=a;if(x.s===y.s)return x.s;
+ const ab=a.filter(i=>i.s!=='Normal');
+ if(ab.length===1){const o=a.find(i=>i.s==='Normal');return `${ab[0].s} (${U_LBL[ab[0].p]} ${ab[0].s.toLowerCase()}, ${U_LBL[o.p]} normal)`}
+ return `Tidak sinkron (${U_LBL[x.p]} ${x.s.toLowerCase()}, ${U_LBL[y.p]} ${y.s.toLowerCase()}), cek ulang kurva/input`;
+}
+const uUtama=k=>/^Turun/.test(k)?'Turun':/^Naik/.test(k)?'Naik':/^Normal/.test(k)?'Normal':null;
+function uPola(d,svv){
+ const pola=[],cat=[];
+ if(d.sirkulasi==='Normal'||d.sirkulasi==='Naik')pola.push(d.afterload==='Turun'?'Pola vasodilatasi (warm): aliran cukup/tinggi dengan afterload rendah':'Aliran adekuat');
+ if(d.sirkulasi==='Turun'){
+  if(d.kontraktilitas==='Turun')pola.push('Kontraktilitas turun (disfungsi pompa)');
+  if(d.afterload==='Naik')pola.push('Afterload tinggi / vasokonstriksi (pola cold)');
+  if(d.preload==='Turun')pola.push(d.kontraktilitas!=='Turun'&&d.afterload!=='Naik'?'Preload turun (curiga hipovolemia)':'Preload turun');
+  if(!pola.length)pola.push('Aliran turun tanpa pola domain yang jelas, korelasikan klinis');
+ }
+ if(d.preload==='Turun'&&d.afterload==='Naik')cat.push('FTc juga memendek bila afterload tinggi; preload rendah belum tentu hipovolemia');
+ if(svv!=null)cat.push(svv>13?`SVV ${svv}% tinggi: kemungkinan responsif cairan (valid hanya pada ventilasi mekanik, irama sinus)`:`SVV ${svv}%: tidak mendukung responsif cairan`);
+ return {pola,cat};
+}
+const uEls={};let uBuilt=false;
+const uStore={get(){try{return JSON.parse(localStorage.getItem('uskom_v1')||'{}')}catch(e){return{}}},set(o){try{localStorage.setItem('uskom_v1',JSON.stringify(o))}catch(e){}}};
+function uToday(){const d=new Date();const z=x=>String(x).padStart(2,'0');return `${z(d.getDate())}-${z(d.getMonth()+1)}-${d.getFullYear()}`}
+function uField(box,id,label,unit,def,txt){
+ const l=el('label','f');l.htmlFor=id;l.append(label);const w=el('div','fw');const inp=document.createElement('input');
+ inp.id=id;inp.value=def;if(txt){inp.type='text'}else{inp.type='text';inp.inputMode='decimal'}
+ if(txt)inp.style.fontFamily='var(--font-body)';
+ inp.addEventListener('input',uCalc);w.appendChild(inp);if(unit)w.appendChild(el('span',null,unit));l.appendChild(w);box.appendChild(l);uEls[id]=inp;return l;
+}
+function uBuild(){
+ if(uBuilt)return;uBuilt=true;const sv=uStore.get();
+ const id=$('uIdent');
+ U_IDENT.forEach(([k,lab,u,d],i)=>{const l=uField(id,k,lab,u,sv[k]??(k==='u_tgl'?uToday():d),i<3);if(k==='u_nama')l.classList.add('wide')});
+ const pr=$('uParam');
+ ['CI','SVI','FTc','Vpk','INO','SVRI','PKR','SVV'].forEach(p=>uField(pr,'u_'+p,p==='SVV'?'SVV (opsional)':U_LBL[p],U_UNIT[p],sv['u_'+p]??'',false));
+ $('uPola').checked=!!sv.pola;$('uPola').addEventListener('change',uCalc);
+ $('uReset').addEventListener('click',()=>{Object.keys(uEls).forEach(k=>{if(k!=='u_tgl'&&k!=='u_jam')uEls[k].value=''});uEls.u_tgl.value=uToday();uCalc()});
+ $('uCopy').addEventListener('click',async()=>{const t=$('uText').textContent;let ok=false;
+  try{await navigator.clipboard.writeText(t);ok=true}catch(e){const r=document.createRange();r.selectNodeContents($('uText'));const s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy')}catch(_){}}
+  $('uCopy').textContent=ok?'Tersalin ✓':'Salin manual';setTimeout(()=>$('uCopy').textContent='Salin teks',1600)});
+ $('uShare').addEventListener('click',()=>{window.open('https://wa.me/?text='+encodeURIComponent($('uText').textContent),'_blank')});
+}
+function uCalc(){
+ const v={};Object.keys(uEls).forEach(k=>v[k]=uEls[k].value);v.pola=$('uPola').checked;uStore.set(v);
+ const th=uNum(v.u_th),bl=uNum(v.u_bl);const warn=[];const res=$('uRes');res.textContent='';
+ const usia=th==null&&bl==null?null:(th||0)+(bl||0)/12;
+ const R=usia==null?null:U_RANGES.find(r=>usia>=r.min&&usia<r.max);
+ if(usia==null)warn.push('Isi usia dulu untuk memilih tabel nilai normal.');
+ else if(!R)warn.push(usia<1?'Rentang normal USCOM untuk usia < 1 tahun belum tersedia di tabel.':'Usia di luar tabel rujukan (maks 25 tahun).');
+ $('uKel').textContent=R?'Tabel usia '+R.label:'';
+ const judul=['*Uscom',v.u_nama.trim(),v.u_tgl.trim(),v.u_jam.trim()?'jam '+v.u_jam.trim():''].filter(Boolean).join(' ')+'*';
+ if(!R){$('uWarn').textContent=warn.join(' ');$('uWarn').hidden=false;$('uHasil').hidden=true;$('uText').textContent=judul;return}
+ const L=[judul,'',`*Uscom usia ${R.label}*`];const ds={};
+ U_DOM.forEach((d,i)=>{
+  res.appendChild(el('div','grp',d.j.replace(/\*/g,'')));
+  const it=d.p.map(p=>{const x=uNum(v['u_'+p]);const s=uKlas(x,R[p]);
+   const r=el('div','row');const lb=el('div','l',U_LBL[p]);const val=el('div','v'+(s==='Turun'?' dn':s==='Naik'?' up':''));
+   val.append(x==null?'-':fmt(x));if(s)val.appendChild(el('span','st',s));
+   r.append(lb,val,el('div','ref',`Normal ${R[p][0]} - ${R[p][1]} ${U_UNIT[p]}`));res.appendChild(r);
+   if(x==null)warn.push(U_LBL[p]+' belum diisi');return{p,x,s}});
+  const k=uKesan(it);ds[d.k]=uUtama(k);
+  const kr=el('div','row');kr.appendChild(el('div','kes'+(k!=='Normal'&&k!=='-'?' ab':''),'Kesan: '+k));res.appendChild(kr);
+  if(i>0)L.push('');L.push(d.j);
+  it.forEach(o=>L.push(`${U_LBL[o.p]} ${o.x==null?'-':o.x} (${R[o.p][0]} - ${R[o.p][1]})`));L.push(`${d.kl} ${k}`);
+ });
+ if(v.pola){const {pola,cat}=uPola(ds,uNum(v.u_SVV));L.push('','*Kesimpulan*');pola.forEach(x=>L.push('- '+x));cat.forEach(x=>L.push('- Catatan: '+x));}
+ $('uWarn').textContent=warn.join(' · ');$('uWarn').hidden=!warn.length;$('uHasil').hidden=false;
+ $('uText').textContent=L.join('\n');
+}
+function showUskom(){
+ if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('tpn').hidden=true;$('uskom').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='🫀';$('htitle').textContent='Uskom';uBuild();uCalc();window.scrollTo(0,0);
+}
+/* =========================================================
+   TPN NEONATUS — logika dari Excel "TPN TATOOKQ HCU NEO" (sheet MASTER TPN)
+   Pakai: hitungTPN({...}) -> { nilai, peringatan, langkah }
+   Referensi sel Excel ditulis di komentar (kolom B/K/G = MASTER TPN).
+   ========================================================= */
+
+const TPN_DEFAULT = {
+  // Data pasien
+  bb: 2,            // B10  BB sekarang (kg) -> dosis obat/nutrien
+  bbMax: 2,         // B11  BB tertinggi (kg) -> kebutuhan cairan & kalori
+  bbCairan: 0,      // opsional: BB untuk kebutuhan cairan (0 = pakai bbMax, sesuai MASTER)
+  cairanPerKg: 160, // B8   kebutuhan cairan (ml/kg/hari)
+  kaloriPerKg: 120, // B9   kebutuhan kalori (kkal/kg/hari)
+  // Enteral
+  asi: 0,           // B2   ml/24 jam
+  formula: 0,       // B3   ml/24 jam (ASB)
+  // Pengurang cairan
+  bc: 0,            // B6   balance cairan 24 jam (ml, +/-)
+  obat: 0,          // B18  ml/hari
+  transfusi: 0,     // B19  ml/hari
+  // Rentang enteral (opsional)
+  enteralBawah: 0,  // B26  ml/24 jam
+  enteralAtas: 0,   // B27  ml/24 jam
+  // TPN
+  targetTPN: 0,     // B23  cairan TPN target hari ini (ml/hari) — diisi manual
+  gir: 6,           // K3   mg/kg/menit
+  aminoGkg: 2,      // K13  g/kg/hari (Aminosteril 10%)
+  lipidGkg: 0,      // K16  g/kg/hari (Smoflipid 20%)
+  vitalipid: 0,     // K17  ml/hari
+  soluvit: 0,       // K18  ml/hari
+  kclMlKg: 1,       // K6 = kclMlKg × BB   (catatan Excel: 1-2 ml/kg)
+  caMlKg: 2,        // K7 = caMlKg × BB    (catatan Excel: 2 ml/kg)
+  glikoMlKg: 1,     // K8 = glikoMlKg × BB (catatan Excel: 1 ml/kg, ½ Ca gluk)
+};
+
+const tpnNum = v => {
+  if (v === null || v === undefined || v === "") return 0;
+  const x = parseFloat(String(v).replace(",", "."));
+  return isNaN(x) ? 0 : x;
+};
+const tpnDiv = (a, b) => (b ? a / b : NaN);
+
+function hitungTPN(input) {
+  const v = { ...TPN_DEFAULT };
+  Object.keys(TPN_DEFAULT).forEach(k => { if (input[k] !== undefined) v[k] = tpnNum(input[k]); });
+  const BB = v.bb, BBmax = v.bbMax;
+
+  /* ---------- Kolom kiri: kebutuhan & cairan ---------- */
+  const totalEnteral = v.asi + v.formula;                 // B4 = B12 = B17
+  const enteralPerKg = tpnDiv(totalEnteral, BB);          // B13
+  const enteralPer3j = totalEnteral / 8;                  // B14
+  const kebCairan = v.cairanPerKg * (v.bbCairan || BBmax); // C8 = B16
+  const kebKalori = v.kaloriPerKg * BBmax;                // C9
+  const bcPersen = tpnDiv(v.bc, kebCairan) * 100;         // C6
+  // B20: ½ BC dikoreksi bila |BC| ≥ 20% kebutuhan cairan.
+  // Excel: BC positif → "-"½BC (cairan dikurangi), BC negatif → "+"½|BC| (ditambah).
+  // Keduanya = -½BC. (Excel memberi tanda salah tepat di 20%, di sini disamakan.)
+  const halfBC = Number.isFinite(bcPersen) && Math.abs(bcPersen) >= 20 ? -0.5 * v.bc : 0;
+  const totalParenteral = kebCairan - totalEnteral - v.obat - v.transfusi + halfBC; // B21
+  const parenteralPerJam = totalParenteral / 24;          // B22
+
+  // Rentang enteral -> rentang parenteral
+  const enteralBawahKg = tpnDiv(v.enteralBawah, BB);      // C26
+  const enteralAtasKg = tpnDiv(v.enteralAtas, BB);        // C27
+  const enteralBawah3j = v.enteralBawah / 8;              // E26
+  const enteralAtas3j = v.enteralAtas / 8;                // E27
+  const parenteralBawah = kebCairan - v.enteralAtas - v.obat - v.transfusi + halfBC; // F26
+  const parenteralAtas = kebCairan - v.enteralBawah - v.obat - v.transfusi + halfBC; // F27
+
+  /* ---------- Kolom kanan: komposisi TPN ---------- */
+  const aminoMl = v.aminoGkg * BB * 10;                   // K12 (Aminosteril 10%: 10 ml/g)
+  const aminoPerJam = aminoMl / 24;                       // M12
+  const lipidMl = v.lipidGkg * BB * 5;                    // K15 (Smoflipid 20%: 5 ml/g)
+  const lipidTotal = lipidMl + v.vitalipid + v.soluvit;   // K19
+  const lipidPerJam = lipidTotal / 24;                    // K20
+  const totalDex = v.targetTPN - aminoMl - lipidTotal;    // K9  (kantong dextrose + elektrolit)
+  const dexPerJam = totalDex / 24;                        // K10
+  const kclMl = v.kclMlKg * BB;                           // K6
+  const caMl = v.caMlKg * BB;                             // K7
+  const glikoMl = v.glikoMlKg * BB;                       // K8
+  const konsD = tpnDiv(v.gir * BB * 6, dexPerJam);        // K2  % dextrose
+  const d40 = ((konsD - 5) / 35) * totalDex;              // K5
+  const d5 = totalDex - glikoMl - caMl - kclMl - d40;     // K4  D5½NS
+  const cekBalance = d5 + d40 + kclMl + caMl + glikoMl;   // N4 (harus = K9)
+
+  /* ---------- Kalori ---------- */
+  const kkalASI = v.asi * 0.7;                            // G2
+  const kkalFormula = v.formula * 0.8;                    // G3
+  const kkalDex = ((d5 + d40) * (4 * konsD)) / 100;       // G4
+  const kkalProtein = aminoMl * 0.4;                      // G5
+  const kkalLipid = lipidMl * 1.8;                        // G6
+  const npc = ((kkalDex + kkalLipid) * 6.25) / (aminoMl / 10); // G8  NPC:N
+  const cakupanOral = tpnDiv(kkalASI + kkalFormula, kebKalori) * 100;            // G10
+  const cakupanParenteral = tpnDiv(kkalDex + kkalProtein + kkalLipid, kebKalori) * 100; // G11
+  const cakupanTotal = cakupanOral + cakupanParenteral;   // G12
+
+  /* ---------- Tambahan (bukan rumus Excel): cek glukosa nyata ---------- */
+  const glukosaGram = d5 * 0.05 + d40 * 0.4;
+  const girNyata = tpnDiv(glukosaGram * 1000, BB * 1440);
+  const konsNyata = tpnDiv(glukosaGram * 100, totalDex);
+
+  const nilai = {
+    totalEnteral, enteralPerKg, enteralPer3j, kebCairan, kebKalori, bcPersen, halfBC,
+    totalParenteral, parenteralPerJam,
+    enteralBawahKg, enteralAtasKg, enteralBawah3j, enteralAtas3j, parenteralBawah, parenteralAtas,
+    aminoMl, aminoPerJam, lipidMl, lipidTotal, lipidPerJam, totalDex, dexPerJam,
+    kclMl, caMl, glikoMl, konsD, d40, d5, cekBalance,
+    kkalASI, kkalFormula, kkalDex, kkalProtein, kkalLipid, npc,
+    cakupanOral, cakupanParenteral, cakupanTotal,
+    glukosaGram, girNyata, konsNyata,
+    totalTPN: v.targetTPN, tpnPerJam: v.targetTPN / 24,
+  };
+
+  /* ---------- Peringatan ---------- */
+  const w = [];
+  if (!BB) w.push("BB belum diisi");
+  if (!v.targetTPN) w.push("Cairan TPN target hari ini belum diisi");
+  if (v.targetTPN && v.targetTPN > totalParenteral + 0.5)
+    w.push(`Target TPN (${r1(v.targetTPN)} ml) melebihi kebutuhan parenteral (${r1(totalParenteral)} ml)`);
+  if (totalDex <= 0 && v.targetTPN) w.push("Volume dextrose habis terpakai aminosteril/lipid; target TPN terlalu kecil");
+  if (Number.isFinite(konsD) && konsD < 5) w.push(`Konsentrasi dextrose ${r1(konsD)}% < 5%: D40 bernilai negatif, GIR terlalu rendah untuk volume ini`);
+  if (d5 < 0) w.push("Volume D5½ negatif: konsentrasi dextrose terlalu tinggi untuk volume yang ada");
+  if (Number.isFinite(konsD) && konsD > 12.5) w.push(`Konsentrasi dextrose ${r1(konsD)}% > 12,5%: perlu akses vena sentral`);
+  if (v.aminoGkg > 4) w.push("Aminosteril > 4 g/kg/hari (catatan Excel: 2 s.d. 4 g/kg/hari)");
+  if (v.lipidGkg > 3) w.push("Smoflipid > 3 g/kg/hari (catatan Excel: 1-3 g/kg/hari)");
+  if (Number.isFinite(bcPersen) && Math.abs(bcPersen) >= 20)
+    w.push(`BC ${r1(bcPersen)}% kebutuhan cairan: ½ BC (${r1(halfBC)} ml) ikut dihitung`);
+
+  /* ---------- Langkah (untuk panel "Cara hitung") ---------- */
+  const langkah = [
+    ["Kebutuhan cairan", `${r1(v.cairanPerKg)} ml/kg × BB ${r1(v.bbCairan || BBmax)} = ${r1(kebCairan)} ml/hari`],
+    ["Kebutuhan parenteral", `${r1(kebCairan)} − enteral ${r1(totalEnteral)} − obat ${r1(v.obat)} − transfusi ${r1(v.transfusi)} ${halfBC ? (halfBC > 0 ? "+ " : "− ") + r1(Math.abs(halfBC)) + " (½BC)" : ""} = ${r1(totalParenteral)} ml/hari (${r1(parenteralPerJam)} ml/jam)`],
+    ["Aminosteril 10%", `${r1(v.aminoGkg)} g/kg × ${r1(BB)} kg × 10 = ${r1(aminoMl)} ml/hari`],
+    ["Lipid", `Smoflipid ${r1(v.lipidGkg)} g/kg × ${r1(BB)} × 5 = ${r1(lipidMl)} ml + vitalipid ${r1(v.vitalipid)} + soluvit ${r1(v.soluvit)} = ${r1(lipidTotal)} ml/hari`],
+    ["Volume kantong dextrose", `${r1(v.targetTPN)} − ${r1(aminoMl)} − ${r1(lipidTotal)} = ${r1(totalDex)} ml/hari (${r1(dexPerJam)} ml/jam)`],
+    ["Konsentrasi dextrose", `GIR ${r1(v.gir)} × BB ${r1(BB)} × 6 ÷ ${r1(dexPerJam)} ml/jam = ${r1(konsD)}%`],
+    ["D40%", `(${r1(konsD)} − 5) ÷ 35 × ${r1(totalDex)} = ${r1(d40)} ml`],
+    ["D5½NS", `${r1(totalDex)} − D40 ${r1(d40)} − KCl ${r1(kclMl)} − Ca gluk ${r1(caMl)} − glikofosfat ${r1(glikoMl)} = ${r1(d5)} ml`],
+    ["Kalori", `Dextrose ${r1(kkalDex)} + protein ${r1(kkalProtein)} + lipid ${r1(kkalLipid)} = ${r1(kkalDex + kkalProtein + kkalLipid)} kkal parenteral; oral ${r1(kkalASI + kkalFormula)} kkal`],
+    ["Cakupan", `oral ${r1(cakupanOral)}% + parenteral ${r1(cakupanParenteral)}% = ${r1(cakupanTotal)}% dari ${r1(kebKalori)} kkal`],
+  ];
+
+  return { nilai, peringatan: w, langkah };
+}
+
+function r1(x) {
+  return Number.isFinite(x) ? x.toLocaleString("id-ID", { maximumFractionDigits: 2 }) : "-";
+}
+
+
+
+/* ===== CONTEKAN CAIRAN & KALORI ===== */
+const C_CAT=['BBLR <1500 g','1500–2500 g','Aterm'];
+const C_FLUID=[[[80,90],[80,80],[60,80]],[[100,110],[100,100],[80,100]],[[120,130],[120,120],[100,120]],[[130,150],[140,140],[120,140]],[[150,160],[150,150],[140,150]]];
+const C_NUT={
+ pre:{label:'Prematur',d1:{e:'45–55',gir:'4–8',aa:'≥1,5',lip:'mulai 0–1 (≤ hari ke-2)'},d2:{e:'naik bertahap → 90–120',gir:'8–10 (min 4, maks 12)',aa:'2,5–3,5',lip:'naik bertahap, maks 4'}},
+ term:{label:'Aterm',d1:{e:'45–50 (fase akut)',gir:'2,5–5',aa:'≥1,5',lip:'mulai ≤ hari ke-2'},d2:{e:'60–65 stabil → 75–85 pemulihan',gir:'5–10 (min 2,5, maks 12)',aa:'1,5–3',lip:'naik bertahap, maks 4'}}};
+const cRng=([a,b])=>a===b?String(a):a+'–'+b;
+function cState(){
+ const g=k=>uNum(tEls[k]?.value);
+ const dol=Math.max(1,Math.round(g('dol')||1));
+ const bbl=g('bbl'),bb=g('bb')||0;
+ let cat=tEls.kat.value;
+ if(cat==='auto'){const ref=bbl||bb*1000;cat=ref&&ref<1500?0:ref&&ref<=2500?1:2}else cat=+cat;
+ const row=Math.min(dol,5)-1,fl=C_FLUID[row][cat],grp=cat<2?'pre':'term',nut=C_NUT[grp][dol===1?'d1':'d2'];
+ return {dol,cat,row,fl,grp,nut,bbl};
+}
+function cRender(){
+ if(!tEls.dol)return;
+ const st=cState(),raw={};Object.keys(tEls).forEach(k=>{if(k[0]!=='_')raw[k]=tEls[k].value});
+ const bb=uNum(raw.bb)||0,bbMax=uNum(raw.bbMax)||bb;
+ const bbF=raw.basis==='max'?bbMax:bb,bbK=raw.basis==='now'?bb:bbMax;
+ $('cHead').textContent=`Hari ke-${st.dol}${st.dol>=5?' (5+)':''} · ${C_CAT[st.cat]}${tEls.kat.value==='auto'?' (otomatis dari '+(st.bbl?'BB lahir':'BB sekarang')+')':''}${st.cat<2?' · '+C_NUT[st.grp].label:''}`;
+ const C=$('cChips');C.textContent='';
+ const chip=(lab,big,sm)=>{const d=el('div','chip');d.append(el('span',null,lab),el('b',null,big));if(sm)d.appendChild(el('small',null,sm));C.appendChild(d)};
+ chip('Cairan',cRng(st.fl)+' ml/kg',bbF?`= ${t1(st.fl[0]*bbF)}${st.fl[0]!==st.fl[1]?'–'+t1(st.fl[1]*bbF):''} ml/hr (BB ${t1(bbF)})`:'');
+ chip('Energi parenteral',st.nut.e,'kkal/kg/hr'+(bbK&&/^\d/.test(st.nut.e)?` (BB ${t1(bbK)})`:''));
+ chip('GIR',st.nut.gir,'mg/kg/menit');
+ chip('Asam amino',st.nut.aa+' g/kg',st.dol===1?'mulai hari pertama':'Excel lokal: naik bertahap s.d. 4');
+ chip('Lipid',st.nut.lip,'g/kg/hr · Excel: 1–3, naik 0,5/hari');
+ chip('BB acuan','Cairan: '+(raw.basis==='max'?'BB tertinggi':'BB sekarang'),'Kalori: '+(raw.basis==='now'?'BB sekarang':'BB tertinggi'));
+}
+function cSheet(){
+ const st=cState(),B=$('cBody');B.textContent='';
+ B.appendChild(el('h2','sec','💧 Kebutuhan cairan rumatan (ml/kg/hari)'));
+ const t=el('table','tbl');const hr=el('tr');['DOL',...C_CAT].forEach(h=>hr.appendChild(el('th',null,h)));const th=el('thead');th.appendChild(hr);t.appendChild(th);
+ const tb=el('tbody');C_FLUID.forEach((r,i)=>{const tr=el('tr',i===st.row?'hl':'');tr.appendChild(el('td',null,i===4?'5+':String(i+1)));
+  r.forEach((c,j)=>tr.appendChild(el('td',i===st.row&&j===st.cat?'hl':'',cRng(c))));tb.appendChild(tr)});t.appendChild(tb);B.appendChild(t);
+ B.appendChild(el('p','hint','Naikkan lebih lambat pada bayi dengan edema, gagal jantung, atau oliguria. Naikkan lebih cepat bila di bawah pemanas radian/fototerapi (IWL meningkat).'));
+ B.appendChild(el('h2','sec','⚖️ BB acuan'));
+ B.appendChild(el('p','info','Kebutuhan cairan → BB aktual (BB hari ini). Kebutuhan kalori → BB tertinggi (termasuk BB lahir bila belum melewati BB lahir). Atur di "Kebutuhan cairan & kalori pakai".'));
+ B.appendChild(el('h2','sec','🔥 Energi, GIR, asam amino, lipid'));
+ const t2=el('table','tbl');const h2=el('tr');['',"Prematur hr 1","Prematur hr 2+","Aterm hr 1","Aterm hr 2+"].forEach(h=>h2.appendChild(el('th',null,h)));const th2=el('thead');th2.appendChild(h2);t2.appendChild(th2);
+ const tb2=el('tbody');const col=(st.grp==='pre'?0:2)+(st.dol===1?0:1);
+ [['Energi (kkal/kg)','e'],['GIR (mg/kg/mnt)','gir'],['Asam amino (g/kg)','aa'],['Lipid (g/kg)','lip']].forEach(([lab,k])=>{
+  const tr=el('tr');tr.appendChild(el('td',null,lab));
+  [C_NUT.pre.d1,C_NUT.pre.d2,C_NUT.term.d1,C_NUT.term.d2].forEach((o,i)=>tr.appendChild(el('td',i===col?'hl':'',o[k])));tb2.appendChild(tr)});
+ t2.appendChild(tb2);const wrap=el('div');wrap.style.overflowX='auto';wrap.appendChild(t2);B.appendChild(wrap);
+ B.appendChild(el('p','hint','Energi, GIR, asam amino, lipid: ESPGHAN/ESPEN/ESPR/CSPEN 2018 (parenteral). Kategori prematur diambil dari kolom BBLR dan 1500–2500 g. Sesuaikan dengan protokol unit dan DPJP.'));
+ B.appendChild(el('p','info','Catatan Excel TPN: KCl 1–2 ml/kg · Ca glukonat 2 ml/kg · Glikofosfat 1 ml/kg (½ Ca gluk) · Aminosteril mulai 2 g/kg s.d. 4 g/kg naik bertahap · Smoflipid 1–3 g/kg naik 0,5/hari.'));
+ $('cSheet').hidden=false;document.body.style.overflow='hidden';$('cClose').focus();
+}
+function cHide(){$('cSheet').hidden=true;document.body.style.overflow=''}
+/* ===== TPN NEONATUS (UI) ===== */
+const T_FIELDS={
+ tIdent:[['nama','Nama pasien','',1,'wide'],['tgl','Tanggal','',1]],
+ tPasien:[['dol','Hari ke- (DOL)','hari'],['bbl','BB lahir','gram'],['kat','Kategori tabel cairan','',3,'wide'],['bb','BB sekarang','kg'],['bbMax','BB tertinggi','kg'],['basis','Kebutuhan cairan & kalori pakai','',2,'wide'],['cairanPerKg','Kebutuhan cairan','ml/kg/hr'],['kaloriPerKg','Kebutuhan kalori','kkal/kg/hr']],
+ tEnteral:[['asi','ASI','ml/24j'],['formula','Formula (ASB)','ml/24j'],['bc','BC 24 jam (+/-)','ml'],['obat','Obat','ml/hr'],['transfusi','Transfusi','ml/hr'],['enteralBawah','Rentang enteral bawah','ml/24j'],['enteralAtas','Rentang enteral atas','ml/24j']],
+ tKomp:[['targetTPN','Cairan TPN target hari ini','ml/hr',0,'wide'],['gir','GIR','mg/kg/mnt'],['aminoGkg','Aminosteril 10%','g/kg/hr'],['lipidGkg','Smoflipid 20%','g/kg/hr'],['vitalipid','Vitalipid','ml/hr'],['soluvit','Soluvit','ml/hr'],['kclMlKg','KCl','ml/kg'],['caMlKg','Ca glukonat','ml/kg'],['glikoMlKg','Glikofosfat','ml/kg']]};
+const T_INIT={...TPN_DEFAULT,basis:'max',nama:'',tgl:'',dol:1,bbl:'',kat:'auto'};
+const tEls={};let tBuilt=false;
+const tStore={get(){try{return JSON.parse(localStorage.getItem('tpn_v1')||'{}')}catch(e){return{}}},set(o){try{localStorage.setItem('tpn_v1',JSON.stringify(o))}catch(e){}}};
+const t1=x=>Number.isFinite(x)?(Math.round(x*10)/10).toLocaleString('id-ID',{maximumFractionDigits:1}):'-';
+function tBuild(){
+ if(tBuilt)return;tBuilt=true;const sv=tStore.get();
+ Object.entries(T_FIELDS).forEach(([box,list])=>{
+  const b=$(box);
+  list.forEach(([k,lab,unit,kind,wide])=>{
+   const l=el('label','f');l.htmlFor='t_'+k;l.append(lab);if(wide)l.classList.add('wide');
+   const w=el('div','fw');let inp;
+   if(kind===2||kind===3){inp=document.createElement('select');(kind===2?[['max','BB tertinggi untuk keduanya (sesuai MASTER)'],['split','Cairan BB sekarang, kalori BB tertinggi'],['now','BB sekarang untuk keduanya']]:[['auto','Otomatis dari BB lahir'],['0','BBLR <1500 g'],['1','1500–2500 g'],['2','Aterm']]).forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;inp.appendChild(o)})}
+   else{inp=document.createElement('input');inp.type='text';if(kind===1)inp.style.fontFamily='var(--font-body)';else inp.inputMode='decimal'}
+   inp.id='t_'+k;const d=k==='tgl'?uToday():T_INIT[k];inp.value=sv[k]??(d??'');
+   inp.addEventListener('input',tCalc);inp.addEventListener('change',tCalc);
+   w.appendChild(inp);if(unit)w.appendChild(el('span',null,unit));l.appendChild(w);b.appendChild(l);tEls[k]=inp;
+   if(k==='bbMax')tEls._bbMaxLabel=l;
+  });
+ });
+ $('tReset').addEventListener('click',()=>{Object.keys(tEls).forEach(k=>{if(k[0]==='_'||k==='nama')return;tEls[k].value=k==='tgl'?uToday():(T_INIT[k]??'')});tCalc()});
+ $('tCopy').addEventListener('click',async()=>{const t=$('tText').textContent;let ok=false;
+  try{await navigator.clipboard.writeText(t);ok=true}catch(e){const r=document.createRange();r.selectNodeContents($('tText'));const s=getSelection();s.removeAllRanges();s.addRange(r);try{ok=document.execCommand('copy')}catch(_){}}
+  $('tCopy').textContent=ok?'Tersalin ✓':'Salin manual';setTimeout(()=>$('tCopy').textContent='Salin teks',1600)});
+ $('tShare').addEventListener('click',()=>window.open('https://wa.me/?text='+encodeURIComponent($('tText').textContent),'_blank'));
+ $('cOpen').addEventListener('click',cSheet);$('cFab').addEventListener('click',cSheet);$('cClose').addEventListener('click',cHide);
+ $('cSheet').addEventListener('click',e=>{if(e.target.id==='cSheet')cHide()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('cSheet').hidden)cHide()});
+ $('cUse').addEventListener('click',()=>{const f=cState().fl;tEls.cairanPerKg.value=(f[0]+f[1])/2;tCalc()});
+}
+function tRow(res,label,val,unit,ref,cls){
+ const r=el('div','row'+(cls?' '+cls:''));const v=el('div','v');v.append(t1(val));if(unit)v.appendChild(el('small',null,unit));
+ r.append(el('div','l',label),v);if(ref)r.appendChild(el('div','ref',ref));res.appendChild(r);
+}
+function tCalc(){
+ const raw={};Object.keys(tEls).forEach(k=>{if(k[0]!=='_')raw[k]=tEls[k].value});tStore.set(raw);
+ const inp={...raw};if(raw.basis==='now')inp.bbMax=raw.bb;if(raw.basis==='split')inp.bbCairan=raw.bb;
+ tEls._bbMaxLabel.hidden=raw.basis==='now';cRender();
+ const {nilai:n,peringatan,langkah}=hitungTPN(inp);
+ $('tWarn').textContent=peringatan.join(' · ');$('tWarn').hidden=!peringatan.length;
+ const R=$('tRes');R.textContent='';const G=h=>R.appendChild(el('div','grp',h));
+ G('Kebutuhan cairan');
+ tRow(R,'Kebutuhan cairan',n.kebCairan,'ml/hr',`${raw.cairanPerKg} ml/kg × BB ${raw.basis==='max'?'tertinggi':'sekarang'}`);
+ tRow(R,'Enteral',n.totalEnteral,'ml/hr',`${t1(n.enteralPerKg)} ml/kg/hr · ${t1(n.enteralPer3j)} ml/3 jam`);
+ if(n.halfBC)tRow(R,'Koreksi ½ BC',n.halfBC,'ml',`BC ${t1(n.bcPersen)}% kebutuhan cairan`);
+ tRow(R,'Kebutuhan parenteral',n.totalParenteral,'ml/hr',`${t1(n.parenteralPerJam)} ml/jam · B21`,'big');
+ if(+raw.enteralBawah||+raw.enteralAtas){tRow(R,'Rentang parenteral bawah',n.parenteralBawah,'ml/hr',`bila enteral ${t1(+String(raw.enteralAtas).replace(',','.'))} ml (${t1(n.enteralAtas3j)} ml/3 jam)`);
+  tRow(R,'Rentang parenteral atas',n.parenteralAtas,'ml/hr',`bila enteral ${t1(+String(raw.enteralBawah).replace(',','.'))} ml (${t1(n.enteralBawah3j)} ml/3 jam)`)}
+ G('Aminosteril dan lipid');
+ tRow(R,'Aminosteril 10%',n.aminoMl,'ml/hr',`${t1(n.aminoPerJam)} ml/jam`);
+ tRow(R,'Smoflipid 20%',n.lipidMl,'ml/hr');
+ tRow(R,'Total lipid + vitalipid + soluvit',n.lipidTotal,'ml/hr',`${t1(n.lipidPerJam)} ml/jam`);
+ G('Kantong dextrose');
+ tRow(R,'Konsentrasi dextrose',n.konsD,'%','K2 · GIR × BB × 6 ÷ ml/jam','big');
+ tRow(R,'D5½NS',n.d5,'ml');tRow(R,'D40%',n.d40,'ml');
+ tRow(R,'KCl',n.kclMl,'ml');tRow(R,'Ca glukonat',n.caMl,'ml');tRow(R,'Glikofosfat',n.glikoMl,'ml');
+ tRow(R,'Total kantong dextrose',n.totalDex,'ml/hr',`${t1(n.dexPerJam)} ml/jam · cek balance ${t1(n.cekBalance)} ml`,'big');
+ G('Kalori');
+ tRow(R,'Dextrose',n.kkalDex,'kkal');tRow(R,'Protein',n.kkalProtein,'kkal');tRow(R,'Lipid',n.kkalLipid,'kkal');
+ tRow(R,'Oral (ASI + formula)',n.kkalASI+n.kkalFormula,'kkal');
+ tRow(R,'NPC : N',n.npc,'',' kkal non-protein per g N');
+ tRow(R,'Cakupan oral',n.cakupanOral,'%',`dari ${t1(n.kebKalori)} kkal`);
+ tRow(R,'Cakupan parenteral',n.cakupanParenteral,'%');
+ tRow(R,'Cakupan total',n.cakupanTotal,'%','','big');
+ tRow(R,'GIR nyata',n.girNyata,'mg/kg/mnt',`tambahan, bukan rumus Excel · konsentrasi nyata ${t1(n.konsNyata)}%`);
+ const bb=t1(+String(raw.bb).replace(',','.'));
+ const L=[['*TPN',raw.nama.trim(),raw.tgl.trim()].filter(Boolean).join(' ')+'*',
+  `BB ${bb} kg · kebutuhan cairan ${t1(n.kebCairan)} ml/hr · parenteral ${t1(n.totalParenteral)} ml/hr`,
+  `Cairan TPN ${t1(n.totalTPN)} ml/hari (${t1(n.tpnPerJam)} ml/jam)`,'',
+  `1. Aminosteril 10% ${t1(n.aminoMl)} ml/hari = ${t1(n.aminoPerJam)} ml/jam (${raw.aminoGkg} g/kg/hr)`,
+  `2. Smoflipid 20% ${t1(n.lipidMl)} ml + Vitalipid ${t1(+String(raw.vitalipid).replace(',','.')||0)} ml + Soluvit ${t1(+String(raw.soluvit).replace(',','.')||0)} ml = ${t1(n.lipidTotal)} ml/hari = ${t1(n.lipidPerJam)} ml/jam (${raw.lipidGkg} g/kg/hr)`,
+  `3. Dextrose ${t1(n.konsD)}% (GIR ${raw.gir}) ${t1(n.totalDex)} ml/hari = ${t1(n.dexPerJam)} ml/jam`,
+  `   - D5½NS ${t1(n.d5)} ml`,`   - D40% ${t1(n.d40)} ml`,`   - KCl ${t1(n.kclMl)} ml`,`   - Ca glukonat ${t1(n.caMl)} ml`,`   - Glikofosfat ${t1(n.glikoMl)} ml`,'',
+  `Kalori: oral ${t1(n.cakupanOral)}% + parenteral ${t1(n.cakupanParenteral)}% = ${t1(n.cakupanTotal)}% kebutuhan (${t1(n.kebKalori)} kkal)`,
+  `NPC:N ${t1(n.npc)}`];
+ $('tText').textContent=L.join('\n');
+ const ol=$('tSteps');ol.textContent='';
+ langkah.forEach(([t,m])=>{const li=document.createElement('li');const bd=el('div','body');bd.append(el('div','t',t),el('div','m',m));li.appendChild(bd);ol.appendChild(li)});
+}
+function showTPN(){
+ cHide();
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='🧴';$('htitle').textContent='TPN Neonatus';tBuild();tCalc();window.scrollTo(0,0);
+}
 $('back').addEventListener('click',showHome);
 $('nav').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
-  tab=b.dataset.tab;[...$('nav').children].forEach(x=>x.classList.toggle('on',x===b));showHome();
+  tab=b.dataset.tab;[...$('nav').children].forEach(x=>x.classList.toggle('on',x===b));if(tab==='uskom')showUskom();else if(tab==='tpn')showTPN();else showHome();
 });
 $('togSteps').addEventListener('click',()=>{
   stepsOpen=!stepsOpen;$('stepList').hidden=!stepsOpen;
