@@ -3,39 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kalkulator Picu Nicu by @amaranth</title>
+<title>Bismillah PICU by @amaranth</title>
 <meta name="description" content="Kalkulator koreksi, obat drip, dan obat emergency untuk NICU dan PICU.">
-<meta name="theme-color" content="#1d5c4d">
+<meta name="theme-color" content="#C62828">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="NICU PICU">
+<meta name="apple-mobile-web-app-title" content="Bismillah PICU">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout: aplikasi bergaya mobile. Header hijau gradasi, kartu putih membulat di atas latar mint, menu ikon 4 kolom, navigasi tab di bawah. */
+/* Layout: tampilan merah seperti Pediatri & PPDS Tools. Hero gradasi merah, kartu putih membulat di atas latar krem, menu ikon 4 kolom, navigasi bawah. */
 :root{
-  --bg:#eef6f4; --surface:#ffffff; --fg:#17332c; --muted:#6b8a82; --line:#dbe9e5;
-  --hdr1:#1d5c4d; --hdr2:#3b8c75; --glass:rgba(255,255,255,.14); --hdr-fg:#ffffff;
-  --primary:#1f6b57; --primary-soft:#e2f1ec; --good:#2f9a4f; --result-bg:#f3f9f7;
-  --warn-bg:#fde9df; --warn-fg:#8a3a12; --step-bg:#fff8e6; --step-line:#f0d58a; --step-fg:#5a4310; --shadow:0 2px 10px rgba(23,75,62,.08);
-  --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --bg:#F5F0F0; --surface:#ffffff; --fg:#1F2937; --muted:#6B7280; --faint:#9CA3AF; --line:#E5E7EB;
+  --hdr1:#7A1414; --hdr2:#C62828; --hdr3:#E85454; --glass:rgba(255,255,255,.15); --hdr-fg:#ffffff;
+  --primary:#C62828; --primary-soft:#FDEAEA; --good:#2f9a4f; --result-bg:#FBF6F6;
+  --warn-bg:#FFFBEB; --warn-fg:#92400E; --warn-line:#FDE68A; --step-bg:#fff8e6; --step-line:#f0d58a; --step-fg:#5a4310; --shadow:0 1px 4px rgba(0,0,0,.06);
+  --font-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-num:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0c1a17; --surface:#14272c; --fg:#e3f2ee; --muted:#8fb0a7; --line:#24413b;
-  --hdr1:#12372e; --hdr2:#1f5a4a; --glass:rgba(255,255,255,.1);
-  --primary:#5fd0a6; --primary-soft:#183a33; --good:#6fdc8e; --result-bg:#102226;
-  --warn-bg:#3a1f14; --warn-fg:#f2b79a; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}}
+  --bg:#15100F; --surface:#241C1B; --fg:#F3EDEC; --muted:#B9ACAA; --faint:#8A7C7A; --line:#3A2E2C;
+  --hdr1:#4A0D0D; --hdr2:#8A1E1E; --hdr3:#B23A3A; --glass:rgba(255,255,255,.12);
+  --primary:#E85454; --primary-soft:#3A1E1E; --good:#6fdc8e; --result-bg:#2A211F;
+  --warn-bg:#3A2E14; --warn-fg:#F2D98A; --warn-line:#6B551F; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0c1a17; --surface:#14272c; --fg:#e3f2ee; --muted:#8fb0a7; --line:#24413b;
-  --hdr1:#12372e; --hdr2:#1f5a4a; --glass:rgba(255,255,255,.1);
-  --primary:#5fd0a6; --primary-soft:#183a33; --good:#6fdc8e; --result-bg:#102226;
-  --warn-bg:#3a1f14; --warn-fg:#f2b79a; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}
+  --bg:#15100F; --surface:#241C1B; --fg:#F3EDEC; --muted:#B9ACAA; --faint:#8A7C7A; --line:#3A2E2C;
+  --hdr1:#4A0D0D; --hdr2:#8A1E1E; --hdr3:#B23A3A; --glass:rgba(255,255,255,.12);
+  --primary:#E85454; --primary-soft:#3A1E1E; --good:#6fdc8e; --result-bg:#2A211F;
+  --warn-bg:#3A2E14; --warn-fg:#F2D98A; --warn-line:#6B551F; --step-bg:#2b2410; --step-line:#5c4b1c; --step-fg:#f1dca0; --shadow:none; color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;color-scheme:light}
 body{-webkit-tap-highlight-color:transparent}
@@ -45,7 +45,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);
 button{font-family:var(--font-body);cursor:pointer}
 button:focus-visible,.tile:focus-visible,.nav button:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
 /* HEADER */
-.hdr{background:linear-gradient(160deg,var(--hdr1),var(--hdr2));color:var(--hdr-fg);padding:calc(18px + env(safe-area-inset-top,0px)) 16px 20px;border-radius:0 0 28px 28px;display:flex;flex-direction:column;gap:14px}
+.hdr{background:linear-gradient(160deg,var(--hdr1) 0%,var(--hdr2) 50%,var(--hdr3) 100%);color:var(--hdr-fg);padding:calc(18px + env(safe-area-inset-top,0px)) 16px 20px;border-radius:0 0 28px 28px;display:flex;flex-direction:column;gap:14px}
 .hrow{display:flex;align-items:center;gap:10px}
 .hrow .name{flex:1;font-size:1.5rem;font-weight:800;min-width:0;display:flex;align-items:center;gap:8px}
 .ttl{display:flex;flex-direction:column;min-width:0;line-height:1.15}
@@ -112,11 +112,13 @@ label.f.wide{grid-column:1/-1}
 .steps .n{font-size:.82rem;opacity:.85}
 .note{font-size:.76rem;color:var(--muted);text-align:center;padding:0 8px}
 /* NAV */
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(7,1fr);padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:5}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(560px,100%);background:var(--surface);border-top:1px solid var(--line);display:flex;overflow-x:auto;scrollbar-width:none;padding:8px 2px calc(8px + env(safe-area-inset-bottom,0px));z-index:5}
 .nav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;font-weight:700;font-size:.78rem;color:var(--muted);padding:4px;border-radius:12px;min-height:52px}
 .nav button i{font-style:normal;font-size:1.5rem;line-height:1.1}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:1 0 auto;min-width:58px;white-space:nowrap}
 .nav button.on{color:var(--primary)}
-@media (max-width:480px){.nav button{font-size:.66rem;padding:4px 0}.nav button i{font-size:1.3rem}}
+@media (max-width:480px){.nav button{font-size:.6rem;padding:4px 0}.nav button i{font-size:1.2rem}}
 /* USKOM */
 .row .v.dn,.row .v.up{color:var(--warn-fg)}
 .row .v .st{font:800 .72rem var(--font-body);margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--primary-soft);color:var(--primary)}
@@ -144,6 +146,167 @@ label.f.wide{grid-column:1/-1}
 .btn.ghost{background:transparent;border:2px solid var(--primary);color:var(--primary)}
 .chk{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:var(--fg)}
 .chk input{width:20px;height:20px;accent-color:var(--primary)}
+
+/* BALANCE CAIRAN */
+#bc{--yl:#fff3a3;--bl:#cfe8ff;--gr:#c9f0cf;--pk:#fbd5d5;--gy:#e4e7ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #bc{--yl:#5c5320;--bl:#1f4a72;--gr:#1f5a2c;--pk:#6b2d2d;--gy:#2e343c}}
+:root[data-theme="dark"] #bc{--yl:#5c5320;--bl:#1f4a72;--gr:#1f5a2c;--pk:#6b2d2d;--gy:#2e343c}
+#bc input{font:inherit;font-size:16px;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px;width:100%;min-width:0}
+#bc input.bcn{background:var(--yl)}#bc input.bcw{background:var(--bl)}
+#bc input::-webkit-outer-spin-button,#bc input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+#bc input[type=number]{-moz-appearance:textfield}
+#bc .neg{color:var(--warn-fg)}
+#bcU{display:flex;gap:8px}
+#bcU button{flex:1;border:2px solid var(--primary);background:transparent;color:var(--primary);border-radius:12px;padding:10px;font-weight:800;font-size:.9rem}
+#bcU button.on{background:var(--primary);color:#fff}
+#bcD{display:flex;gap:6px;overflow-x:auto;padding:2px 0}
+#bcD button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 13px;font-weight:700;font-size:.82rem}
+#bcD button.on{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
+#bcG{display:flex;flex-direction:column;gap:12px}
+.bcc{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:12px}
+.bcc .bct{display:grid;grid-template-columns:auto 1fr 74px auto;gap:6px;align-items:center}
+.bcb{background:var(--gy);border-radius:8px;padding:3px 8px;font-weight:800}
+.bcd{margin:8px 0 6px;font-size:.82rem;font-weight:700;background:var(--gr);border-radius:8px;padding:5px 9px}
+.bcx{border:0;background:none;color:var(--muted);font-size:.78rem;font-weight:700;padding:4px}
+.bcx.sure{color:var(--warn-fg)}
+.bctb{width:100%;border-collapse:separate;border-spacing:0 4px;table-layout:fixed}
+.bctb th{font-size:.72rem;color:var(--muted);font-weight:800;text-align:center}
+.bctb td{text-align:center;padding:0 2px}
+.bctb td.bcl{font-weight:800;width:46px}
+.bctb td.bcp{background:var(--pk);border-radius:8px;padding:6px 2px;font:600 .9rem var(--font-num)}
+.bctb tr.bcs td{background:var(--gy);border-radius:8px;padding:7px 2px;font:700 .9rem var(--font-num)}
+
+/* BLOOD PRESSURE */
+.bpt{width:100%;border-collapse:collapse;font:600 1rem var(--font-num)}
+.bpt th{background:var(--primary);color:#fff;padding:8px;font:800 .8rem var(--font-body);text-align:center}
+.bpt td{padding:9px 6px;text-align:center;border-top:1px solid var(--line);font-size:1.15rem}
+.bpt td.l{font:800 .85rem var(--font-body);text-align:left;color:var(--fg)}
+.bpt .p50{color:#2e9e44}.bpt .p90{color:#d98a1d}.bpt .p95{color:#d33}.bpt .p12{color:var(--fg)}
+.bpc{border-radius:14px;padding:12px 14px;font-weight:800;font-size:1rem;color:#fff}
+.bpc small{display:block;font-weight:600;font-size:.78rem;opacity:.95;margin-top:2px}
+.bpc.l0{background:#2e9e44}.bpc.l1{background:#d98a1d}.bpc.l2{background:#d33}.bpc.l3{background:#222}
+
+/* BUKU SAKU NICU (iframe) */
+#bn{padding:0;gap:0}
+#bn iframe{display:block;width:100%;height:calc(100vh - 68px - env(safe-area-inset-bottom,0px));height:calc(100dvh - 68px - env(safe-area-inset-bottom,0px));border:0;background:var(--bg)}
+#bn .info{margin:16px}
+#ck{padding:0;gap:0}
+#ck iframe{display:block;width:100%;height:calc(100vh - 68px - env(safe-area-inset-bottom,0px));height:calc(100dvh - 68px - env(safe-area-inset-bottom,0px));border:0;background:var(--bg)}
+body.bn-on .hdr,body.bn-on .note{display:none}
+body.bn-on .app{min-height:0;padding-bottom:0}
+
+/* BERANDA: DAFTAR SEMUA TAB */
+.tabs{display:flex;flex-direction:column;gap:10px}
+.tabc{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:center;width:100%;background:var(--surface);border-radius:18px;box-shadow:var(--shadow);padding:12px 14px;min-width:0}
+.tabc:active{transform:scale(.99)}
+.tabc:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.tabc i{font-style:normal;font-size:1.9rem;line-height:1;flex:none;width:44px;text-align:center}
+.tabc div{min-width:0;flex:1}
+.tabc b{display:block;font-size:1rem;font-weight:800;color:var(--fg)}
+.tabc small{display:block;font-size:.8rem;color:var(--muted);line-height:1.35;overflow-wrap:anywhere;margin-top:1px}
+.tabc em{font-style:normal;flex:none;color:var(--primary);font-weight:800;font-size:1.4rem}
+
+/* BERANDA GAYA PEDIATRI & PPDS TOOLS */
+body.is-home .hdr,body.is-home .note{display:none}
+body.is-home .app{max-width:430px;padding-bottom:76px}
+#home.all{padding:0;gap:0}
+#homeTab{display:flex;flex-direction:column;gap:18px}
+.ph-hero{background:linear-gradient(160deg,var(--hdr1) 0%,var(--hdr2) 50%,var(--hdr3) 100%);padding:env(safe-area-inset-top,0px) 16px 26px}
+.ph-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px}
+.ph-brand{display:flex;align-items:center;gap:8px}
+.ph-badge{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.ph-bname{font-size:13px;font-weight:800;color:#fff;line-height:1.2;max-width:150px}
+.ph-bsub{font-size:9.5px;color:rgba(255,255,255,.65)}
+.ph-acts{display:flex;gap:8px}
+.ph-ibtn,.ph-share{all:unset;box-sizing:border-box;cursor:pointer;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28)}
+.ph-ibtn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px}
+.ph-share{display:flex;align-items:center;gap:5px;border-radius:20px;padding:6px 11px;font-size:11px;font-weight:700}
+.ph-profile{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:13px;display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.ph-av{width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;border:2.5px solid rgba(255,255,255,.6);overflow:hidden}
+.ph-av img{width:100%;height:100%;object-fit:cover}
+.ph-pname{font-size:14px;font-weight:800;color:#fff;line-height:1.2;overflow-wrap:anywhere}
+.ph-prole{font-size:10px;color:rgba(255,255,255,.75);margin-top:2px}
+.ph-wa{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:5px;margin-top:6px;background:#25D366;border-radius:20px;padding:4px 10px;font-size:9.5px;font-weight:800;color:#fff}
+.ph-chips{display:flex;gap:9px}
+.ph-c{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:11px 6px 9px;text-align:center}
+.ph-cv{font-size:15px;font-weight:800;color:#fff;line-height:1.2}
+.ph-ck{font-size:9px;font-weight:600;color:rgba(255,255,255,.65);margin-top:3px;letter-spacing:.04em;text-transform:uppercase}
+.ph-tip{background:var(--surface);border-radius:18px;box-shadow:0 4px 20px rgba(0,0,0,.08);border-left:4px solid var(--primary);margin:-14px 16px 0;padding:13px 15px;position:relative;z-index:10;display:flex;gap:10px;align-items:flex-start}
+.ph-tip>span{font-size:19px;flex-shrink:0}
+.ph-tip-t{font-size:12.5px;font-weight:800;color:var(--primary);line-height:1.3;margin:0}
+.ph-tip-b{margin:3px 0 0;font-size:11.5px;color:var(--muted);line-height:1.5}
+.ph-warn{margin:16px 16px 0;background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:14px;padding:10px 13px;display:flex;gap:8px;align-items:flex-start}
+.ph-warn>span{font-size:14px;flex-shrink:0}
+.ph-warn p{margin:0;font-size:10.5px;color:var(--warn-fg);line-height:1.5}
+.ph-sec{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin:20px 16px 10px}
+.ph-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 16px}
+.ph-box{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border-radius:16px;padding:14px 6px 12px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06);border:2px solid transparent;transition:all .15s;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.ph-box:active{transform:scale(.93)}
+.ph-box.featured{border-color:#C62828}
+.ph-box:focus-visible,.ph-bi:focus-visible,.ph-wa:focus-visible,.ph-ibtn:focus-visible,.ph-share:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.ph-ico{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.ph-lbl{font-size:10.5px;font-weight:700;color:var(--fg);line-height:1.25;overflow-wrap:anywhere}
+.ph-sub{font-size:9px;color:var(--faint);font-weight:600;line-height:1.25}
+.ph-foot{text-align:center;color:var(--faint);font-size:11px;font-weight:500;margin:22px 16px 6px}
+.ph-bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:var(--surface);border-top:1px solid var(--line);display:none;z-index:100;padding-bottom:env(safe-area-inset-bottom,0px)}
+body.hn .ph-bnav{display:flex}
+body.hn .nav{display:none}
+.ph-bi{all:unset;box-sizing:border-box;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 7px;cursor:pointer;gap:2px;font-size:10px;font-weight:700;color:var(--faint)}
+.ph-bi svg{width:20px;height:20px}
+.ph-bi.on{color:var(--primary)}
+/* LAYAR PENGATURAN DAN RIWAYAT */
+main.ph-scr{padding:0;gap:0}
+.ph-stop{background:linear-gradient(135deg,var(--hdr2),var(--hdr3));color:#fff;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 14px;display:flex;align-items:center;gap:12px}
+.ph-back{all:unset;box-sizing:border-box;cursor:pointer;background:rgba(255,255,255,.2);color:#fff;width:32px;height:32px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ph-stitle{font-weight:800;font-size:15px}
+.ph-sbody{padding:18px 16px 32px}
+.ph-card{background:var(--surface);border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.ph-card h4{font-size:13px;color:var(--fg);margin:0 0 12px}
+.ph-avedit{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ph-avprev{width:64px;height:64px;border-radius:50%;background:var(--result-bg);display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden;flex-shrink:0;border:2px solid var(--line)}
+.ph-avprev img{width:100%;height:100%;object-fit:cover}
+.ph-btn{all:unset;box-sizing:border-box;cursor:pointer;background:#C62828;color:#fff;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:700}
+.ph-btn.sec{background:var(--result-bg);color:var(--fg);border:1px solid var(--line)}
+.ph-btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.ph-hint{font-size:11px;color:var(--muted);margin:0 0 4px}
+.ph-emo{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.ph-eo{all:unset;box-sizing:border-box;cursor:pointer;width:38px;height:38px;border-radius:10px;background:var(--result-bg);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:19px}
+.ph-eo.sel{border-color:#C62828}
+.ph-lab{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:12px 0 5px}
+.ph-in{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--result-bg);color:var(--fg);font:inherit;font-size:16px}
+.ph-save{margin-top:16px;display:flex;gap:10px}
+.ph-mode{display:flex;align-items:center;justify-content:space-between}
+.ph-mode span.l{font-size:13px;font-weight:700;color:var(--fg)}
+.ph-sw{position:relative;display:inline-block;width:50px;height:27px}
+.ph-sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.ph-sw i{position:absolute;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:30px;transition:.2s}
+.ph-sw i:before{position:absolute;content:"";height:21px;width:21px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.ph-sw input:checked + i{background:#C62828}
+.ph-sw input:checked + i:before{transform:translateX(23px)}
+.ph-sw input:focus-visible + i{outline:3px solid var(--primary);outline-offset:2px}
+.ph-hi{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;padding:11px 0;border-top:1px solid var(--line)}
+.ph-hi:first-of-type{border-top:0}
+.ph-hi .i{font-size:22px;width:36px;height:36px;border-radius:10px;background:var(--primary-soft);display:flex;align-items:center;justify-content:center;flex:none}
+.ph-hi b{display:block;font-size:13px;font-weight:700;color:var(--fg)}
+.ph-hi small{display:block;font-size:10.5px;color:var(--muted)}
+.ph-empty{font-size:12px;color:var(--muted);text-align:center;padding:18px 0}
+.ph-toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1F2937;color:#fff;font-size:12px;font-weight:700;padding:9px 16px;border-radius:999px;z-index:200;max-width:90%;text-align:center}
+/* ETIA JUNIOR: CHECKLIST ADMINISTRASI */
+.lst{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.etn{font:700 1.7rem/1.1 var(--font-body);color:var(--fg)}
+.etn small{font:600 .9rem var(--font-body);color:var(--muted);margin-left:6px}
+.etbar{height:10px;border-radius:999px;background:var(--primary-soft);overflow:hidden}
+.etbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#e9b949,#c9962c);transition:width .2s}
+.etg{display:flex;flex-direction:column;gap:8px}
+.eti{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-top:1px solid var(--line);cursor:pointer}
+.eti:first-child{border-top:0}
+.eti input{width:26px;height:26px;margin:1px 0 0;accent-color:var(--primary);flex:none}
+.eti .tx{min-width:0;flex:1}
+.eti .tx b{display:block;font-weight:700;font-size:1.02rem;overflow-wrap:anywhere}
+.eti .tx small{display:block;color:var(--muted);font-size:.86rem;margin-top:1px}
+.eti.done .tx b{text-decoration:line-through;color:var(--muted)}
+.eti:has(input:focus-visible){outline:3px solid var(--primary);outline-offset:-3px}
+.etdone{background:var(--primary-soft);color:var(--primary);font-weight:800;border-radius:14px;padding:12px 14px;text-align:center}
 </style>
 </head>
 <body>
@@ -152,22 +315,104 @@ label.f.wide{grid-column:1/-1}
   <header class="hdr">
     <div class="hrow">
       <button id="back" class="pill round" type="button" aria-label="Kembali" hidden>&larr;</button>
-      <div class="name"><span id="hicon">🧮</span><span class="ttl"><span id="htitle">Kalkulator Picu Nicu</span><small class="by">by @amaranth</small></span></div>
+      <div class="name"><span id="hicon">🧮</span><span class="ttl"><span id="htitle">Bismillah PICU</span><small class="by">by @amaranth</small></span></div>
       <button id="theme" class="pill round" type="button" aria-label="Ganti tema">🌙</button>
     </div>
     <div id="hextra">
-      <div class="hcard" style="margin-bottom:10px"><div class="avatar">👶</div><div><b>Kalkulator NICU dan PICU</b><span>Rumus dari Excel KOREKSI NEO dan catatan PICU</span></div></div>
+      <div class="hcard" style="margin-bottom:10px"><div class="avatar">👶</div><div><b>Alat bantu NICU dan PICU</b><span>Kalkulator, balance cairan, tekanan darah, dan buku saku</span></div></div>
       <div class="stats">
-        <div class="stat"><b id="sN">14</b><span>Koreksi</span></div>
-        <div class="stat"><b>4</b><span>Kelompok</span></div>
+        <div class="stat"><b id="sN">14</b><span>Kalkulator</span></div>
+        <div class="stat"><b>9</b><span>Menu</span></div>
         <div class="stat"><b>📖</b><span>Cara hitung</span></div>
       </div>
     </div>
   </header>
 
   <main id="home" class="pad">
-    <div class="tip"><div class="ic">💡</div><div><b>Batas koreksi natrium</b><p>Kenaikan Na maksimal 10 meq per hari, ditambah 2 meq maintenance per hari.</p></div></div>
-    <div id="groups" class="pad" style="padding:0"></div>
+    <div id="homeAll" hidden>
+      <div class="ph-hero">
+        <div class="ph-topbar">
+          <div class="ph-brand">
+            <div class="ph-badge">🩺</div>
+            <div><div class="ph-bname">Bismillah PICU</div><div class="ph-bsub">Program PPDS · Ilmu Kesehatan Anak</div></div>
+          </div>
+          <div class="ph-acts">
+            <button class="ph-ibtn" id="phSet" type="button" aria-label="Pengaturan">⚙️</button>
+            <button class="ph-share" id="phShare" type="button">🔗 Bagikan</button>
+          </div>
+        </div>
+        <div class="ph-profile">
+          <div class="ph-av" id="phAv">🧑‍⚕️</div>
+          <div style="flex:1;min-width:0">
+            <div class="ph-pname" id="phName"></div>
+            <div class="ph-prole" id="phRole"></div>
+            <button class="ph-wa" id="phWa" type="button">💬 Hubungi Supervisor</button>
+          </div>
+        </div>
+        <div class="ph-chips">
+          <div class="ph-c"><div class="ph-cv" id="phC1">9</div><div class="ph-ck">Alat Bantu</div></div>
+          <div class="ph-c"><div class="ph-cv" id="phC2">0</div><div class="ph-ck">Aktif</div></div>
+          <div class="ph-c"><div class="ph-cv" id="phC3">0</div><div class="ph-ck">Riwayat</div></div>
+        </div>
+      </div>
+      <div class="ph-tip">
+        <span>💡</span>
+        <div>
+          <p class="ph-tip-t">Apa itu Bismillah PICU?</p>
+          <p class="ph-tip-b">Kumpulan kalkulator klinis cepat untuk menunjang praktik harian di NICU dan PICU: koreksi, obat emergency, USCOM, TPN, balance cairan, tekanan darah, dan buku saku.</p>
+        </div>
+      </div>
+      <div class="ph-warn">
+        <span>⚠️</span>
+        <p><strong>Penting:</strong> Semua hasil alat bantu ini adalah <strong>alat bantu interpretasi awal</strong>, bukan pengganti keputusan klinis. Keputusan akhir tetap pada DPJP / supervisor.</p>
+      </div>
+      <div class="ph-sec" id="phAlat" style="margin-top:18px">🧩 Alat Bantu</div>
+      <div class="ph-grid" id="phGrid"></div>
+      <div class="ph-sec">🧮 Semua Kalkulator</div>
+      <div class="ph-grid" id="phCalc"></div>
+      <div class="ph-foot">Bismillah PICU · Program PPDS Ilmu Kesehatan Anak</div>
+    </div>
+    <div id="homeTab">
+      <div class="tip"><div class="ic">💡</div><div><b>Batas koreksi natrium</b><p>Kenaikan Na maksimal 10 meq per hari, ditambah 2 meq maintenance per hari.</p></div></div>
+      <div id="groups" class="pad" style="padding:0"></div>
+    </div>
+  </main>
+
+  <main id="rw" class="ph-scr" hidden>
+    <div class="ph-stop"><button class="ph-back" id="rwBack" type="button" aria-label="Kembali">←</button><div class="ph-stitle">Riwayat</div></div>
+    <div class="ph-sbody">
+      <div class="ph-card">
+        <h4>🕘 Terakhir dibuka</h4>
+        <div id="rwList"></div>
+        <div class="ph-save"><button class="ph-btn sec" id="rwClear" type="button">Hapus riwayat</button></div>
+      </div>
+    </div>
+  </main>
+
+  <main id="st" class="ph-scr" hidden>
+    <div class="ph-stop"><button class="ph-back" id="stBack" type="button" aria-label="Kembali">←</button><div class="ph-stitle">Pengaturan</div></div>
+    <div class="ph-sbody">
+      <div class="ph-card">
+        <h4>👤 Profil Peserta Didik</h4>
+        <div class="ph-avedit">
+          <div class="ph-avprev" id="stPrev">🧑‍⚕️</div>
+          <div><button class="ph-btn sec" id="stUp" type="button">Unggah Foto</button><input type="file" id="stFile" accept="image/*" style="display:none"></div>
+        </div>
+        <p class="ph-hint">atau pilih ikon:</p>
+        <div class="ph-emo" id="stEmo"></div>
+        <label class="ph-lab" for="stName">Nama</label>
+        <input type="text" class="ph-in" id="stName" placeholder="dr.rifqi" autocomplete="off">
+        <label class="ph-lab" for="stRole">Keterangan Peserta Didik</label>
+        <input type="text" class="ph-in" id="stRole" placeholder="Peserta Didik · Ilmu Kesehatan Anak" autocomplete="off">
+        <label class="ph-lab" for="stWa">Nomor WhatsApp Supervisor</label>
+        <input type="tel" class="ph-in" id="stWa" placeholder="mis. 0812xxxxxxx" inputmode="tel" autocomplete="off">
+        <div class="ph-save"><button class="ph-btn" id="stSave" type="button">💾 Simpan</button><button class="ph-btn sec" id="stReset" type="button">Reset</button></div>
+      </div>
+      <div class="ph-card">
+        <h4>🎨 Tampilan</h4>
+        <div class="ph-mode"><span class="l">Mode Gelap</span><label class="ph-sw"><input type="checkbox" id="stDark" aria-label="Mode gelap"><i></i></label></div>
+      </div>
+    </div>
   </main>
 
   <main id="calc" class="pad" hidden>
@@ -200,7 +445,7 @@ label.f.wide{grid-column:1/-1}
     <section class="card steps">
       <div class="ct"><h2 class="sec"><span>📖</span>Cara baca</h2></div>
       <ol>
-        <li><div class="body"><div class="t">Kelompok usia</div><div class="n">1 sampai &lt;3 th → tabel 1–2 th; 3 sampai &lt;8 → 3–7 th; 8 sampai &lt;16 → 8–16 th; 16–25 th. Usia &lt;1 th belum ada rentang normal.</div></div></li>
+        <li><div class="body"><div class="t">Kelompok usia</div><div class="n">1 sampai &lt;3 th → tabel 1–2 th; 3 sampai &lt;8 → 3–7 th; 8 sampai &lt;16 → 8–16 th; 16–25 th. Usia 2 sampai &lt;12 bulan (isi kolom bulan saja) → tabel 2–12 bulan; usia &lt;2 bulan belum ada rentang normal.</div></div></li>
         <li><div class="body"><div class="t">Tiap parameter</div><div class="n">Di bawah rentang = Turun, di atas = Naik, di dalam rentang (termasuk tepat di batas) = Normal.</div></div></li>
         <li><div class="body"><div class="t">Kesan per domain</div><div class="n">Dua parameter sama → kesan itu. Satu abnormal satu normal → ikut yang abnormal (keterangan dalam kurung). Arah berlawanan → tidak sinkron, cek ulang kurva/input.</div></div></li>
         <li><div class="body"><div class="t">Kualitas sinyal</div><div class="n">Angka hanya valid bila kurva Doppler tajam dan konsisten. BB/TB yang diinput ke alat dan tekanan darah memengaruhi SVI, CI, dan SVRI.</div></div></li>
@@ -253,18 +498,92 @@ label.f.wide{grid-column:1/-1}
     </div>
   </div>
 
+  <main id="bc" class="pad" hidden>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>💧</span>Balance cairan</h2></div>
+      <p class="hint">Darrow = 100–50–20 mL/kg/24 jam · BC (%) = BCD ÷ Darrow × 100 · Total D = rerata D yang terisi. Isi BCD (mL, boleh negatif) dan D per shift. Data tersimpan di perangkat ini, maksimal 7 hari; hari baru dibuat otomatis (nama dan BB disalin dari hari sebelumnya).</p>
+      <div id="bcU"></div>
+      <div id="bcD"></div>
+    </section>
+    <div id="bcG"></div>
+  </main>
+
+  <main id="bp" class="pad" hidden>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>🩺</span>Blood pressure anak</h2></div>
+      <p class="hint">Persentil tekanan darah AAP 2017 (usia 1–17 tahun) menurut jenis kelamin, usia, dan tinggi badan. Data disalin dari tabel di PPDS IKA Tools.</p>
+      <div class="inputs">
+        <label class="f wide" for="bpG">Jenis kelamin<div class="fw"><select id="bpG"><option value="Boy">Laki-laki</option><option value="Girl">Perempuan</option></select></div></label>
+        <label class="f" for="bpA">Usia<div class="fw"><input id="bpA" type="number" step="1" min="1" max="17" inputmode="numeric" value="5"><span>tahun</span></div></label>
+        <label class="f" for="bpH">Tinggi badan<div class="fw"><input id="bpH" type="number" step="any" inputmode="decimal" value="110"><span>cm</span></div></label>
+      </div>
+      <h2 class="sec" style="font-size:.85rem">Tekanan darah pasien (opsional)</h2>
+      <div class="inputs">
+        <label class="f" for="bpS">Sistolik<div class="fw"><input id="bpS" type="number" step="any" inputmode="decimal" placeholder="–"><span>mmHg</span></div></label>
+        <label class="f" for="bpD">Diastolik<div class="fw"><input id="bpD" type="number" step="any" inputmode="decimal" placeholder="–"><span>mmHg</span></div></label>
+      </div>
+    </section>
+    <p class="info warn" id="bpW" hidden></p>
+    <section class="card" id="bpR" hidden>
+      <div class="ct"><h2 class="sec"><span>📊</span>Persentil</h2></div>
+      <table class="bpt"><thead><tr><th>Persentil</th><th>Sistolik</th><th>Diastolik</th></tr></thead><tbody id="bpT"></tbody></table>
+      <div id="bpC" hidden></div>
+      <p class="info">Nilai tidak berlaku untuk anak dengan BMI ≥ persentil ke-85 (overweight/obesitas) dan tidak mencakup usia &lt;1 tahun. Diagnosis hipertensi butuh pengukuran berulang pada beberapa kunjungan; hasil di sini hanya acuan satu pengukuran.</p>
+    </section>
+    <section class="card steps">
+      <div class="ct"><h2 class="sec"><span>📖</span>Cara baca</h2></div>
+      <ol>
+        <li><div class="body"><div class="t">Persentil</div><div class="n">Nilai antar tinggi badan di tabel dihitung dengan interpolasi linear, lalu dibulatkan, sama seperti PPDS IKA Tools.</div></div></li>
+        <li><div class="body"><div class="t">Usia 1–12 tahun</div><div class="n">Normal &lt;P90. Elevated: ≥P90 sampai &lt;P95, atau ≥120/80 (mana yang lebih rendah). Stage 1: ≥P95, atau ≥130/80. Stage 2: ≥P95 + 12 mmHg, atau ≥140/90.</div></div></li>
+        <li><div class="body"><div class="t">Usia ≥13 tahun</div><div class="n">Normal &lt;120/&lt;80. Elevated: 120–129 dan &lt;80. Stage 1: 130–139 atau 80–89. Stage 2: ≥140 atau ≥90.</div></div></li>
+        <li><div class="body"><div class="t">Sistolik dan diastolik</div><div class="n">Kategori mengikuti yang lebih tinggi dari keduanya.</div></div></li>
+      </ol>
+    </section>
+  </main>
+
+  <main id="bn" class="pad" hidden>
+    <p class="info warn" id="bnW" hidden>File buku-nicu.html belum ditemukan di hosting. Unggah file itu ke folder yang sama dengan index.html.</p>
+    <iframe id="bnF" title="Buku Saku NICU" data-src="buku-nicu.html"></iframe>
+  </main>
+
+  <main id="ck" class="pad" hidden>
+    <iframe id="ckF" title="TPN + cakupan kalori" allow="clipboard-write"></iframe>
+  </main>
+
+  <main id="et" class="pad" hidden>
+    <section class="card">
+      <div class="ct"><h2 class="sec"><span>📋</span>ETIA Junior</h2><button id="etReset" class="toggle" type="button">Kosongkan</button></div>
+      <p class="hint">Syarat administrasi ETIA Junior. Centang bila sudah selesai; centangan tersimpan di perangkat ini.</p>
+      <div class="etn" id="etN"></div>
+      <div class="etbar"><i id="etBar"></i></div>
+      <div class="etdone" id="etDone" hidden>Semua syarat sudah lengkap ✅</div>
+    </section>
+    <div id="etG" class="etg"></div>
+  </main>
+
   <p class="note">Hasil tidak dibulatkan saat dihitung, hanya tampilannya (maks 3 desimal). Alat bantu hitung, keputusan dosis tetap oleh DPJP.</p>
 </div>
 
 <nav class="nav" id="nav" aria-label="Kelompok">
   <button type="button" data-tab="all" class="on"><i>🏠</i>Beranda</button>
-  <button type="button" data-tab="darah"><i>🩸</i>Darah</button>
-  <button type="button" data-tab="elek"><i>🧂</i>Cairan</button>
-  <button type="button" data-tab="obat"><i>💊</i>Drip</button>
-  <button type="button" data-tab="picu"><i>🚨</i>PICU</button>
+  <button type="button" data-tab="nicu"><i>👶</i>Koreksi</button>
+  <button type="button" data-tab="picu"><i>🚨</i>Drug</button>
   <button type="button" data-tab="uskom"><i>🫀</i>Uskom</button>
   <button type="button" data-tab="tpn"><i>🧴</i>TPN</button>
+  <button type="button" data-tab="bc"><i>💧</i>Balance</button>
+  <button type="button" data-tab="bp"><i>🩺</i>BP</button>
+  <button type="button" data-tab="bn"><i>📖</i>Buku</button>
+  <button type="button" data-tab="ck"><i>🍼</i>TPN + cakupan</button>
+  <button type="button" data-tab="et"><i>📋</i>ETIA</button>
 </nav>
+<nav class="ph-bnav" id="hnav" aria-label="Menu utama">
+  <button type="button" class="ph-bi on" data-page="home"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75"/></svg>Beranda</button>
+  <button type="button" class="ph-bi" data-page="alat"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>Alat</button>
+  <button type="button" class="ph-bi" data-page="rw"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Riwayat</button>
+  <button type="button" class="ph-bi" data-page="st"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>Pengaturan</button>
+  <button type="button" class="ph-bi" data-page="kontak"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Kontak</button>
+</nav>
+<div class="ph-toast" id="toast" hidden></div>
 
 <script>
 /* ===== LOGIKA (identik dengan Excel Sheet1) ===== */
@@ -673,13 +992,45 @@ const $=id=>document.getElementById(id);
 const vals={};const inEls={};const inLabels={};let outEls=[];let warnEl=null;let cur=null;let tab='all';let stepsOpen=true;
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
 
+/* Daftar semua tab untuk Beranda: ikon, nama, isi, dan tujuan. Nama dan ikon sama dengan menu bawah. */
+const TABINFO=[
+ ['nicu','👶','Koreksi',()=>{const n=sections.filter(s=>['darah','elek','obat'].indexOf(s.cat)>-1).length;return n+' kalkulator: koreksi darah (eritrosit, trombosit, FFP, albumin), elektrolit dan cairan (Na, BicNat, KCl, MgSO4, Ca glukonat), dan obat drip dari Excel KOREKSI NEO.'}],
+ ['picu','🚨','Drug',()=>{const n=sections.filter(s=>s.cat==='picu').length;return n+' kalkulator obat emergency dan drip PICU dari catatan PICU, dengan pilihan pengenceran dan sediaan.'}],
+ ['uskom','🫀','Uskom','Interpretasi USCOM per kelompok usia: kesan sirkulasi, preload, kontraktilitas, afterload, dengan teks laporan untuk WhatsApp.'],
+ ['tpn','🧴','TPN','TPN neonatus dari Excel TPN HCU NEO: kebutuhan cairan dan kalori, komposisi, contekan hari ini, dan teks resep.'],
+ ['bc','💧','Balance','Balance cairan dan diuresis HCU PICU per shift (14.00, 21.00, 06.00): BCD, BC (%), Darrow. PICU bed 134–143, HCU Anak bed A–I, riwayat 7 hari.'],
+ ['bp','🩺','BP','Persentil tekanan darah anak usia 1–17 tahun (AAP 2017) menurut jenis kelamin, usia, tinggi badan, dengan kategori hipertensi.'],
+ ['bn','📖','Buku','Buku Saku NICU: catatan orientasi ruangan, kerja harian, pasien baru, SC dan resusitasi, konsul, lab, obat, prosedur, skor, dan cara lapor.'],
+ ['ck','🍼','TPN + cakupan','Kalkulator cakupan kalori untuk laporan jaga PICU/HCU: kebutuhan Schofield, kalori oral, campuran dextrose dari target GIR, lipid, asam amino, Ca glukonas, osmolaritas dan jalur infus, plus teks laporan siap salin.'],
+ ['et','📋','ETIA',()=>{const e=etSummary();return 'Checklist syarat administrasi ETIA Junior: '+e.n+' dari '+e.total+' syarat selesai. Centangan tersimpan di perangkat ini.'}]
+];
+function goTab(t){
+  tab=t;[...$('nav').children].forEach(x=>x.classList.toggle('on',x.dataset.tab===t));
+  try{const on=$('nav').querySelector('.on');if(on)$('nav').scrollTo({left:on.offsetLeft-($('nav').clientWidth-on.offsetWidth)/2})}catch(e){}
+  if(t!=='all'&&t!=='rw'&&t!=='st')phOpen(t);
+  if(t==='rw')showRW();else if(t==='st')showST();else if(t==='uskom')showUskom();else if(t==='tpn')showTPN();else if(t==='bc')showBC();else if(t==='bp')showBP();else if(t==='bn')showBN();else if(t==='et')showET();else if(t==='ck')showCK();else showHome();
+  document.body.classList.toggle('bn-on',t==='bn'||t==='ck');
+  chrome();
+}
 function renderHome(){
+  if(tab==='all'){phRenderAll();return}
   const g=$('groups');g.textContent='';
-  const cats=tab==='all'?CATS:CATS.filter(c=>c[0]===tab);
-  g.appendChild(el('h2','sec',tab==='all'?'🧩 Menu utama':CATH[tab]));
+  const NICU=['darah','elek','obat'];const cats=tab==='all'?CATS:CATS.filter(c=>tab==='nicu'?NICU.includes(c[0]):c[0]===tab);
+  if(tab==='all'){
+    g.appendChild(el('h2','sec','🧭 Isi aplikasi'));
+    const list=el('div','tabs');
+    TABINFO.forEach(([id,ic,name,desc])=>{
+      const b=el('button','tabc');b.type='button';b.setAttribute('aria-label','Buka tab '+name);
+      const box=document.createElement('div');box.append(el('b',null,name),el('small',null,typeof desc==='function'?desc():desc));
+      b.append(el('i',null,ic),box,el('em',null,'›'));
+      b.addEventListener('click',()=>goTab(id));list.appendChild(b);
+    });
+    g.appendChild(list);
+  }
+  g.appendChild(el('h2','sec',tab==='all'?'🧩 Semua kalkulator':tab==='nicu'?'🧮 Koreksi':tab==='picu'?'💊 Drug · Obat emergency PICU':CATH[tab]));
   cats.forEach(([k,name])=>{
     const box=el('div','group');
-    if(tab==='all')box.appendChild(el('h2','sec',CATH[k]));
+    if(tab==='all'||tab==='nicu')box.appendChild(el('h2','sec',CATH[k]));
     const grid=el('div','grid');
     sections.filter(s=>s.cat===k).forEach(s=>{
       const m=META[s.id];const b=el('button','tile');b.type='button';b.setAttribute('aria-label',s.title);
@@ -691,8 +1042,9 @@ function renderHome(){
 }
 function showHome(){
   if($('cSheet'))$('cSheet').hidden=true;document.body.style.overflow='';
-  cur=null;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('home').hidden=false;$('back').hidden=true;$('hextra').hidden=false;
-  $('hicon').textContent='🧮';$('htitle').textContent='Kalkulator Picu Nicu';renderHome();window.scrollTo(0,0);
+  cur=null;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('home').hidden=false;$('back').hidden=true;$('hextra').hidden=false;
+  $('home').classList.toggle('all',tab==='all');$('homeAll').hidden=tab!=='all';$('homeTab').hidden=tab==='all';
+  $('hicon').textContent='🧮';$('htitle').textContent='Bismillah PICU';renderHome();chrome();window.scrollTo(0,0);
 }
 function setInputDefaults(s){s.inputs.forEach(i=>{inEls[i.id].value=i.def})}
 function openCalc(s){
@@ -755,6 +1107,7 @@ function calc(){
 
 /* ===== USKOM: interpretasi USCOM ===== */
 const U_RANGES=[
+ {label:'2 - 12 Bulan',min:2/12,max:1,bln:true,CI:[3.7,5.1],SVI:[31,40],FTc:[339,386],Vpk:[1.0,1.4],INO:[1.03,1.78],SVRI:[919,1464],PKR:[15,32]},
  {label:'1 - 2 Tahun',min:1,max:3,CI:[4.1,5.8],SVI:[34,57],FTc:[326,425],Vpk:[1.2,1.6],INO:[1.03,1.78],SVRI:[904,1356],PKR:[19,30]},
  {label:'3 - 7 Tahun',min:3,max:8,CI:[4.1,5.7],SVI:[43,66],FTc:[345,409],Vpk:[1.3,1.7],INO:[1.37,2.26],SVRI:[876,1507],PKR:[13,26]},
  {label:'8 - 16 Tahun',min:8,max:16,CI:[3.9,5.6],SVI:[49,71],FTc:[353,408],Vpk:[1.3,2.0],INO:[1.56,3.60],SVRI:[1078,1850],PKR:[15,28]},
@@ -765,6 +1118,7 @@ const U_LBL={CI:'CI',SVI:'SVI',FTc:'Ftc',Vpk:'VpK',INO:'INO',SVRI:'SVRI',PKR:'PK
 const U_UNIT={CI:'l/mnt/m²',SVI:'ml/m²',FTc:'ms',Vpk:'m/s',INO:'W/m²',SVRI:'ds/cm⁵m²',PKR:'',SVV:'%'};
 const U_IDENT=[['u_nama','Nama pasien','',''],['u_tgl','Tanggal','',''],['u_jam','Jam','','08.00'],['u_th','Usia','tahun',''],['u_bl','+ bulan','bulan','']];
 const uNum=v=>{if(v==null||String(v).trim()==='')return null;const x=parseFloat(String(v).replace(',','.'));return isNaN(x)?null:x};
+const uRg=(p,r)=>(p==='CI'||p==='Vpk')?r.map(x=>x.toFixed(1)).join(' - '):r[0]+' - '+r[1];
 const uKlas=(x,[lo,hi])=>x==null?null:x<lo?'Turun':x>hi?'Naik':'Normal';
 function uKesan(it){
  const a=it.filter(i=>i.s);if(!a.length)return'-';if(a.length===1)return a[0].s;
@@ -815,22 +1169,22 @@ function uCalc(){
  const usia=th==null&&bl==null?null:(th||0)+(bl||0)/12;
  const R=usia==null?null:U_RANGES.find(r=>usia>=r.min&&usia<r.max);
  if(usia==null)warn.push('Isi usia dulu untuk memilih tabel nilai normal.');
- else if(!R)warn.push(usia<1?'Rentang normal USCOM untuk usia < 1 tahun belum tersedia di tabel.':'Usia di luar tabel rujukan (maks 25 tahun).');
+ else if(!R)warn.push(usia<2/12?'Rentang normal USCOM untuk usia < 2 bulan belum tersedia di tabel.':'Usia di luar tabel rujukan (maks 25 tahun).');
  $('uKel').textContent=R?'Tabel usia '+R.label:'';
  const judul=['*Uscom',v.u_nama.trim(),v.u_tgl.trim(),v.u_jam.trim()?'jam '+v.u_jam.trim():''].filter(Boolean).join(' ')+'*';
  if(!R){$('uWarn').textContent=warn.join(' ');$('uWarn').hidden=false;$('uHasil').hidden=true;$('uText').textContent=judul;return}
- const L=[judul,'',`*Uscom usia ${R.label}*`];const ds={};
+ const L=[judul,'',`*Uscom usia ${R.bln?Math.round(usia*12)+' bulan':R.label}*`];const ds={};
  U_DOM.forEach((d,i)=>{
   res.appendChild(el('div','grp',d.j.replace(/\*/g,'')));
   const it=d.p.map(p=>{const x=uNum(v['u_'+p]);const s=uKlas(x,R[p]);
    const r=el('div','row');const lb=el('div','l',U_LBL[p]);const val=el('div','v'+(s==='Turun'?' dn':s==='Naik'?' up':''));
    val.append(x==null?'-':fmt(x));if(s)val.appendChild(el('span','st',s));
-   r.append(lb,val,el('div','ref',`Normal ${R[p][0]} - ${R[p][1]} ${U_UNIT[p]}`));res.appendChild(r);
+   r.append(lb,val,el('div','ref',`Normal ${uRg(p,R[p])} ${U_UNIT[p]}`));res.appendChild(r);
    if(x==null)warn.push(U_LBL[p]+' belum diisi');return{p,x,s}});
   const k=uKesan(it);ds[d.k]=uUtama(k);
   const kr=el('div','row');kr.appendChild(el('div','kes'+(k!=='Normal'&&k!=='-'?' ab':''),'Kesan: '+k));res.appendChild(kr);
   if(i>0)L.push('');L.push(d.j);
-  it.forEach(o=>L.push(`${U_LBL[o.p]} ${o.x==null?'-':o.x} (${R[o.p][0]} - ${R[o.p][1]})`));L.push(`${d.kl} ${k}`);
+  it.forEach(o=>L.push(`${U_LBL[o.p]} ${o.x==null?'-':o.x} (${uRg(o.p,R[o.p])})`));L.push(`${d.kl} ${k}`);
  });
  if(v.pola){const {pola,cat}=uPola(ds,uNum(v.u_SVV));L.push('','*Kesimpulan*');pola.forEach(x=>L.push('- '+x));cat.forEach(x=>L.push('- Catatan: '+x));}
  $('uWarn').textContent=warn.join(' · ');$('uWarn').hidden=!warn.length;$('uHasil').hidden=false;
@@ -838,7 +1192,7 @@ function uCalc(){
 }
 function showUskom(){
  if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
- cur=null;$('home').hidden=true;$('calc').hidden=true;$('tpn').hidden=true;$('uskom').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('uskom').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
  $('hicon').textContent='🫀';$('htitle').textContent='Uskom';uBuild();uCalc();window.scrollTo(0,0);
 }
 /* =========================================================
@@ -1130,13 +1484,546 @@ function tCalc(){
 }
 function showTPN(){
  cHide();
- cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('tpn').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
  $('hicon').textContent='🧴';$('htitle').textContent='TPN Neonatus';tBuild();tCalc();window.scrollTo(0,0);
+}
+/* BALANCE CAIRAN HCU PICU (dari Excel KUVS_PICU). Data di localStorage perangkat, maksimal 7 hari. */
+const BC_KEY='bc_picu_v1',BC_UNITS={'PICU':['134','135','136','137','138','139','140','141','142','143'],'HCU Anak':['A','B','C','D','E','F','G','H','I']},BC_ALL=Object.values(BC_UNITS).flat(),BC_SH=['14.00','21.00','06.00'],BC_MON=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+let bcS={days:{}},bcCur,bcToday,bcUnit='PICU',bcInit=false;
+const bcE=id=>document.getElementById(id);
+const bcBed=p=>({n:p?p.n:'',w:p?p.w:'',r:[['',''],['',''],['','']]});
+const bcNum=v=>{if(v===''||v==null)return null;const x=parseFloat(String(v).replace(',','.'));return isNaN(x)?null:x};
+const bcDar=w=>(w==null||w<=0)?null:Math.min(w,10)*100+Math.max(Math.min(w-10,10),0)*50+Math.max(w-20,0)*20;
+const bcFmt=(x,d=2)=>x==null?'–':x.toLocaleString('id-ID',{maximumFractionDigits:d});
+const bcEsc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+function bcSave(){try{localStorage.setItem(BC_KEY,JSON.stringify(bcS))}catch(e){}}
+function bcDay(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function bcEnsure(){const t=bcDay();if(!bcS.days[t]){const k=Object.keys(bcS.days).sort(),pv=k.length?bcS.days[k[k.length-1]]:null,b={};BC_ALL.forEach(id=>{b[id]=bcBed(pv&&pv[id])});bcS.days[t]=b}
+ const ks=Object.keys(bcS.days).sort();while(ks.length>7)delete bcS.days[ks.shift()];bcSave();return t}
+function bcCalc(id){
+ const c=document.querySelector('#bcG .bcc[data-bed="'+id+'"]');if(!c)return;
+ const p=bcS.days[bcCur][id],dar=bcDar(bcNum(p.w));
+ c.querySelector('.bcd').textContent='Darrow: '+(dar==null?'–':bcFmt(dar,0)+' mL/24 jam');
+ let sb=0,any=false,ds=[];
+ const set=(s,v)=>{const e=c.querySelector(s);e.textContent=bcFmt(v);e.classList.toggle('neg',v!=null&&v<0)};
+ p.r.forEach((r,i)=>{const b=bcNum(r[0]),d=bcNum(r[1]);if(b!=null){sb+=b;any=true}if(d!=null)ds.push(d);set('.r'+i,(b!=null&&dar)?b/dar*100:null)});
+ set('.tB',any?sb:null);set('.tP',(any&&dar)?sb/dar*100:null);set('.tD',ds.length?ds.reduce((a,b)=>a+b,0)/ds.length:null);
+}
+function bcRender(){
+ const day=bcS.days[bcCur];BC_ALL.forEach(id=>{if(!day[id])day[id]=bcBed()});
+ bcE('bcU').innerHTML=Object.keys(BC_UNITS).map(u=>'<button type="button" data-u="'+u+'" class="'+(u===bcUnit?'on':'')+'">'+u+' ('+BC_UNITS[u].length+' bed)</button>').join('');
+ bcE('bcD').innerHTML=Object.keys(bcS.days).sort().map(k=>{const q=k.split('-');return '<button type="button" data-k="'+k+'" class="'+(k===bcCur?'on':'')+'">'+(+q[2])+' '+BC_MON[q[1]-1]+(k===bcToday?' (hari ini)':'')+'</button>'}).join('');
+ bcE('bcG').innerHTML=BC_UNITS[bcUnit].map(id=>{const p=day[id];
+  const rows=BC_SH.map((s,i)=>'<tr><td class="bcl">'+s+'</td><td><input type="number" step="any" data-f="b" data-i="'+i+'" value="'+bcEsc(p.r[i][0])+'" aria-label="BCD '+s+'"></td><td class="bcp r'+i+'">–</td><td><input type="number" step="any" data-f="d" data-i="'+i+'" value="'+bcEsc(p.r[i][1])+'" aria-label="D '+s+'"></td></tr>').join('');
+  return '<div class="bcc" data-bed="'+id+'"><div class="bct"><b class="bcb">'+id+'</b><input class="bcn" data-f="n" placeholder="Nama pasien" value="'+bcEsc(p.n)+'"><input class="bcw" type="number" step="any" data-f="w" placeholder="BB kg" value="'+bcEsc(p.w)+'"><button type="button" class="bcx" data-clr="1">Kosongkan</button></div><div class="bcd"></div><table class="bctb"><tr><th></th><th>BCD</th><th>BC (%)</th><th>D</th></tr>'+rows+'<tr class="bcs"><td>Total</td><td class="tB">–</td><td class="tP">–</td><td class="tD">–</td></tr></table></div>'}).join('');
+ BC_UNITS[bcUnit].forEach(bcCalc);
+}
+function bcTick(){if(!bcInit)return;const t=bcDay();if(t!==bcToday){const was=bcCur===bcToday;bcToday=bcEnsure();if(was||!bcS.days[bcCur])bcCur=bcToday;if(!bcE('bc').hidden)bcRender()}}
+function bcBind(){
+ bcE('bcG').addEventListener('input',e=>{const t=e.target,f=t.dataset.f;if(!f)return;const id=t.closest('.bcc').dataset.bed,p=bcS.days[bcCur][id];
+  if(f==='n')p.n=t.value;else if(f==='w')p.w=t.value;else if(f==='b')p.r[t.dataset.i][0]=t.value;else p.r[t.dataset.i][1]=t.value;
+  bcSave();bcCalc(id)});
+ bcE('bcG').addEventListener('click',e=>{const t=e.target;if(!t.dataset.clr)return;
+  if(!t.classList.contains('sure')){t.classList.add('sure');t.textContent='Yakin?';setTimeout(()=>{t.classList.remove('sure');t.textContent='Kosongkan'},3000);return}
+  bcS.days[bcCur][t.closest('.bcc').dataset.bed]=bcBed();bcSave();bcRender()});
+ bcE('bcD').addEventListener('click',e=>{const k=e.target.dataset.k;if(k&&bcS.days[k]){bcCur=k;bcRender()}});
+ bcE('bcU').addEventListener('click',e=>{const u=e.target.dataset.u;if(u&&BC_UNITS[u]){bcUnit=u;bcS.unit=u;bcSave();bcRender()}});
+ setInterval(bcTick,60000);document.addEventListener('visibilitychange',bcTick);
+}
+function showBC(){
+ if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('bc').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='💧';$('htitle').textContent='Balance Cairan';
+ if(!bcInit){try{const x=JSON.parse(localStorage.getItem(BC_KEY));if(x&&x.days)bcS=x}catch(e){}if(BC_UNITS[bcS.unit])bcUnit=bcS.unit;bcInit=true;bcToday=bcEnsure();bcCur=bcToday;bcBind()}else bcTick();
+ bcRender();window.scrollTo(0,0);
+}
+/* BLOOD PRESSURE PEDIATRI (AAP 2017). Tabel BP_DATA disalin dari PPDS IKA Tools. */
+const BP_DATA={
+  Boy: {
+    1: { height_cm:[77.2,78.3,80.2,82.4,84.6,86.7,87.9],
+      SBP:{ "50":[85,85,86,86,87,88,88], "90":[98,99,99,100,100,101,101],
+            "95":[102,102,103,103,104,105,105], "95+12":[114,114,115,115,116,117,117]},
+      DBP:{ "50":[40,40,40,41,41,42,42], "90":[52,52,53,53,54,54,54],
+            "95":[54,54,55,55,56,57,57], "95+12":[66,66,67,67,68,69,69]}},
+    2: { height_cm:[86.1,87.4,89.6,92.1,94.7,97.1,98.5],
+      SBP:{ "50":[87,87,88,89,89,90,91], "90":[100,100,101,102,103,103,104],
+            "95":[104,105,106,107,107,108,108], "95+12":[116,117,117,118,119,119,120]},
+      DBP:{ "50":[43,43,44,44,45,46,46], "90":[55,55,56,56,57,58,58],
+            "95":[57,58,58,59,60,61,61], "95+12":[69,70,70,71,72,73,73]}},
+    3: { height_cm:[92.5,93.9,96.3,99.0,101.8,104.3,105.8],
+      SBP:{ "50":[88,89,89,90,91,92,92], "90":[101,102,102,103,104,105,105],
+            "95":[106,106,107,107,108,109,109], "95+12":[118,118,119,119,120,121,121]},
+      DBP:{ "50":[45,46,46,47,48,49,49], "90":[58,58,59,59,60,61,61],
+            "95":[60,61,61,62,63,64,64], "95+12":[72,73,73,74,75,76,76]}},
+    4: { height_cm:[98.5,100.2,102.9,105.9,108.9,111.5,113.2],
+      SBP:{ "50":[90,90,91,92,93,94,94], "90":[102,103,104,105,106,107,107],
+            "95":[107,107,108,108,109,110,110], "95+12":[119,119,120,120,121,122,122]},
+      DBP:{ "50":[48,49,49,50,51,52,52], "90":[60,61,62,62,63,64,64],
+            "95":[63,64,65,66,67,67,68], "95+12":[75,76,77,78,79,79,80]}},
+    5: { height_cm:[104.4,106.2,109.1,112.4,115.7,118.6,120.3],
+      SBP:{ "50":[91,92,93,94,95,96,96], "90":[103,104,105,106,107,108,108],
+            "95":[107,108,109,109,110,111,112], "95+12":[119,120,121,121,122,123,124]},
+      DBP:{ "50":[51,51,52,53,54,55,55], "90":[63,64,65,65,66,67,67],
+            "95":[66,67,68,69,70,70,71], "95+12":[78,79,80,81,82,82,83]}},
+    6: { height_cm:[110.3,112.2,115.3,118.9,122.4,125.6,127.5],
+      SBP:{ "50":[93,93,94,95,96,97,98], "90":[105,105,106,107,109,110,110],
+            "95":[108,109,110,111,112,113,114], "95+12":[120,121,122,123,124,125,126]},
+      DBP:{ "50":[54,54,55,56,57,57,58], "90":[66,66,67,68,68,69,69],
+            "95":[69,70,70,71,72,72,73], "95+12":[81,82,82,83,84,84,85]}},
+    7: { height_cm:[116.1,118.0,121.4,125.1,128.9,132.4,134.5],
+      SBP:{ "50":[94,94,95,97,98,98,99], "90":[106,107,108,109,110,111,111],
+            "95":[110,110,111,112,114,115,116], "95+12":[122,122,123,124,126,127,128]},
+      DBP:{ "50":[56,56,57,58,58,59,59], "90":[68,68,69,70,70,71,71],
+            "95":[71,71,72,73,73,74,74], "95+12":[83,83,84,85,85,86,86]}},
+    8: { height_cm:[121.4,123.5,127.0,131.0,135.1,138.8,141.0],
+      SBP:{ "50":[95,96,97,98,99,99,100], "90":[107,108,109,110,111,112,112],
+            "95":[111,112,112,114,115,116,117], "95+12":[123,124,124,126,127,128,129]},
+      DBP:{ "50":[57,57,58,59,59,60,60], "90":[69,70,70,71,72,72,73],
+            "95":[72,73,73,74,75,75,75], "95+12":[84,85,85,86,87,87,87]}},
+    9: { height_cm:[126.0,128.3,132.1,136.3,140.7,144.7,147.1],
+      SBP:{ "50":[96,97,98,99,100,101,101], "90":[107,108,109,110,112,113,114],
+            "95":[112,112,113,115,116,118,119], "95+12":[124,124,125,127,128,130,131]},
+      DBP:{ "50":[57,58,59,60,61,62,62], "90":[70,71,72,73,74,74,74],
+            "95":[74,74,75,76,76,77,77], "95+12":[86,86,87,88,88,89,89]}},
+    10: { height_cm:[130.2,132.7,136.7,141.3,145.9,150.1,152.7],
+      SBP:{ "50":[97,98,99,100,101,102,103], "90":[108,109,111,112,113,115,116],
+            "95":[112,113,114,116,118,120,121], "95+12":[124,125,126,128,130,132,133]},
+      DBP:{ "50":[59,60,61,62,63,63,64], "90":[72,73,74,74,75,75,76],
+            "95":[76,76,77,77,78,78,78], "95+12":[88,88,89,89,90,90,90]}},
+    11: { height_cm:[134.7,137.3,141.5,146.4,151.3,155.8,158.6],
+      SBP:{ "50":[99,99,101,102,103,104,106], "90":[110,111,112,114,116,117,118],
+            "95":[114,114,116,118,120,123,124], "95+12":[126,126,128,130,132,135,136]},
+      DBP:{ "50":[61,61,62,63,63,63,63], "90":[74,74,75,75,75,76,76],
+            "95":[77,78,78,78,78,78,78], "95+12":[89,90,90,90,90,90,90]}},
+    12: { height_cm:[140.3,143.0,147.5,152.7,157.9,162.6,165.5],
+      SBP:{ "50":[101,101,102,104,106,108,109], "90":[113,114,115,117,119,121,122],
+            "95":[116,117,118,121,124,126,128], "95+12":[128,129,130,133,136,138,140]},
+      DBP:{ "50":[61,62,62,62,62,63,63], "90":[75,75,75,75,75,76,76],
+            "95":[78,78,78,78,78,79,79], "95+12":[90,90,90,90,90,91,91]}},
+    13: { height_cm:[147.0,150.0,154.9,160.3,165.7,170.5,173.4],
+      SBP:{ "50":[103,104,105,108,110,111,112], "90":[115,116,118,121,124,126,126],
+            "95":[119,120,122,125,128,130,131], "95+12":[131,132,134,137,140,142,143]},
+      DBP:{ "50":[61,60,61,62,63,64,65], "90":[74,74,74,75,76,77,77],
+            "95":[78,78,78,78,80,81,81], "95+12":[90,90,90,90,92,93,93]}},
+    14: { height_cm:[153.8,156.9,162.0,167.5,172.7,177.4,180.1],
+      SBP:{ "50":[105,106,109,111,112,113,113], "90":[119,120,123,126,127,128,129],
+            "95":[123,125,127,130,132,133,134], "95+12":[135,137,139,142,144,145,146]},
+      DBP:{ "50":[60,60,62,64,65,66,67], "90":[74,74,75,77,78,79,80],
+            "95":[77,78,79,81,82,83,84], "95+12":[89,90,91,93,94,95,96]}},
+    15: { height_cm:[159.0,162.0,166.9,172.2,177.2,181.6,184.2],
+      SBP:{ "50":[108,110,112,113,114,114,114], "90":[123,124,126,128,129,130,130],
+            "95":[127,129,131,132,134,135,135], "95+12":[139,141,143,144,146,147,147]},
+      DBP:{ "50":[61,62,64,65,66,67,68], "90":[75,76,78,79,80,81,81],
+            "95":[78,79,81,83,84,85,85], "95+12":[90,91,93,95,96,97,97]}},
+    16: { height_cm:[162.1,165.0,169.6,174.6,179.5,183.8,186.4],
+      SBP:{ "50":[111,112,114,115,115,116,116], "90":[126,127,128,129,131,131,132],
+            "95":[130,131,133,134,135,136,137], "95+12":[142,143,145,146,147,148,149]},
+      DBP:{ "50":[63,64,66,67,68,69,69], "90":[77,78,79,80,81,82,82],
+            "95":[80,81,83,84,85,86,86], "95+12":[92,93,95,96,97,98,98]}},
+    17: { height_cm:[163.8,166.5,170.9,175.8,180.7,184.9,187.5],
+      SBP:{ "50":[114,115,116,117,117,118,118], "90":[128,129,130,131,132,133,134],
+            "95":[132,133,134,135,137,138,138], "95+12":[144,145,146,147,149,150,150]},
+      DBP:{ "50":[65,66,67,68,69,70,70], "90":[78,79,80,81,82,82,83],
+            "95":[81,82,84,85,86,86,87], "95+12":[93,94,96,97,98,98,99]}}
+  },
+  Girl: {
+    1: { height_cm:[75.4,76.6,78.6,80.8,83.0,84.9,86.1],
+      SBP:{ "50":[84,85,86,86,87,88,88], "90":[98,99,99,100,101,102,102],
+            "95":[101,102,102,103,104,105,105], "95+12":[113,114,114,115,116,117,117]},
+      DBP:{ "50":[41,42,42,43,44,45,46], "90":[54,55,56,56,57,58,58],
+            "95":[59,59,60,60,61,62,62], "95+12":[71,71,72,72,73,74,74]}},
+    2: { height_cm:[84.9,86.3,88.6,91.1,93.7,96.0,97.4],
+      SBP:{ "50":[87,87,88,89,90,91,91], "90":[101,101,102,103,104,105,106],
+            "95":[104,105,106,106,107,108,109], "95+12":[116,117,118,118,119,120,121]},
+      DBP:{ "50":[45,46,46,47,48,49,50], "90":[58,58,59,60,61,62,62],
+            "95":[62,63,63,64,65,66,66], "95+12":[74,75,75,76,77,78,78]}},
+    3: { height_cm:[91.0,92.4,94.9,97.6,100.5,103.1,104.6],
+      SBP:{ "50":[88,89,89,90,91,92,93], "90":[102,103,104,105,106,107,107],
+            "95":[106,106,107,108,109,110,110], "95+12":[118,118,119,120,121,122,122]},
+      DBP:{ "50":[48,48,49,50,51,53,53], "90":[60,61,61,62,63,64,64],
+            "95":[64,65,65,66,67,68,68], "95+12":[76,77,77,78,79,80,80]}},
+    4: { height_cm:[97.2,98.8,101.4,104.5,107.6,110.5,112.2],
+      SBP:{ "50":[89,90,91,92,93,94,94], "90":[103,104,105,106,107,108,108],
+            "95":[107,107,108,109,110,111,112], "95+12":[119,119,120,121,122,123,124]},
+      DBP:{ "50":[50,51,51,53,54,55,55], "90":[62,63,64,65,66,67,67],
+            "95":[66,67,68,69,70,70,71], "95+12":[78,79,80,81,82,82,83]}},
+    5: { height_cm:[103.6,105.3,108.2,111.5,114.9,118.1,120.0],
+      SBP:{ "50":[90,91,92,93,94,95,96], "90":[104,105,106,107,108,109,110],
+            "95":[108,109,109,110,111,112,113], "95+12":[120,121,121,122,123,124,125]},
+      DBP:{ "50":[52,52,53,55,56,57,57], "90":[64,65,66,67,68,69,70],
+            "95":[68,69,70,71,72,73,73], "95+12":[80,81,82,83,84,85,85]}},
+    6: { height_cm:[110.0,111.8,114.9,118.4,122.1,125.6,127.7],
+      SBP:{ "50":[92,92,93,94,96,97,97], "90":[105,106,107,108,109,110,111],
+            "95":[109,109,110,111,112,113,114], "95+12":[121,121,122,123,124,125,126]},
+      DBP:{ "50":[54,54,55,56,57,58,59], "90":[67,67,68,69,70,71,71],
+            "95":[70,71,72,72,73,74,74], "95+12":[82,83,84,84,85,86,86]}},
+    7: { height_cm:[115.9,117.8,121.1,124.9,128.8,132.5,134.7],
+      SBP:{ "50":[92,93,94,95,97,98,99], "90":[106,106,107,109,110,111,112],
+            "95":[109,110,111,112,113,114,115], "95+12":[121,122,123,124,125,126,127]},
+      DBP:{ "50":[55,55,56,57,58,59,60], "90":[68,68,69,70,71,72,72],
+            "95":[72,72,73,73,74,74,75], "95+12":[84,84,85,85,86,86,87]}},
+    8: { height_cm:[121.0,123.0,126.5,130.6,134.7,138.5,140.9],
+      SBP:{ "50":[93,94,95,97,98,99,100], "90":[107,107,108,110,111,112,113],
+            "95":[110,111,112,113,115,116,117], "95+12":[122,123,124,125,127,128,129]},
+      DBP:{ "50":[56,56,57,59,60,61,61], "90":[69,70,71,72,72,73,73],
+            "95":[72,73,74,74,75,75,75], "95+12":[84,85,86,86,87,87,87]}},
+    9: { height_cm:[125.3,127.6,131.3,135.6,140.1,144.1,146.6],
+      SBP:{ "50":[95,95,97,98,99,100,101], "90":[108,108,109,111,112,113,114],
+            "95":[112,112,113,114,116,117,118], "95+12":[124,124,125,126,128,129,130]},
+      DBP:{ "50":[57,58,59,60,60,61,61], "90":[71,71,72,73,73,73,73],
+            "95":[74,74,75,75,75,75,75], "95+12":[86,86,87,87,87,87,87]}},
+    10: { height_cm:[129.7,132.2,136.3,141.0,145.8,150.2,152.8],
+      SBP:{ "50":[96,97,98,99,101,102,103], "90":[109,110,111,112,113,115,116],
+            "95":[113,114,114,116,117,119,120], "95+12":[125,126,126,128,129,131,132]},
+      DBP:{ "50":[58,59,59,60,61,61,62], "90":[72,73,73,73,73,73,73],
+            "95":[75,75,76,76,76,76,76], "95+12":[87,87,88,88,88,88,88]}},
+    11: { height_cm:[135.6,138.3,142.8,147.8,152.8,157.3,160.0],
+      SBP:{ "50":[99,99,101,102,103,104,106], "90":[111,112,113,114,116,118,120],
+            "95":[115,116,117,118,120,123,124], "95+12":[127,128,129,130,132,135,136]},
+      DBP:{ "50":[61,61,62,63,63,63,63], "90":[74,74,74,74,74,75,75],
+            "95":[76,77,77,77,77,77,77], "95+12":[88,89,89,89,89,89,89]}},
+    12: { height_cm:[142.8,145.5,149.9,154.8,159.6,163.8,166.4],
+      SBP:{ "50":[102,102,104,105,107,108,108], "90":[114,115,116,118,120,122,122],
+            "95":[118,119,120,122,124,126,126], "95+12":[130,131,132,134,136,138,138]},
+      DBP:{ "50":[61,61,61,62,64,65,65], "90":[75,75,75,75,76,76,76],
+            "95":[78,78,78,78,79,79,79], "95+12":[90,90,90,90,91,91,91]}},
+    13: { height_cm:[148.1,150.6,154.7,159.2,163.7,167.8,170.2],
+      SBP:{ "50":[104,105,106,107,108,108,109], "90":[116,117,119,121,122,123,123],
+            "95":[121,122,123,124,126,126,127], "95+12":[133,134,135,136,138,138,139]},
+      DBP:{ "50":[62,62,63,64,65,65,66], "90":[75,75,75,76,76,76,76],
+            "95":[79,79,79,79,80,80,81], "95+12":[91,91,91,91,92,92,93]}},
+    14: { height_cm:[150.6,153.0,156.9,161.3,165.7,169.7,172.1],
+      SBP:{ "50":[105,106,107,108,109,109,109], "90":[118,118,120,122,123,123,123],
+            "95":[123,123,124,125,126,127,127], "95+12":[135,135,136,137,138,139,139]},
+      DBP:{ "50":[63,63,64,65,66,66,66], "90":[76,76,76,76,77,77,77],
+            "95":[80,80,80,80,81,81,82], "95+12":[92,92,92,92,93,93,94]}},
+    15: { height_cm:[151.7,154.0,157.9,162.3,166.7,170.6,173.0],
+      SBP:{ "50":[105,106,107,108,109,109,109], "90":[118,119,121,122,123,123,124],
+            "95":[124,124,125,126,127,127,128], "95+12":[136,136,137,138,139,139,140]},
+      DBP:{ "50":[64,64,64,65,66,67,67], "90":[76,76,76,77,77,78,78],
+            "95":[80,80,80,81,82,82,82], "95+12":[92,92,92,93,94,94,94]}},
+    16: { height_cm:[152.1,154.5,158.4,162.8,167.1,171.1,173.4],
+      SBP:{ "50":[106,107,108,109,109,110,110], "90":[119,120,122,123,124,124,124],
+            "95":[124,125,127,127,128,128,128], "95+12":[136,137,139,139,140,140,140]},
+      DBP:{ "50":[64,64,65,66,66,67,67], "90":[76,76,77,77,78,78,78],
+            "95":[80,80,80,81,82,82,82], "95+12":[92,92,92,93,94,94,94]}},
+    17: { height_cm:[152.4,154.7,158.7,163.0,167.4,171.3,173.7],
+      SBP:{ "50":[107,108,109,110,110,110,111], "90":[120,121,123,124,124,125,125],
+            "95":[125,125,126,127,128,128,128], "95+12":[137,137,138,139,140,140,140]},
+      DBP:{ "50":[64,64,65,66,66,66,67], "90":[76,76,77,77,78,78,78],
+            "95":[80,80,80,81,82,82,84], "95+12":[92,92,92,93,94,94,96]}}
+  }
+};
+const BP_E=id=>document.getElementById(id);
+function bpInterp(x,xs,ys){
+ if(x<=xs[0])return ys[0];if(x>=xs[xs.length-1])return ys[ys.length-1];
+ let i=0;while(i<xs.length-2&&x>xs[i+1])i++;
+ const x0=xs[i],x1=xs[i+1],y0=ys[i],y1=ys[i+1];return x1===x0?y0:y0+((x-x0)/(x1-x0))*(y1-y0);
+}
+function bpGet(g,age,h){
+ const t=BP_DATA[g];if(!t||!t[age])return null;
+ const row=t[age],xs=row.height_cm,r={SBP:{},DBP:{},lo:xs[0],hi:xs[xs.length-1]};
+ ['SBP','DBP'].forEach(k=>Object.keys(row[k]).forEach(p=>{r[k][p]=Math.round(bpInterp(h,xs,row[k][p]))}));
+ return r;
+}
+const BP_LV=['Normal','Elevated (prehipertensi)','Hipertensi stage 1','Hipertensi stage 2'];
+function bpLevel(age,r,sbp,dbp){
+ let ls=0,ld=0;
+ if(age<13){
+  const f=(v,k,e,s1,s2)=>{const P=r[k];return v>=Math.min(P['95+12'],s2)?3:v>=Math.min(P['95'],s1)?2:v>=Math.min(P['90'],e)?1:0};
+  if(sbp!=null)ls=f(sbp,'SBP',120,130,140);
+  if(dbp!=null)ld=f(dbp,'DBP',80,80,90);
+ }else{
+  if(sbp!=null)ls=sbp>=140?3:sbp>=130?2:sbp>=120?1:0;
+  if(dbp!=null)ld=dbp>=90?3:dbp>=80?2:0;
+ }
+ return {ls,ld,l:Math.max(ls,ld)};
+}
+let bpInit=false;
+function bpNum(id){const v=BP_E(id).value;if(v==='')return null;const x=parseFloat(String(v).replace(',','.'));return isNaN(x)?null:x}
+function bpCalc(){
+ const g=BP_E('bpG').value,age=Math.floor(bpNum('bpA')||0),h=bpNum('bpH'),sbp=bpNum('bpS'),dbp=bpNum('bpD');
+ const w=BP_E('bpW'),R=BP_E('bpR'),C=BP_E('bpC');
+ let msg='';
+ if(!(age>=1&&age<=17))msg='Usia harus 1 sampai 17 tahun (tabel tidak mencakup usia di luar rentang ini).';
+ else if(!(h>0))msg='Isi tinggi badan dalam cm.';
+ if(msg){w.textContent=msg;w.hidden=false;R.hidden=true;return}
+ const r=bpGet(g,age,h);
+ if(!r){w.textContent='Data tabel untuk usia ini tidak tersedia.';w.hidden=false;R.hidden=true;return}
+ if(h<r.lo||h>r.hi){w.textContent='Tinggi '+h+' cm di luar rentang tabel usia ini ('+r.lo+'–'+r.hi+' cm). Dipakai nilai batas tabel, jadi hasil kurang akurat.';w.hidden=false}else w.hidden=true;
+ R.hidden=false;
+ const rows=[['50','P50','p50'],['90','P90','p90'],['95','P95','p95'],['95+12','P95 + 12 mmHg','p12']];
+ BP_E('bpT').innerHTML=rows.map(x=>'<tr><td class="l">'+x[1]+'</td><td class="'+x[2]+'">'+r.SBP[x[0]]+'</td><td class="'+x[2]+'">'+r.DBP[x[0]]+'</td></tr>').join('');
+ if(sbp==null&&dbp==null){C.hidden=true;C.textContent='';return}
+ const L=bpLevel(age,r,sbp,dbp);
+ C.hidden=false;C.className='bpc l'+L.l;
+ C.textContent='';
+ C.append(BP_LV[L.l]);
+ const sm=document.createElement('small');
+ sm.textContent='Sistolik '+(sbp==null?'–':sbp)+': '+BP_LV[L.ls]+' · Diastolik '+(dbp==null?'–':dbp)+': '+BP_LV[L.ld];
+ C.appendChild(sm);
+}
+function showBP(){
+ if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=false;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='🩺';$('htitle').textContent='Blood Pressure';
+ if(!bpInit){['bpG','bpA','bpH','bpS','bpD'].forEach(id=>{BP_E(id).addEventListener('input',bpCalc);BP_E(id).addEventListener('change',bpCalc)});bpInit=true}
+ bpCalc();window.scrollTo(0,0);
+}
+/* BERANDA GAYA PEDIATRI & PPDS TOOLS: profil, riwayat, pengaturan, navigasi bawah. */
+const PH_PROF='bp_prof_v1',PH_HIST='bp_hist_v1',PH_OPEN='bp_open_v1';
+const PH_DEF={name:'dr.rifqi',role:'Peserta Didik · Ilmu Kesehatan Anak',avatar:'🧑‍⚕️',img:false,wa:''};
+const PH_EMO=['🧑‍⚕️','👩‍⚕️','👨‍⚕️','🩺','⚕️'];
+const PH_TILES=[
+ ['nicu','💉','#EFF6FF','Koreksi','Darah · Elektrolit'],
+ ['picu','🚨','#FEF2F2','Drug','Emergency PICU'],
+ ['uskom','🫀','#FDEAEA','Uskom','Hemodinamik'],
+ ['tpn','🍼','#ECFEFF','TPN','Neonatus'],
+ ['bc','💧','#EBF3FC','Balance','Cairan & Diuresis'],
+ ['bp','❤️','#FDEAEA','Blood Pressure','Pediatri'],
+ ['bn','📖','#FFF7ED','Buku Saku','NICU'],
+ ['ck','🧪','#EFF6FF','TPN + cakupan','Kalori · GIR'],
+ ['et','📋','#FBE9E9','ETIA','Syarat Administrasi']
+];
+const PH_CALC_BG=['#FDEAEA','#EFF6FF','#ECFEFF','#FFF7ED','#EBF3FC','#FEF2F2','#F0FDF4','#F5F3FF'];
+function phGet(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+function phSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let phProf=Object.assign({},PH_DEF,phGet(PH_PROF,{}));
+function phToast(m){const t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(phToast.t);phToast.t=setTimeout(()=>{t.hidden=true},2200)}
+function phAvatar(node,p){node.textContent='';if(p.img){const im=document.createElement('img');im.alt='';im.src=p.avatar;node.appendChild(im)}else node.textContent=p.avatar}
+function phApplyProf(){$('phName').textContent=phProf.name;$('phRole').textContent=phProf.role;phAvatar($('phAv'),phProf)}
+/* riwayat dan tab yang pernah dibuka */
+function phOpen(t){
+  const o=phGet(PH_OPEN,{});o[t]=1;phSet(PH_OPEN,o);
+  const T=PH_TILES.find(x=>x[0]===t);if(T)phLog('t',t,T[3],T[1]);
+}
+function phLog(kind,id,label,icon){
+  let h=phGet(PH_HIST,[]);if(!Array.isArray(h))h=[];
+  if(h[0]&&h[0].k===kind&&h[0].id===id)h.shift();
+  h.unshift({k:kind,id:id,l:label,i:icon,ts:Date.now()});
+  phSet(PH_HIST,h.slice(0,50));
+}
+function phRenderAll(){
+  phApplyProf();
+  const o=phGet(PH_OPEN,{}),h=phGet(PH_HIST,[]);
+  $('phC1').textContent=PH_TILES.length;
+  $('phC2').textContent=PH_TILES.filter(t=>o[t[0]]).length;
+  $('phC3').textContent=Array.isArray(h)?h.length:0;
+  const mk=(icon,bg,label,sub,feat,fn,aria)=>{
+    const b=el('button','ph-box'+(feat?' featured':''));b.type='button';b.setAttribute('aria-label',aria||label);
+    const ic=el('div','ph-ico',icon);ic.style.background=bg;
+    b.append(ic,el('div','ph-lbl',label));if(sub)b.appendChild(el('div','ph-sub',sub));
+    b.addEventListener('click',fn);return b;
+  };
+  const g=$('phGrid');g.textContent='';
+  PH_TILES.forEach(([id,ic,bg,name,sub])=>{
+    const info=TABINFO.find(x=>x[0]===id);const d=info?(typeof info[3]==='function'?info[3]():info[3]):'';
+    g.appendChild(mk(ic,bg,name,sub,!!o[id],()=>goTab(id),'Buka '+name+(d?'. '+d:'')));
+  });
+  const c=$('phCalc');c.textContent='';
+  const catName={};CATS.forEach(([k,n])=>catName[k]=n);
+  CATS.forEach(([k])=>sections.filter(s=>s.cat===k).forEach((s,i)=>{
+    const m=META[s.id];
+    c.appendChild(mk(m[0],PH_CALC_BG[(i+k.length)%PH_CALC_BG.length],m[1],catName[k],false,()=>openCalc(s),s.title));
+  }));
+}
+/* tampilan bar atas dan bar bawah menurut layar aktif */
+function chrome(){
+  const hm=(tab==='all'||tab==='rw'||tab==='st')&&!cur;
+  document.body.classList.toggle('is-home',hm);document.body.classList.toggle('hn',hm);
+  const pg=tab==='rw'?'rw':tab==='st'?'st':'home';
+  [...$('hnav').children].forEach(b=>b.classList.toggle('on',b.dataset.page===pg));
+}
+/* riwayat */
+function showRW(){
+  if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+  cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('st').hidden=true;$('rw').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+  const L=$('rwList');L.textContent='';
+  const h=phGet(PH_HIST,[]);
+  if(!Array.isArray(h)||!h.length)L.appendChild(el('div','ph-empty','Belum ada riwayat. Alat yang Anda buka akan muncul di sini.'));
+  else h.forEach(x=>{
+    const b=el('button','ph-hi');b.type='button';
+    const ic=el('span','i',x.i||'🧮');const box=document.createElement('span');
+    const tm=new Date(x.ts).toLocaleString('id-ID',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+    box.append(el('b',null,x.l),el('small',null,(x.k==='c'?'Kalkulator · ':'Tab · ')+tm));
+    b.append(ic,box);
+    b.addEventListener('click',()=>{
+      if(x.k==='t')goTab(x.id);
+      else{const s=sections.find(z=>z.id===x.id);if(s){goTab('all');openCalc(s)}}
+    });
+    L.appendChild(b);
+  });
+  window.scrollTo(0,0);
+}
+/* pengaturan */
+let phDraft=null,stInit=false;
+function stFill(){
+  phAvatar($('stPrev'),phDraft);
+  [...$('stEmo').children].forEach(e=>e.classList.toggle('sel',!phDraft.img&&e.dataset.emoji===phDraft.avatar));
+}
+function showST(){
+  if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+  cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=false;$('back').hidden=true;$('hextra').hidden=true;
+  phDraft=Object.assign({},phProf);
+  $('stName').value=phProf.name===PH_DEF.name?'':phProf.name;
+  $('stRole').value=phProf.role===PH_DEF.role?'':phProf.role;
+  $('stWa').value=phProf.wa||'';
+  $('stDark').checked=phIsDark();
+  if(!stInit){
+    stInit=true;
+    PH_EMO.forEach(e=>{const b=el('button','ph-eo',e);b.type='button';b.dataset.emoji=e;b.setAttribute('aria-label','Ikon '+e);
+      b.addEventListener('click',()=>{phDraft.avatar=e;phDraft.img=false;stFill()});$('stEmo').appendChild(b)});
+    $('stUp').addEventListener('click',()=>$('stFile').click());
+    $('stFile').addEventListener('change',e=>{
+      const f=e.target.files[0];if(!f)return;
+      const r=new FileReader();
+      r.onload=()=>{const im=new Image();im.onload=()=>{
+        try{const n=200,c=document.createElement('canvas');c.width=c.height=n;const x=c.getContext('2d');
+          const m=Math.min(im.width,im.height),sx=(im.width-m)/2,sy=(im.height-m)/2;
+          x.drawImage(im,sx,sy,m,m,0,0,n,n);phDraft.avatar=c.toDataURL('image/jpeg',.85);phDraft.img=true;stFill()}catch(err){phToast('Foto tidak bisa dipakai')}
+      };im.onerror=()=>phToast('Foto tidak bisa dipakai');im.src=r.result};
+      r.readAsDataURL(f);e.target.value='';
+    });
+    $('stSave').addEventListener('click',()=>{
+      phProf={name:$('stName').value.trim()||PH_DEF.name,role:$('stRole').value.trim()||PH_DEF.role,avatar:phDraft.avatar,img:phDraft.img,wa:$('stWa').value.trim()};
+      phSet(PH_PROF,phProf);phToast('Profil tersimpan');
+    });
+    $('stReset').addEventListener('click',()=>{
+      phProf=Object.assign({},PH_DEF);try{localStorage.removeItem(PH_PROF)}catch(e){}
+      phDraft=Object.assign({},phProf);$('stName').value='';$('stRole').value='';$('stWa').value='';stFill();phToast('Profil dikembalikan');
+    });
+    $('stDark').addEventListener('change',e=>{if(phIsDark()!==e.target.checked)$('theme').click()});
+    $('stBack').addEventListener('click',()=>goTab('all'));
+  }
+  stFill();window.scrollTo(0,0);
+}
+/* mode gelap: memakai tombol tema yang sudah ada, disimpan di perangkat */
+function phIsDark(){const r=document.documentElement;return r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches)}
+/* kontak supervisor, bagikan, navigasi bawah */
+function phContact(){
+  let n=(phProf.wa||'').replace(/\D/g,'');
+  if(!n){phToast('Isi nomor WhatsApp supervisor di Pengaturan');goTab('st');setTimeout(()=>{try{$('stWa').focus()}catch(e){}},50);return}
+  if(n[0]==='0')n='62'+n.slice(1);
+  window.open('https://wa.me/'+n+'?text='+encodeURIComponent('Assalamualaikum dok, mohon arahan.'),'_blank','noopener');
+}
+async function phShare(){
+  const url=location.href.split('#')[0],d={title:'Bismillah PICU',text:'Alat bantu hitung NICU dan PICU',url:url};
+  try{if(navigator.share){await navigator.share(d);return}}catch(e){if(e&&e.name==='AbortError')return}
+  try{await navigator.clipboard.writeText(url);phToast('Tautan disalin')}catch(e){phToast(url)}
+}
+$('phWa').addEventListener('click',phContact);
+$('phShare').addEventListener('click',phShare);
+$('phSet').addEventListener('click',()=>goTab('st'));
+$('rwBack').addEventListener('click',()=>goTab('all'));
+$('rwClear').addEventListener('click',()=>{phSet(PH_HIST,[]);showRW()});
+$('hnav').addEventListener('click',e=>{
+  const b=e.target.closest('.ph-bi');if(!b)return;const p=b.dataset.page;
+  if(p==='home'){goTab('all');window.scrollTo(0,0)}
+  else if(p==='alat'){if(tab!=='all'||cur)goTab('all');setTimeout(()=>{try{$('phAlat').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}},30)}
+  else if(p==='rw')goTab('rw');
+  else if(p==='st')goTab('st');
+  else if(p==='kontak')phContact();
+});
+(function(){const o=openCalc;openCalc=function(s){o(s);phLog('c',s.id,META[s.id][1],META[s.id][0]);chrome()}})();
+/* BUKU SAKU NICU: dimuat dari buku-nicu.html lewat iframe, hanya saat tab pertama kali dibuka. */
+let bnInit=false;
+function bnTheme(){
+ try{
+  const f=$('bnF'),d=f.contentDocument;if(!d||!d.documentElement)return;
+  const r=document.documentElement,dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
+  d.documentElement.dataset.theme=dark?'dark':'light';
+ }catch(e){}
+}
+function showBN(){
+ if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=false;$('et').hidden=true;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='📖';$('htitle').textContent='Buku Saku NICU';
+ const f=$('bnF');
+ if(!bnInit){
+  bnInit=true;
+  f.addEventListener('load',bnTheme);
+  $('theme').addEventListener('click',()=>setTimeout(bnTheme,0));
+  fetch(f.dataset.src,{method:'HEAD',cache:'no-store'}).then(r=>{if(!r.ok){$('bnW').hidden=false;f.hidden=true}}).catch(()=>{});
+  f.src=f.dataset.src;
+ }else bnTheme();
+ window.scrollTo(0,0);
+}
+/* TPN + CAKUPAN: halaman Kalkulator Cakupan Kalori dimuat di iframe (srcdoc) saat tab pertama kali dibuka. */
+const CK_HTML="<!DOCTYPE html>\n<html lang=\"id\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"color-scheme\" content=\"light dark\">\n<title>Kalkulator Cakupan Kalori<\/title>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap\" rel=\"stylesheet\">\n<style>\n/* Layout: satu kolom seperti lembar jaga. Ringkasan hasil di atas, empat langkah input di bawah, bilah ringkas tetap di dasar layar. */\n:root {\n  color-scheme: light;\n  --bg: #eef2f4;\n  --surface: #ffffff;\n  --field: #f5f8f9;\n  --ink: #0f1f26;\n  --muted: #4b5e68;\n  --line: #d6dee2;\n  --line-strong: #a9b8bf;\n  --accent: #0a6475;\n  --accent-ink: #ffffff;\n  --soft: #e1eef1;\n  --c-oral: #0a6475;\n  --c-par: #3556a8;\n  --good: #176a40;\n  --good-bg: #dff1e7;\n  --warn: #7f4a00;\n  --warn-bg: #fbecd0;\n  --crit: #a1201a;\n  --crit-bg: #fbe1de;\n  --font-body: \"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif;\n  --font-num: \"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, monospace;\n}\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme=\"light\"]) {\n    color-scheme: dark;\n    --bg: #0d171c;\n    --surface: #15242b;\n    --field: #101d23;\n    --ink: #e9f1f4;\n    --muted: #a9bbc3;\n    --line: #2a3e47;\n    --line-strong: #4a6270;\n    --accent: #4fc0d2;\n    --accent-ink: #052028;\n    --soft: #183640;\n    --c-oral: #4fc0d2;\n    --c-par: #8eadf0;\n    --good: #6ed09a;\n    --good-bg: #153326;\n    --warn: #ecb256;\n    --warn-bg: #3a2c12;\n    --crit: #ff938a;\n    --crit-bg: #3d1a18;\n  }\n}\n:root[data-theme=\"dark\"] {\n  color-scheme: dark;\n  --bg: #0d171c;\n  --surface: #15242b;\n  --field: #101d23;\n  --ink: #e9f1f4;\n  --muted: #a9bbc3;\n  --line: #2a3e47;\n  --line-strong: #4a6270;\n  --accent: #4fc0d2;\n  --accent-ink: #052028;\n  --soft: #183640;\n  --c-oral: #4fc0d2;\n  --c-par: #8eadf0;\n  --good: #6ed09a;\n  --good-bg: #153326;\n  --warn: #ecb256;\n  --warn-bg: #3a2c12;\n  --crit: #ff938a;\n  --crit-bg: #3d1a18;\n}\n\n* { box-sizing: border-box; }\n[hidden] { display: none !important; }\nhtml { font-size: 15px; }\nhtml, body { margin: 0; }\nbody {\n  background: var(--bg);\n  color: var(--ink);\n  font: 1rem/1.55 var(--font-body);\n  -webkit-text-size-adjust: 100%;\n}\n.wrap {\n  max-width: 720px;\n  margin: 0 auto;\n  padding: 20px 16px 112px;\n  display: flex;\n  flex-direction: column;\n  gap: 18px;\n}\nh1 { font-size: 1.3rem; line-height: 1.2; margin: 0; text-wrap: balance; }\n.sub { margin: 6px 0 0; color: var(--muted); font-size: .88rem; max-width: 60ch; }\n.top-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }\n\n/* Indeks: menempel di atas, bisa digeser ke samping */\n.index {\n  position: sticky;\n  top: 0;\n  z-index: 6;\n  display: flex;\n  gap: 6px;\n  overflow-x: auto;\n  margin: 0 -16px;\n  padding: 8px 16px;\n  background: var(--bg);\n  border-bottom: 1px solid var(--line);\n  scrollbar-width: none;\n}\n.index::-webkit-scrollbar { display: none; }\n.index button {\n  flex: none;\n  min-height: 34px;\n  padding: 0 12px;\n  font-size: .82rem;\n  border-radius: 999px;\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n}\n.index button .ni { font: 600 .72rem var(--font-num); opacity: .75; }\n.index button[aria-current=\"true\"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }\n.index button[aria-current=\"true\"] .ni { opacity: 1; }\n#result, .card[id] { scroll-margin-top: 58px; }\n\n.card {\n  background: var(--surface);\n  border: 1px solid var(--line);\n  border-radius: 12px;\n  padding: 18px 16px;\n}\nh2 {\n  font-size: 1.05rem;\n  line-height: 1.3;\n  margin: 0 0 16px;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  text-wrap: balance;\n}\n.n {\n  flex: none;\n  display: inline-grid;\n  place-items: center;\n  width: 25px;\n  height: 25px;\n  border-radius: 7px;\n  background: var(--accent);\n  color: var(--accent-ink);\n  font: 600 .82rem var(--font-num);\n}\n.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }\n\n/* Form */\n.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }\n.field { min-width: 0; }\n.field label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 5px; line-height: 1.3; }\ninput[type=\"text\"], select, textarea {\n  width: 100%;\n  min-height: 44px;\n  font: inherit;\n  font-size: 16px;\n  padding: 10px 12px;\n  border: 1px solid var(--line-strong);\n  border-radius: 8px;\n  background: var(--field);\n  color: var(--ink);\n}\ninput[type=\"text\"].num { font-family: var(--font-num); font-size: 16px; }\ninput::placeholder { color: var(--muted); opacity: .75; }\ninput:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {\n  outline: 3px solid var(--accent);\n  outline-offset: 1px;\n}\n.hint { font-size: .8rem; line-height: 1.5; color: var(--muted); margin: 14px 0 0; max-width: 62ch; }\n.stack { display: flex; flex-direction: column; gap: 14px; }\n\n.segctl { position: relative; display: inline-flex; align-self: flex-start; border: 1px solid var(--line-strong); border-radius: 9px; overflow: hidden; }\n.segctl input { position: absolute; opacity: 0; pointer-events: none; }\n.segctl label { display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; cursor: pointer; font-size: .9rem; }\n.segctl input:checked + label { background: var(--accent); color: var(--accent-ink); font-weight: 600; }\n.segctl input:focus-visible + label { outline: 3px solid var(--ink); outline-offset: -4px; }\n\nbutton {\n  font: inherit;\n  font-size: .9rem;\n  min-height: 42px;\n  padding: 0 14px;\n  border-radius: 9px;\n  border: 1px solid var(--line-strong);\n  background: var(--surface);\n  color: var(--ink);\n  cursor: pointer;\n}\nbutton.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }\nbutton.link { border: 0; background: none; color: var(--accent); min-height: 40px; padding: 0 6px; text-decoration: underline; }\n\n/* Result */\n.need-line { font-size: .85rem; color: var(--muted); margin: 0 0 14px; }\n.need-line b { color: var(--ink); font-family: var(--font-num); font-weight: 600; }\n.metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }\n.metric { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }\n.metric .lab { font-size: .8rem; color: var(--muted); display: flex; align-items: center; gap: 7px; }\n.dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; flex: none; }\n.metric .pct { font: 600 1.4rem/1.2 var(--font-num); font-variant-numeric: tabular-nums; margin-top: 4px; }\n.metric .kc { font: .8rem var(--font-num); color: var(--muted); margin-top: 2px; }\n.metric.total {\n  grid-column: 1 / -1;\n  background: var(--soft);\n  border-color: transparent;\n  display: grid;\n  grid-template-columns: 1fr auto;\n  align-items: center;\n  column-gap: 12px;\n}\n.metric.total .lab { grid-column: 1; color: var(--ink); font-weight: 600; }\n.metric.total .pct { grid-column: 1; font-size: 1.9rem; }\n.metric.total .kc { grid-column: 2; grid-row: 1 / span 2; font-size: .92rem; color: var(--ink); text-align: right; align-self: center; }\n\n.bar-wrap { margin: 16px 0 4px; }\n.bar { position: relative; height: 20px; background: var(--field); border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; display: flex; }\n.bar .seg { height: 100%; min-width: 0; transition: width .2s; }\n.bar .tick { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--ink); }\n.bar-scale { display: flex; justify-content: space-between; gap: 8px; font: .72rem var(--font-num); color: var(--muted); margin-top: 5px; }\n\n.flags { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }\n.flags li { border-left: 4px solid var(--line-strong); padding: 9px 12px; border-radius: 0 8px 8px 0; font-size: .87rem; line-height: 1.45; background: var(--field); }\n.flags li b { margin-right: 6px; }\n.flags li.ok { border-color: var(--good); background: var(--good-bg); }\n.flags li.ok b { color: var(--good); }\n.flags li.warn { border-color: var(--warn); background: var(--warn-bg); }\n.flags li.warn b { color: var(--warn); }\n.flags li.crit { border-color: var(--crit); background: var(--crit-bg); }\n.flags li.crit b { color: var(--crit); }\n.flags li.info { border-color: var(--accent); background: var(--soft); }\n.flags li.info b { color: var(--accent); }\n\n.report-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 20px 0 8px; }\n.report-head label { font-size: .85rem; font-weight: 600; }\n.report-head .acts { display: flex; align-items: center; gap: 10px; }\ntextarea#report { font-family: var(--font-num); font-size: .8rem; line-height: 1.65; padding: 12px; resize: vertical; }\n#copyMsg { font-size: .78rem; color: var(--muted); }\n\n/* Oral rows */\n.orow { border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 14px; background: var(--surface); }\n.orow-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 12px; }\n.orow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }\n.orow-foot { display: flex; justify-content: space-between; align-items: center; font-size: .85rem; color: var(--muted); }\n.orow-foot .num { color: var(--ink); font-weight: 500; }\n\n/* Readouts */\ndl.read { margin: 18px 0 0; display: grid; grid-template-columns: 1fr auto; font-size: .92rem; }\ndl.read dt, dl.read dd { padding: 10px 0; border-bottom: 1px solid var(--line); margin: 0; }\ndl.read dt { color: var(--muted); padding-right: 12px; }\ndl.read dd { text-align: right; font-family: var(--font-num); font-variant-numeric: tabular-nums; color: var(--ink); }\ndl.read dt.strong, dl.read dd.strong { background: var(--soft); border-bottom: 0; color: var(--ink); font-weight: 600; padding-top: 12px; padding-bottom: 12px; }\ndl.read dt.strong { padding-left: 12px; border-radius: 9px 0 0 9px; }\ndl.read dd.strong { padding-right: 12px; border-radius: 0 9px 9px 0; font-size: 1rem; }\n\n.fixed-bar {\n  position: fixed;\n  left: 0; right: 0; bottom: 0;\n  background: var(--surface);\n  border-top: 1px solid var(--line-strong);\n  padding: 10px 16px;\n  z-index: 5;\n}\n.fixed-bar .in { max-width: 720px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; font: .82rem var(--font-num); }\n.fixed-bar .parts { display: flex; gap: 6px 14px; flex-wrap: wrap; align-items: center; }\n.fixed-bar .parts span { display: inline-flex; align-items: center; gap: 6px; }\n.fixed-bar strong { font-size: 1.02rem; }\n.fixed-bar button { min-height: 38px; }\n\n.osm { margin-top: 18px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 14px; background: var(--field); }\n.osm-top { display: flex; justify-content: space-between; gap: 12px; }\n.osm-d { text-align: right; }\n.osm-lab { font-size: .8rem; color: var(--muted); }\n.osm-val { font-size: 1.35rem; font-weight: 600; margin-top: 2px; }\n.route { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }\n.rt { border-left: 4px solid var(--line-strong); border-radius: 0 8px 8px 0; padding: 8px 10px; background: var(--surface); }\n.rt-n { display: block; font-weight: 600; font-size: .88rem; }\n.rt-s { display: block; font-size: .85rem; margin-top: 1px; font-weight: 600; color: var(--muted); }\n.rt.ok { border-color: var(--good); background: var(--good-bg); }\n.rt.ok .rt-s { color: var(--good); }\n.rt.warn { border-color: var(--warn); background: var(--warn-bg); }\n.rt.warn .rt-s { color: var(--warn); }\n.rt.crit { border-color: var(--crit); background: var(--crit-bg); }\n.rt.crit .rt-s { color: var(--crit); }\n.osm-why { margin: 12px 0 0; font-size: .85rem; line-height: 1.5; }\n.subhead { margin-top: 6px; font-weight: 600; font-size: .95rem; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); padding-top: 16px; }\n.subhead span { font-weight: 400; font-size: .8rem; color: var(--muted); }\n.opt { border: 1px solid var(--line); border-radius: 10px; padding: 2px 14px; background: var(--surface); }\n.opt-head { display: flex; align-items: center; gap: 12px; min-height: 48px; cursor: pointer; font-weight: 600; font-size: .95rem; }\n.opt-head input { width: 22px; height: 22px; accent-color: var(--accent); flex: none; margin: 0; }\n.opt-body { padding: 2px 0 14px; display: flex; flex-direction: column; gap: 12px; }\n.chk { display: flex; align-items: flex-start; gap: 10px; font-size: .85rem; color: var(--muted); cursor: pointer; }\n.chk input { width: 20px; height: 20px; accent-color: var(--accent); margin: 1px 0 0; flex: none; }\n.osm-lip { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: .85rem; line-height: 1.5; color: var(--muted); }\n.foot { font-size: .76rem; line-height: 1.5; color: var(--muted); max-width: 62ch; }\n\n@media (min-width: 600px) {\n  .wrap { padding-left: 24px; padding-right: 24px; }\n  .index { margin: 0 -24px; padding: 8px 24px; }\n  .card { padding: 22px 22px; }\n  .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }\n  .metric.total { grid-column: auto; display: block; }\n  .metric.total .lab { font-weight: 400; color: var(--muted); }\n  .metric.total .pct { font-size: 1.4rem; }\n  .metric.total .kc { font-size: .8rem; color: var(--muted); text-align: left; }\n}\n@media (max-width: 420px) {\n  .orow-top { grid-template-columns: 1fr; }\n  .orow-grid { gap: 10px 8px; }\n}\n@media (prefers-reduced-motion: reduce) { .bar .seg { transition: none; } }\n<\/style>\n<\/head>\n<body>\n<div class=\"wrap\">\n\n<header>\n  <h1>Kalkulator Cakupan Kalori<\/h1>\n  <p class=\"sub\">Laporan jaga PICU/HCU: kebutuhan Schofield, kalori oral, kalori parenteral dan campuran dextrose dari target GIR.<\/p>\n  <div class=\"top-actions\">\n    <button type=\"button\" id=\"btnSample\">Isi contoh kasus<\/button>\n    <button type=\"button\" id=\"btnClear\">Kosongkan<\/button>\n  <\/div>\n<\/header>\n\n<nav class=\"index\" id=\"index\" aria-label=\"Indeks\">\n  <button type=\"button\" data-t=\"s-pasien\"><span class=\"ni\">1<\/span>Pasien<\/button>\n  <button type=\"button\" data-t=\"s-cairan\"><span class=\"ni\">2<\/span>Cairan<\/button>\n  <button type=\"button\" data-t=\"s-oral\"><span class=\"ni\">3<\/span>Oral<\/button>\n  <button type=\"button\" data-t=\"s-parenteral\"><span class=\"ni\">4<\/span>Parenteral<\/button>\n  <button type=\"button\" data-t=\"result\"><span class=\"ni\">5<\/span>Hasil<\/button>\n<\/nav>\n\n<!-- 1 Pasien -->\n<section class=\"card\" id=\"s-pasien\">\n  <h2><span class=\"n\">1<\/span>Pasien dan kebutuhan kalori<\/h2>\n  <div class=\"stack\">\n    <div class=\"segctl\" role=\"radiogroup\" aria-label=\"Jenis kelamin\">\n      <input type=\"radio\" name=\"sex\" id=\"sexP\" value=\"P\" checked><label for=\"sexP\">Perempuan<\/label>\n      <input type=\"radio\" name=\"sex\" id=\"sexL\" value=\"L\"><label for=\"sexL\">Laki-laki<\/label>\n    <\/div>\n    <div class=\"grid\">\n      <div class=\"field\"><label for=\"age_y\">Usia (tahun)<\/label><input type=\"text\" class=\"num\" id=\"age_y\" inputmode=\"numeric\" autocomplete=\"off\"><\/div>\n      <div class=\"field\"><label for=\"age_m\">Usia (bulan)<\/label><input type=\"text\" class=\"num\" id=\"age_m\" inputmode=\"numeric\" autocomplete=\"off\"><\/div>\n      <div class=\"field\"><label for=\"wt\">BB (kg)<\/label><input type=\"text\" class=\"num\" id=\"wt\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n      <div class=\"field\"><label for=\"ht\">TB (cm)<\/label><input type=\"text\" class=\"num\" id=\"ht\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n    <\/div>\n    <div class=\"field\">\n      <label for=\"need_manual\">Kebutuhan kalori manual (kkal/hari), kosongkan untuk pakai Schofield<\/label>\n      <input type=\"text\" class=\"num\" id=\"need_manual\" inputmode=\"decimal\" autocomplete=\"off\">\n    <\/div>\n  <\/div>\n  <dl class=\"read\">\n    <dt>Rumus yang dipakai<\/dt><dd id=\"rFormula\">\u2013<\/dd>\n    <dt>Schofield BB + TB<\/dt><dd id=\"rWH\">\u2013<\/dd>\n    <dt>Pembanding: Schofield BB saja<\/dt><dd id=\"rW\">\u2013<\/dd>\n  <\/dl>\n  <p class=\"hint\">Kelompok usia: 0\u20133 th berakhir tepat di 3 tahun. Usia 3 tahun 6 bulan memakai rumus 3\u201310 th. Schofield ini BMR tanpa faktor stres.<\/p>\n<\/section>\n\n<!-- 2 Cairan -->\n<section class=\"card\" id=\"s-cairan\">\n  <h2><span class=\"n\">2<\/span>Cairan harian<\/h2>\n  <div class=\"grid\">\n    <div class=\"field\"><label for=\"fl_need\">Kebutuhan cairan (mL/hari)<\/label><input type=\"text\" class=\"num\" id=\"fl_need\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"otomatis\"><\/div>\n    <div class=\"field\"><label for=\"meds\">Cairan obat (mL/hari)<\/label><input type=\"text\" class=\"num\" id=\"meds\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n  <\/div>\n  <dl class=\"read\">\n    <dt>Kebutuhan cairan<\/dt><dd id=\"rFl\">\u2013<\/dd>\n    <dt>Oral (dari langkah 3)<\/dt><dd id=\"rFlOral\">\u2013<\/dd>\n    <dt>Obat<\/dt><dd id=\"rFlMed\">\u2013<\/dd>\n        <dt class=\"strong\">Sisa untuk cairan IV<\/dt><dd class=\"strong\" id=\"rFlIV\">\u2013<\/dd>\n  <\/dl>\n  <p class=\"hint\" id=\"flHint\">Kosongkan kebutuhan cairan untuk memakai Holliday-Segar (100 mL/kg untuk 10 kg pertama, lalu 50 mL/kg, lalu 20 mL/kg).<\/p>\n<\/section>\n\n<!-- 3 Oral -->\n<section class=\"card\" id=\"s-oral\">\n  <h2><span class=\"n\">3<\/span>Nutrisi oral / enteral<\/h2>\n  <div class=\"stack\" id=\"orows\"><\/div>\n  <div style=\"margin-top:10px\"><button type=\"button\" id=\"addRow\">+ Tambah nutrisi<\/button><\/div>\n  <dl class=\"read\">\n    <dt>Total volume<\/dt><dd id=\"rOralMl\">\u2013<\/dd>\n    <dt class=\"strong\">Total kalori oral<\/dt><dd class=\"strong\" id=\"rOralK\">\u2013<\/dd>\n  <\/dl>\n  <p class=\"hint\">Isi kkal/mL sesuai label produk dan pengenceran yang dipakai. ASI dihitung 0,67 kkal/mL, formula 1 kkal/mL.<\/p>\n<\/section>\n\n<!-- 4 Parenteral -->\n<section class=\"card\" id=\"s-parenteral\">\n  <h2><span class=\"n\">4<\/span>Parenteral, osmolaritas dan jalur infus<\/h2>\n  <div class=\"stack\">\n    <div class=\"segctl\" role=\"radiogroup\" aria-label=\"Cara mengisi\">\n      <input type=\"radio\" name=\"mode\" id=\"modeGir\" value=\"gir\" checked><label for=\"modeGir\">Target GIR<\/label>\n      <input type=\"radio\" name=\"mode\" id=\"modeMan\" value=\"manual\"><label for=\"modeMan\">Volume manual<\/label>\n    <\/div>\n    <div class=\"grid\">\n      <div class=\"field\"><label for=\"conc\">Larutan pekat<\/label><select id=\"conc\"><\/select><\/div>\n      <div class=\"field\"><label for=\"base\">Larutan dasar<\/label><select id=\"base\"><\/select><\/div>\n    <\/div>\n    <div class=\"grid\" id=\"girBox\">\n      <div class=\"field\"><label for=\"gir\">Target GIR (mg/kg/menit)<\/label><input type=\"text\" class=\"num\" id=\"gir\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n      <div class=\"field\"><label for=\"iv_vol\">Volume IV (mL/hari)<\/label><input type=\"text\" class=\"num\" id=\"iv_vol\" inputmode=\"decimal\" autocomplete=\"off\" placeholder=\"otomatis\"><\/div>\n    <\/div>\n    <div class=\"grid\" id=\"manBox\" hidden>\n      <div class=\"field\"><label for=\"m_p\">Larutan pekat (mL/hari)<\/label><input type=\"text\" class=\"num\" id=\"m_p\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n      <div class=\"field\"><label for=\"m_b\">Larutan dasar (mL/hari)<\/label><input type=\"text\" class=\"num\" id=\"m_b\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n    <\/div>\n    <div class=\"field\">\n      <label for=\"add_meq\">Elektrolit tambahan (mEq/hari): KCl, NaCl atau NaHCO3<\/label>\n      <input type=\"text\" class=\"num\" id=\"add_meq\" inputmode=\"decimal\" autocomplete=\"off\">\n    <\/div>\n    <div class=\"field\">\n      <label for=\"kfac\">Kalori per gram dextrose<\/label>\n      <select id=\"kfac\">\n        <option value=\"4\">4 kkal/g (D5 = 0,2 kkal/mL)<\/option>\n        <option value=\"3.4\">3,4 kkal/g (dextrose monohidrat)<\/option>\n      <\/select>\n    <\/div>\n\n    <div class=\"subhead\">Komponen lain<span>centang yang diberikan<\/span><\/div>\n\n    <div class=\"opt\">\n      <label class=\"opt-head\" for=\"chk_lip\"><input type=\"checkbox\" id=\"chk_lip\">Lipid (emulsi lemak)<\/label>\n      <div class=\"opt-body\" id=\"bodyLip\" hidden>\n        <div class=\"grid\">\n          <div class=\"field\"><label for=\"lip_conc\">Konsentrasi lipid<\/label>\n            <select id=\"lip_conc\"><option value=\"20\">20%<\/option><option value=\"10\">10%<\/option><\/select><\/div>\n          <div class=\"field\"><label for=\"lip_dose\">Dosis (g/kg/hari)<\/label><input type=\"text\" class=\"num\" id=\"lip_dose\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n        <\/div>\n        <p class=\"hint\" style=\"margin:0\">Emulsi ini sudah mengandung fosfolipid telur (12 g/L), jadi tidak ada item fosfolipid terpisah. Kalori: 20% = 2 kkal/mL, 10% = 1,1 kkal/mL (sudah termasuk fosfolipid dan gliserol).<\/p>\n      <\/div>\n    <\/div>\n\n    <div class=\"opt\">\n      <label class=\"opt-head\" for=\"chk_aa\"><input type=\"checkbox\" id=\"chk_aa\">Protein (asam amino)<\/label>\n      <div class=\"opt-body\" id=\"bodyAA\" hidden>\n        <div class=\"grid\">\n          <div class=\"field\"><label for=\"aa_conc\">Konsentrasi asam amino<\/label>\n            <select id=\"aa_conc\"><option value=\"5\">5%<\/option><option value=\"6\">6%<\/option><option value=\"8\">8%<\/option><option value=\"10\" selected>10%<\/option><option value=\"15\">15%<\/option><\/select><\/div>\n          <div class=\"field\"><label for=\"aa_dose\">Dosis (g/kg/hari)<\/label><input type=\"text\" class=\"num\" id=\"aa_dose\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n        <\/div>\n        <label class=\"chk\" for=\"aa_kcal\"><input type=\"checkbox\" id=\"aa_kcal\" checked>Hitung kalori asam amino (4 kkal/g) ke cakupan<\/label>\n      <\/div>\n    <\/div>\n\n    <div class=\"opt\">\n      <label class=\"opt-head\" for=\"chk_ca\"><input type=\"checkbox\" id=\"chk_ca\">Kalsium glukonas 10%<\/label>\n      <div class=\"opt-body\" id=\"bodyCa\" hidden>\n        <div class=\"field\"><label for=\"ca_dose\">Dosis Ca glukonas (mg/kg/hari)<\/label><input type=\"text\" class=\"num\" id=\"ca_dose\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>\n        <p class=\"hint\" style=\"margin:0\">1 mL = 100 mg Ca glukonas = 9,3 mg Ca elemental = 0,465 mEq.<\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n  <dl class=\"read\">\n    <dt>Campuran dextrose<\/dt><dd id=\"rMix\">\u2013<\/dd>\n    <dt>Volume IV total<\/dt><dd id=\"rV\">\u2013<\/dd>\n    <dt>Dextrose larutan<\/dt><dd id=\"rD\">\u2013<\/dd>\n    <dt id=\"rDm_t\" hidden>Dextrose di campuran utama<\/dt><dd id=\"rDm\" hidden><\/dd>\n    <dt>Laju campuran utama<\/dt><dd id=\"rRate\">\u2013<\/dd>\n    <dt id=\"rRateL_t\" hidden>Laju lipid (terpisah)<\/dt><dd id=\"rRateL\" hidden><\/dd>\n    <dt>GIR aktual<\/dt><dd id=\"rGIR\">\u2013<\/dd>\n    <dt>Dextrose total<\/dt><dd id=\"rG\">\u2013<\/dd>\n    <dt id=\"rAA_t\" hidden>Asam amino<\/dt><dd id=\"rAA\" hidden><\/dd>\n    <dt id=\"rLip_t\" hidden>Lipid<\/dt><dd id=\"rLip\" hidden><\/dd>\n    <dt id=\"rCa_t\" hidden>Ca glukonas 10%<\/dt><dd id=\"rCa\" hidden><\/dd>\n    <dt id=\"rKd_t\" hidden>Kalori dextrose<\/dt><dd id=\"rKd\" hidden><\/dd>\n    <dt id=\"rKa_t\" hidden>Kalori asam amino<\/dt><dd id=\"rKa\" hidden><\/dd>\n    <dt id=\"rKl_t\" hidden>Kalori lipid<\/dt><dd id=\"rKl\" hidden><\/dd>\n    <dt class=\"strong\">Kalori parenteral<\/dt><dd class=\"strong\" id=\"rParK\">\u2013<\/dd>\n  <\/dl>\n  <div class=\"osm\" id=\"osmBox\" aria-live=\"polite\">\n    <div class=\"osm-top\">\n      <div><div class=\"osm-lab\">Osmolaritas campuran utama<\/div><div class=\"osm-val num\" id=\"osmVal\">\u2013<\/div><\/div>\n      <div class=\"osm-d\"><div class=\"osm-lab\">Dextrose<\/div><div class=\"osm-val num\" id=\"osmD\">\u2013<\/div><\/div>\n    <\/div>\n    <div class=\"route\">\n      <div class=\"rt\" id=\"rtPeri\"><span class=\"rt-n\">Perifer<\/span><span class=\"rt-s\">\u2013<\/span><\/div>\n      <div class=\"rt\" id=\"rtCvc\"><span class=\"rt-n\">CVC<\/span><span class=\"rt-s\">\u2013<\/span><\/div>\n      <div class=\"rt\" id=\"rtPicc\"><span class=\"rt-n\">PICC<\/span><span class=\"rt-s\">\u2013<\/span><\/div>\n    <\/div>\n    <p class=\"osm-why\" id=\"osmWhy\"><\/p>\n    <p class=\"osm-lip\" id=\"osmLip\" hidden><\/p>\n  <\/div>\n  <p class=\"hint\">Volume larutan pekat dibulatkan ke mL terdekat, lalu GIR dan kalori dihitung dari volume yang sudah dibulatkan.<\/p>\n  <p class=\"hint\">Campuran utama = larutan dextrose + asam amino + Ca glukonas + elektrolit tambahan. Osmolaritas dihitung dari 50,5 mOsm/L per 1% dextrose, NaCl 0,45% 154 mOsm/L, asam amino 87,5 mOsm/L per 1% (TrophAmine 10% 866, Aminoven Infant 10% 885), Ca glukonas 10% 680 mOsm/L, dan 2 mOsm per mEq elektrolit tambahan. Etiket pabrik bisa berbeda sekitar 5%. Obat lain tidak dihitung. Batas: perifer sampai 600 mOsm/L (INS, ERPIUP); nutrisi parenteral perifer sampai 900 (ASPEN; ESPEN 850); dextrose perifer sampai 12,5% pada anak. Ujung CVC atau PICC harus di vena sentral. Midline termasuk perifer.<\/p>\n<\/section>\n\n<!-- 5 Hasil -->\n<section class=\"card\" id=\"result\" aria-live=\"polite\" aria-label=\"Hasil\">\n  <h2><span class=\"n\">5<\/span>Hasil dan teks laporan<\/h2>\n  <p class=\"need-line\" id=\"needLine\"><\/p>\n  <div class=\"metrics\">\n    <div class=\"metric\">\n      <div class=\"lab\"><span class=\"dot\" style=\"background:var(--c-oral)\"><\/span>Oral<\/div>\n      <div class=\"pct\" id=\"pOral\">\u2013<\/div>\n      <div class=\"kc\" id=\"kOral\">\u2013<\/div>\n    <\/div>\n    <div class=\"metric\">\n      <div class=\"lab\"><span class=\"dot\" style=\"background:var(--c-par)\"><\/span>Parenteral<\/div>\n      <div class=\"pct\" id=\"pPar\">\u2013<\/div>\n      <div class=\"kc\" id=\"kPar\">\u2013<\/div>\n    <\/div>\n    <div class=\"metric total\">\n      <div class=\"lab\">Total<\/div>\n      <div class=\"pct\" id=\"pTot\">\u2013<\/div>\n      <div class=\"kc\" id=\"kTot\">\u2013<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"bar-wrap\">\n    <div class=\"bar\" id=\"bar\" role=\"img\" aria-label=\"Diagram cakupan oral dan parenteral terhadap kebutuhan\">\n      <div class=\"seg\" id=\"barOral\" style=\"background:var(--c-oral);width:0\"><\/div>\n      <div class=\"seg\" id=\"barPar\" style=\"background:var(--c-par);width:0\"><\/div>\n      <div class=\"tick\" id=\"barTick\" title=\"100% kebutuhan\"><\/div>\n    <\/div>\n    <div class=\"bar-scale\"><span>0%<\/span><span id=\"tickLab\">100% = kebutuhan<\/span><span id=\"scaleMax\">100%<\/span><\/div>\n  <\/div>\n  <ul class=\"flags\" id=\"flags\"><\/ul>\n  <div class=\"report-head\">\n    <label for=\"report\">Teks laporan jaga<\/label>\n    <span class=\"acts\"><button type=\"button\" class=\"primary\" id=\"copy\">Salin teks<\/button><span id=\"copyMsg\" role=\"status\"><\/span><\/span>\n  <\/div>\n  <textarea id=\"report\" readonly rows=\"10\"><\/textarea>\n<\/section>\n\n<p class=\"foot\">Alat bantu hitung, bukan pengganti penilaian klinis. Schofield (WHO 1985) memakai koefisien BB + TB. Periksa kembali sebelum disalin ke laporan.<\/p>\n<\/div>\n\n<div class=\"fixed-bar\">\n  <div class=\"in\">\n    <div class=\"parts\">\n      <span><i class=\"dot\" style=\"background:var(--c-oral)\"><\/i><span id=\"fOral\">\u2013<\/span><\/span>\n      <span><i class=\"dot\" style=\"background:var(--c-par)\"><\/i><span id=\"fPar\">\u2013<\/span><\/span>\n      <span>Total <strong id=\"fTot\">\u2013<\/strong><\/span>\n    <\/div>\n    <button type=\"button\" id=\"toTop\">Ke hasil<\/button>\n  <\/div>\n<\/div>\n\n<script>\n(function () {\n  'use strict';\n\n  var $ = function (id) { return document.getElementById(id); };\n  var qs = function (s) { return document.querySelector(s); };\n  function parse(s) {\n    var n = parseFloat(String(s == null ? '' : s).trim().replace(',', '.'));\n    return isFinite(n) ? n : NaN;\n  }\n  function f(x, d) { return isFinite(x) ? x.toFixed(d || 0).replace('.', ',') : '\u2013'; }\n  function ft(x) { return isFinite(x) ? String(Math.round(x * 10) / 10).replace('.', ',') : '\u2013'; }\n  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/<\/g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;'); }\n\n  /* Schofield, kkal/hari. wh: BB (kg) + TB (cm). w: BB saja. */\n  var SCH = {\n    L: [\n      { label: 'laki-laki 0\u20133 th', wh: function (w, h) { return 0.167 * w + 15.174 * h - 617.6; }, w: function (w) { return 59.512 * w - 30.4; } },\n      { label: 'laki-laki 3\u201310 th', wh: function (w, h) { return 19.59 * w + 1.303 * h + 414.9; }, w: function (w) { return 22.706 * w + 504.3; } },\n      { label: 'laki-laki 10\u201318 th', wh: function (w, h) { return 16.25 * w + 1.372 * h + 515.5; }, w: function (w) { return 17.686 * w + 658.2; } }\n    ],\n    P: [\n      { label: 'perempuan 0\u20133 th', wh: function (w, h) { return 16.252 * w + 10.232 * h - 413.5; }, w: function (w) { return 58.317 * w - 31.1; } },\n      { label: 'perempuan 3\u201310 th', wh: function (w, h) { return 16.969 * w + 1.618 * h + 371.2; }, w: function (w) { return 20.315 * w + 485.9; } },\n      { label: 'perempuan 10\u201318 th', wh: function (w, h) { return 8.365 * w + 4.65 * h + 200.0; }, w: function (w) { return 13.384 * w + 692.6; } }\n    ]\n  };\n\n  /* Median TB kasar menurut usia (tahun, cm), hanya untuk peringatan salah ketik. */\n  var HT = [[0, 50], [0.25, 60], [0.5, 67], [1, 75], [2, 86], [3, 95], [4, 102], [5, 109], [6, 115], [8, 127], [10, 138], [12, 149], [14, 161], [16, 166], [18, 168]];\n  function medianHt(a) {\n    for (var i = 1; i < HT.length; i++) {\n      if (a <= HT[i][0]) {\n        var a0 = HT[i - 1][0], h0 = HT[i - 1][1], a1 = HT[i][0], h1 = HT[i][1];\n        return h0 + (h1 - h0) * (a - a0) / (a1 - a0);\n      }\n    }\n    return HT[HT.length - 1][1];\n  }\n\n  var PEKAT = [{ n: 'D40%', c: 40 }, { n: 'D25%', c: 25 }, { n: 'D20%', c: 20 }, { n: 'D50%', c: 50 }];\n  var DASAR = [{ n: 'D5 \u00bdNS', c: 5, na: 154 }, { n: 'D5 \u00bcNS', c: 5, na: 77 }, { n: 'D10 \u00bdNS', c: 10, na: 154 }];\n  var AAOSM = 87.5; /* mOsm/L per 1% asam amino: TrophAmine 10% 866, Aminoven Infant 10% 885 */\n  var CAOSM = 0.68; /* mOsm per mL Ca glukonat 10% (680 mOsm/L) */\n  var DEXOSM = 50.5; /* mOsm/L per 1% dextrose monohidrat: D5 = 252, D10 = 505 */\n  var PRESETS = { asi: { n: 'ASI (0,67 kkal/mL)', k: 0.67 }, sufor: { n: 'Formula (1 kkal/mL)', k: 1 }, custom: { n: 'Lainnya (isi sendiri)', k: null } };\n\n  var oralRows = [];\n  var last = null;\n\n  function fillSelects() {\n    $('conc').innerHTML = PEKAT.map(function (p, i) { return '<option value=\"' + i + '\">' + p.n + '<\/option>'; }).join('');\n    $('base').innerHTML = DASAR.map(function (p, i) { return '<option value=\"' + i + '\">' + p.n + ' (' + p.c + '%)<\/option>'; }).join('');\n  }\n\n  function renderRows() {\n    var box = $('orows');\n    box.innerHTML = '';\n    oralRows.forEach(function (r, i) {\n      var d = document.createElement('div');\n      d.className = 'orow';\n      d.setAttribute('data-i', i);\n      var opts = Object.keys(PRESETS).map(function (k) {\n        return '<option value=\"' + k + '\"' + (r.preset === k ? ' selected' : '') + '>' + PRESETS[k].n + '<\/option>';\n      }).join('');\n      d.innerHTML =\n        '<div class=\"orow-top\">' +\n          '<div class=\"field\"><label for=\"o_name_' + i + '\">Nama<\/label><input type=\"text\" id=\"o_name_' + i + '\" data-f=\"name\" value=\"' + esc(r.name) + '\" placeholder=\"mis. Entrakid\" autocomplete=\"off\"><\/div>' +\n          '<div class=\"field\"><label for=\"o_pre_' + i + '\">Jenis<\/label><select id=\"o_pre_' + i + '\" data-f=\"preset\">' + opts + '<\/select><\/div>' +\n        '<\/div>' +\n        '<div class=\"orow-grid\">' +\n          '<div class=\"field\"><label for=\"o_k_' + i + '\">kkal/mL<\/label><input type=\"text\" class=\"num\" id=\"o_k_' + i + '\" data-f=\"k\" value=\"' + esc(r.k) + '\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>' +\n          '<div class=\"field\"><label for=\"o_v_' + i + '\">Volume (mL)<\/label><input type=\"text\" class=\"num\" id=\"o_v_' + i + '\" data-f=\"vol\" value=\"' + esc(r.vol) + '\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>' +\n          '<div class=\"field\"><label for=\"o_q_' + i + '\">Kali/hari<\/label><input type=\"text\" class=\"num\" id=\"o_q_' + i + '\" data-f=\"freq\" value=\"' + esc(r.freq) + '\" inputmode=\"decimal\" autocomplete=\"off\"><\/div>' +\n        '<\/div>' +\n        '<div class=\"orow-foot\"><span class=\"num\" id=\"o_sum_' + i + '\">\u2013<\/span><button type=\"button\" class=\"link\" data-act=\"del\">Hapus<\/button><\/div>';\n      box.appendChild(d);\n    });\n  }\n\n  function compute() {\n    var c = { flags: [] };\n    function flag(t, m) { c.flags.push({ t: t, m: m }); }\n\n    var sex = qs('input[name=sex]:checked').value;\n    var age = (parse($('age_y').value) || 0) + (parse($('age_m').value) || 0) / 12;\n    var wt = parse($('wt').value), ht = parse($('ht').value);\n    c.wt = wt;\n\n    /* Kebutuhan kalori */\n    var need = NaN, label = '', wh = NaN, wOnly = NaN;\n    if (age >= 18) {\n      flag('warn', 'Usia 18 tahun atau lebih: rumus Schofield anak tidak berlaku. Isi kebutuhan manual.');\n    } else if (wt > 0 && ht > 0 && age > 0) {\n      var grp = age < 3 ? 0 : (age < 10 ? 1 : 2);\n      var g = SCH[sex][grp];\n      wh = g.wh(wt, ht);\n      wOnly = g.w(wt);\n      need = wh;\n      label = g.label;\n      var med = medianHt(age);\n      if (ht < 0.8 * med || ht > 1.2 * med) {\n        flag('warn', 'TB ' + ft(ht) + ' cm tampak tidak sesuai usia (median kasar sekitar ' + f(med) + ' cm). TB masuk ke rumus, jadi cek ulang.');\n      }\n      if (Math.abs(wh - wOnly) / wOnly > 0.15) {\n        flag('warn', 'Schofield BB + TB (' + f(wh) + ') berbeda lebih dari 15% dari BB saja (' + f(wOnly) + '). Cek BB dan TB.');\n      }\n    }\n    var nm = parse($('need_manual').value);\n    if (nm > 0) { need = nm; label = 'manual'; }\n    c.need = need; c.label = label; c.wh = wh; c.wOnly = wOnly;\n\n    /* Cairan */\n    var hs = wt > 0 ? (wt <= 10 ? 100 * wt : (wt <= 20 ? 1000 + 50 * (wt - 10) : 1500 + 20 * (wt - 20))) : NaN;\n    var fl = parse($('fl_need').value);\n    c.hs = hs;\n    c.fluidNeed = fl > 0 ? fl : hs;\n    c.flAuto = !(fl > 0);\n    c.meds = parse($('meds').value) || 0;\n\n    /* Oral */\n    c.rows = oralRows.map(function (r) {\n      var k = parse(r.k), v = parse(r.vol), q = parse(r.freq);\n      var ml = (v > 0 && q > 0) ? v * q : 0;\n      return { r: r, k: k, v: v, q: q, ml: ml, kc: ml * (k > 0 ? k : 0) };\n    });\n    c.oralMl = c.rows.reduce(function (a, x) { return a + x.ml; }, 0);\n    c.oralK = c.rows.reduce(function (a, x) { return a + x.kc; }, 0);\n    c.sisa = c.fluidNeed - c.oralMl - c.meds;\n\n    /* Parenteral */\n    var P = PEKAT[+$('conc').value], B = DASAR[+$('base').value];\n    c.P = P; c.B = B;\n    c.kfac = parse($('kfac').value);\n    var mode = qs('input[name=mode]:checked').value;\n    c.mode = mode;\n\n    /* Komponen lain (opsional): lipid, asam amino, Ca glukonas */\n    var lipOn = $('chk_lip').checked, aaOn = $('chk_aa').checked, caOn = $('chk_ca').checked;\n    var lipC = parse($('lip_conc').value), aaC = parse($('aa_conc').value);\n    var wk = wt > 0 ? wt : 0;\n    c.lip = { on: lipOn, conc: lipC, dose: lipOn ? (parse($('lip_dose').value) || 0) : 0 };\n    c.lip.g = c.lip.dose * wk;\n    c.lip.ml = c.lip.g / (lipC / 100);\n    c.lip.kcal = c.lip.ml * (lipC === 20 ? 2.0 : 1.1);\n    c.aa = { on: aaOn, conc: aaC, dose: aaOn ? (parse($('aa_dose').value) || 0) : 0, count: $('aa_kcal').checked };\n    c.aa.g = c.aa.dose * wk;\n    c.aa.ml = c.aa.g / (aaC / 100);\n    c.aa.kcal = c.aa.g * 4;\n    c.ca = { on: caOn, dose: caOn ? (parse($('ca_dose').value) || 0) : 0 };\n    c.ca.mg = c.ca.dose * wk;\n    c.ca.ml = c.ca.mg / 100;\n    c.ca.meq = c.ca.ml * 0.465;\n    var comps = c.lip.ml + c.aa.ml + c.ca.ml;\n    c.comps = comps;\n\n    var V = 0, Vd = 0, xr = 0, yr = 0;\n    if (P.c <= B.c) {\n      flag('crit', 'Larutan pekat harus lebih pekat dari larutan dasar.');\n    } else if (mode === 'gir') {\n      var girT = parse($('gir').value);\n      var Vo = parse($('iv_vol').value);\n      V = Vo > 0 ? Vo : c.sisa;\n      if (!(V > 0)) V = 0;\n      Vd = V - comps;\n      if (V > 0 && comps > 0 && Vd <= 0) {\n        flag('crit', 'Volume lipid + asam amino + Ca (' + f(comps) + ' mL) melebihi volume IV (' + f(V) + ' mL).');\n        Vd = 0;\n      }\n      if (Vd > 0 && wt > 0 && girT > 0) {\n        var gT = girT * wt * 1440 / 1000;\n        var Dt = gT / Vd * 100;\n        var x = Vd * (Dt - B.c) / (P.c - B.c);\n        if (Dt < B.c) {\n          x = 0;\n          flag('warn', 'Target GIR ' + ft(girT) + ' lebih rendah dari yang diberikan ' + B.n + ' saja pada ' + f(Vd) + ' mL. Campuran memakai larutan dasar saja.');\n        } else if (Dt > P.c) {\n          x = Vd;\n          flag('warn', 'Target GIR ' + ft(girT) + ' tidak tercapai dengan ' + P.n + ' pada ' + f(Vd) + ' mL. Campuran memakai larutan pekat saja.');\n        }\n        xr = Math.min(Vd, Math.max(0, Math.round(x)));\n        yr = Vd - xr;\n      } else {\n        Vd = 0;\n        V = comps;\n      }\n    } else {\n      xr = parse($('m_p').value) || 0;\n      yr = parse($('m_b').value) || 0;\n      Vd = xr + yr;\n      V = Vd + comps;\n    }\n    var Vm = Vd + c.aa.ml + c.ca.ml;   /* campuran utama: dextrose + asam amino + Ca */\n    c.V = V; c.Vd = Vd; c.Vm = Vm; c.xr = xr; c.yr = yr;\n    var gram = Vd > 0 ? (xr * P.c / 100 + yr * B.c / 100) : 0;\n    c.gram = gram;\n    c.Ddex = Vd > 0 ? gram / Vd * 100 : NaN;   /* konsentrasi larutan dextrose */\n    c.D = Vm > 0 ? gram / Vm * 100 : NaN;      /* konsentrasi di campuran utama */\n    c.rate = V > 0 ? V / 24 : NaN;\n    c.rateM = Vm > 0 ? Vm / 24 : NaN;\n    c.rateL = c.lip.ml > 0 ? c.lip.ml / 24 : NaN;\n    c.GIR = (Vd > 0 && wt > 0) ? gram * 1000 / wt / 1440 : NaN;\n    c.dexK = gram * c.kfac;\n    c.parK = c.dexK + (c.aa.count ? c.aa.kcal : 0) + c.lip.kcal;\n\n    /* Osmolaritas campuran utama dan jalur infus (lipid dihitung sebagai infus terpisah) */\n    c.addMeq = parse($('add_meq').value) || 0;\n    c.osm = NaN; c.route = null;\n    if (Vm > 0 && P.c > B.c) {\n      var mosm = xr * P.c * DEXOSM / 1000 + yr * (B.c * DEXOSM / 1000 + B.na / 1000)\n        + c.aa.ml * aaC * AAOSM / 1000 + c.ca.ml * CAOSM + c.addMeq * 2;\n      c.osm = mosm / (Vm / 1000);\n      var why = [], peri = 'ok';\n      if (c.osm > 900) { peri = 'crit'; why.push('osmolaritas ' + f(c.osm) + ' mOsm/L di atas 900'); }\n      if (c.D > 12.5) { peri = 'crit'; why.push('dextrose ' + ft(c.D) + '% di atas 12,5%'); }\n      if (peri === 'ok' && c.osm > 600) peri = 'warn';\n      c.route = { peri: peri, why: why };\n    }\n\n    /* Persen */\n    var ok = need > 0;\n    c.pO = ok ? c.oralK / need * 100 : NaN;\n    c.pP = ok ? c.parK / need * 100 : NaN;\n    c.totK = c.oralK + c.parK;\n    c.pT = ok ? c.totK / need * 100 : NaN;\n\n    /* Peringatan */\n    if (c.route) {\n      if (c.route.peri === 'crit') flag('warn', 'Jangan lewat jalur perifer: ' + c.route.why.join(' dan ') + '. Pakai CVC atau PICC dengan ujung di vena sentral.');\n      else if (c.route.peri === 'warn') flag('warn', 'Osmolaritas ' + f(c.osm) + ' mOsm/L melewati 600 (batas infus perifer INS/ERPIUP), masih di bawah 900 (ASPEN). Perifer hanya jangka pendek dan pantau flebitis; CVC/PICC lebih aman.');\n      else flag('ok', 'Osmolaritas ' + f(c.osm) + ' mOsm/L dan dextrose ' + ft(c.D) + '%: boleh perifer, CVC maupun PICC.');\n    }\n    if (c.lip.on && c.lip.g > 0) {\n      var maxD = age < 2 ? 3 : (age < 12 ? 2.5 : 2);\n      if (c.lip.dose > maxD) flag('warn', 'Lipid ' + ft(c.lip.dose) + ' g/kg/hari melebihi batas label Intralipid untuk usia ini (' + ft(maxD) + ' g/kg/hari).');\n      var maxR = age < 2 ? 0.125 : 0.15;\n      var rateG = c.lip.dose / 24;\n      if (rateG > maxR) flag('warn', 'Laju lipid ' + f(rateG, 3) + ' g/kg/jam melebihi ' + ft(maxR) + ' g/kg/jam. Perpanjang durasi infus.');\n    }\n    if (c.aa.on && c.aa.g > 0) {\n      if (c.aa.dose > 3) flag('warn', 'Asam amino ' + ft(c.aa.dose) + ' g/kg/hari di atas 3 g/kg/hari.');\n      else if (age >= 3 && c.aa.dose > 2) flag('info', 'Asam amino ' + ft(c.aa.dose) + ' g/kg/hari di atas kisaran ESPGHAN 1\u20132 g/kg/hari untuk usia 3\u201312 tahun. Nilai sesuai kondisi klinis.');\n    }\n    if (c.ca.on && c.ca.mg > 0) {\n      flag('info', 'Ca glukonas tidak boleh dicampur dengan bikarbonat atau fosfat (endapan). Ekstravasasi dapat menyebabkan nekrosis atau calcinosis cutis, jadi pakai jalur yang aman.');\n    }\n    if (isFinite(c.sisa) && c.sisa < 0) {\n      flag('crit', 'Oral + obat (' + f(c.oralMl + c.meds) + ' mL) melebihi kebutuhan cairan (' + f(c.fluidNeed) + ' mL).');\n    }\n    if (ok && c.V > 0) {\n      var diff = c.totK - need;\n      if (c.pT < 100) flag('info', 'Total belum mencapai kebutuhan, kurang ' + f(-diff) + ' kkal/hari.');\n      else if (c.pT <= 110) flag('ok', 'Total sesuai kebutuhan (100\u2013110%).');\n      else flag('warn', 'Total melebihi kebutuhan sebesar ' + f(diff) + ' kkal/hari (' + f(c.pT - 100, 1) + '% di atas).');\n    } else if (ok && c.V === 0 && c.oralK > 0) {\n      var d2 = c.oralK - need;\n      if (c.pO < 100) flag('info', 'Hanya oral: belum mencapai kebutuhan, kurang ' + f(-d2) + ' kkal/hari.');\n      else flag('ok', 'Oral saja sudah memenuhi kebutuhan.');\n    }\n\n    /* Teks laporan */\n    var L = [];\n    if (isFinite(c.fluidNeed)) {\n      L.push('Kebutuhan cairan ' + ft(c.fluidNeed) + ' mL/hari');\n      c.rows.forEach(function (x) {\n        if (x.ml > 0) {\n          var nmr = x.r.name.trim() || (x.r.preset === 'asi' ? 'ASI' : (x.r.preset === 'sufor' ? 'Formula' : 'Nutrisi'));\n          L.push('Diet: ' + nmr + ' ' + ft(x.q) + ' x ' + ft(x.v) + ' mL (' + ft(x.k) + ' kkal/mL)');\n        }\n      });\n      L.push('Oral ' + ft(c.oralMl) + ' mL');\n      L.push('Obat ' + ft(c.meds) + ' mL');\n      if (c.V > 0) {\n        var dline = 'D' + ft(c.Ddex) + '% (GIR ' + ft(c.GIR) + ') = ' + P.n + ' ' + ft(xr) + ' mL + ' + B.n + ' ' + ft(yr) + ' mL';\n        if (c.comps <= 0) {\n          L.push('Sisa cairan IV ' + ft(c.V) + ' mL: ' + dline + ' = ' + ft(c.rate) + ' mL/jam');\n        } else {\n          L.push('Sisa cairan IV ' + ft(c.V) + ' mL:');\n          if (c.Vd > 0) L.push('- Dextrose ' + dline);\n          if (c.aa.ml > 0) L.push('- Asam amino ' + ft(c.aa.conc) + '% ' + ft(c.aa.dose) + ' g/kg/hari = ' + ft(c.aa.ml) + ' mL');\n          if (c.lip.ml > 0) L.push('- Lipid ' + ft(c.lip.conc) + '% ' + ft(c.lip.dose) + ' g/kg/hari = ' + ft(c.lip.ml) + ' mL (infus terpisah, ' + ft(c.rateL) + ' mL/jam)');\n          if (c.ca.ml > 0) L.push('- Ca glukonas 10% ' + ft(c.ca.dose) + ' mg/kg/hari = ' + ft(c.ca.ml) + ' mL');\n          if (c.Vm > 0) L.push('Campuran utama ' + ft(c.Vm) + ' mL = ' + ft(c.rateM) + ' mL/jam');\n        }\n        if (c.route) {\n          var rs = c.route.peri === 'crit' ? 'perifer TIDAK boleh, CVC/PICC boleh'\n            : (c.route.peri === 'warn' ? 'perifer hati-hati (jangka pendek), CVC/PICC boleh' : 'boleh perifer/CVC/PICC');\n          L.push('Osmolaritas ' + (c.aa.ml + c.ca.ml > 0 ? 'campuran utama ' : '') + f(c.osm) + ' mOsm/L' + (c.addMeq > 0 ? ' (termasuk elektrolit tambahan ' + ft(c.addMeq) + ' mEq)' : '') + ': ' + rs);\n        }\n        if (c.lip.ml > 0) L.push('Lipid \u00b1260 mOsm/L (isotonik): boleh perifer/CVC/PICC');\n      } else if (isFinite(c.sisa)) {\n        L.push('Sisa cairan IV ' + ft(Math.max(0, c.sisa)) + ' mL');\n      }\n      L.push('');\n    }\n    if (ok) {\n      L.push('Kebutuhan kalori ' + (label === 'manual' ? '' : 'Schofield ') + f(need) + ' kkal/hari');\n      L.push('Cakupan oral ' + f(c.oralK) + ' kkal/hari (' + f(c.pO, 1) + '%)');\n      L.push('Cakupan parenteral ' + f(c.parK) + ' kkal/hari (' + f(c.pP, 1) + '%)');\n      if (c.comps > 0) {\n        var parts = ['dextrose ' + f(c.dexK)];\n        if (c.aa.on && c.aa.g > 0) parts.push('asam amino ' + f(c.aa.kcal) + (c.aa.count ? '' : ' (tidak dihitung)'));\n        if (c.lip.on && c.lip.g > 0) parts.push('lipid ' + f(c.lip.kcal));\n        L.push('  Rincian: ' + parts.join(' + ') + ' kkal');\n      }\n      L.push('Cakupan total ' + f(c.totK) + ' kkal/hari (' + f(c.pT, 1) + '%)');\n    } else {\n      L.push('Lengkapi usia, BB dan TB (atau isi kebutuhan manual) untuk menghitung cakupan.');\n    }\n    c.report = L.join('\\n');\n    return c;\n  }\n\n  function setText(id, t) { $(id).textContent = t; }\n\n  function render(c) {\n    last = c;\n    var ok = c.need > 0;\n    $('needLine').innerHTML = ok\n      ? 'Kebutuhan <b>' + f(c.need) + ' kkal/hari<\/b> \u00b7 ' + (c.label === 'manual' ? 'diisi manual' : 'Schofield ' + c.label + ' (BB + TB)')\n      : 'Kebutuhan kalori belum bisa dihitung. Lengkapi data pasien.';\n    setText('pOral', ok ? f(c.pO, 1) + '%' : '\u2013');\n    setText('pPar', ok ? f(c.pP, 1) + '%' : '\u2013');\n    setText('pTot', ok ? f(c.pT, 1) + '%' : '\u2013');\n    setText('kOral', f(c.oralK) + ' kkal');\n    setText('kPar', f(c.parK) + ' kkal');\n    setText('kTot', f(c.totK) + ' kkal');\n\n    var scale = ok ? Math.max(100, c.pT) : 100;\n    $('barOral').style.width = ok ? (c.pO / scale * 100) + '%' : '0';\n    $('barPar').style.width = ok ? (c.pP / scale * 100) + '%' : '0';\n    $('barTick').style.left = 'calc(' + (100 / scale * 100) + '% - 1px)';\n    setText('scaleMax', f(scale) + '%');\n    setText('tickLab', scale > 100 ? '100% = kebutuhan (garis)' : '');\n\n    var order = { crit: 0, warn: 1, info: 2, ok: 3 };\n    var names = { crit: 'Perbaiki', warn: 'Cek', info: 'Info', ok: 'Sesuai' };\n    var fl = c.flags.slice().sort(function (a, b) { return order[a.t] - order[b.t]; });\n    $('flags').innerHTML = fl.map(function (x) { return '<li class=\"' + x.t + '\"><b>' + names[x.t] + '<\/b>' + esc(x.m) + '<\/li>'; }).join('');\n\n    var rep = $('report');\n    rep.value = c.report;\n    rep.rows = Math.max(6, c.report.split('\\n').length + 1);\n\n    /* Langkah 1 */\n    setText('rFormula', ok ? (c.label === 'manual' ? 'manual' : c.label) : '\u2013');\n    setText('rWH', isFinite(c.wh) ? f(c.wh, 1) + ' kkal' : '\u2013');\n    setText('rW', isFinite(c.wOnly) ? f(c.wOnly, 1) + ' kkal' : '\u2013');\n\n    /* Langkah 2 */\n    setText('rFl', isFinite(c.fluidNeed) ? ft(c.fluidNeed) + ' mL' : '\u2013');\n    setText('rFlOral', ft(c.oralMl) + ' mL');\n    setText('rFlMed', ft(c.meds) + ' mL');\n    setText('rFlIV', isFinite(c.sisa) ? ft(c.sisa) + ' mL' : '\u2013');\n    $('fl_need').placeholder = isFinite(c.hs) ? 'otomatis ' + ft(c.hs) : 'otomatis';\n    $('iv_vol').placeholder = isFinite(c.sisa) && c.sisa > 0 ? 'otomatis ' + ft(c.sisa) : 'otomatis';\n\n    /* Langkah 3 */\n    c.rows.forEach(function (x, i) {\n      var el = $('o_sum_' + i);\n      if (el) el.textContent = ft(x.ml) + ' mL \u00b7 ' + f(x.kc) + ' kkal';\n    });\n    setText('rOralMl', ft(c.oralMl) + ' mL');\n    setText('rOralK', f(c.oralK) + ' kkal');\n\n    /* Langkah 4 */\n    function row(id, on, text) {\n      $(id).hidden = !on; $(id + '_t').hidden = !on;\n      if (on) $(id).textContent = text;\n    }\n    var hasD = c.Vd > 0;\n    if (c.V > 0) {\n      setText('rMix', hasD ? c.P.n + ' ' + ft(c.xr) + ' mL + ' + c.B.n + ' ' + ft(c.yr) + ' mL' : '\u2013');\n      setText('rV', ft(c.V) + ' mL/hari');\n      setText('rD', hasD ? 'D' + ft(c.Ddex) + '%' : '\u2013');\n      setText('rRate', isFinite(c.rateM) ? ft(c.rateM) + ' mL/jam' : '\u2013');\n      setText('rGIR', hasD ? ft(c.GIR) + ' mg/kg/mnt' : '\u2013');\n      setText('rG', hasD ? ft(c.gram) + ' g' : '\u2013');\n    } else {\n      ['rMix', 'rV', 'rD', 'rRate', 'rGIR', 'rG'].forEach(function (id) { setText(id, '\u2013'); });\n    }\n    row('rDm', hasD && c.aa.ml + c.ca.ml > 0, 'D' + ft(c.D) + '%');\n    row('rRateL', c.lip.ml > 0, ft(c.rateL) + ' mL/jam');\n    row('rAA', c.aa.on && c.aa.g > 0, ft(c.aa.g) + ' g (' + ft(c.aa.dose) + ' g/kg) \u00b7 ' + ft(c.aa.ml) + ' mL');\n    row('rLip', c.lip.on && c.lip.g > 0, ft(c.lip.g) + ' g (' + ft(c.lip.dose) + ' g/kg) \u00b7 ' + ft(c.lip.ml) + ' mL');\n    row('rCa', c.ca.on && c.ca.mg > 0, ft(c.ca.mg) + ' mg \u00b7 ' + ft(c.ca.ml) + ' mL \u00b7 ' + ft(c.ca.meq) + ' mEq');\n    var multi = (c.aa.on && c.aa.g > 0) || (c.lip.on && c.lip.g > 0);\n    row('rKd', multi, f(c.dexK) + ' kkal');\n    row('rKa', c.aa.on && c.aa.g > 0, f(c.aa.kcal) + ' kkal' + (c.aa.count ? '' : ' (tidak dihitung)'));\n    row('rKl', c.lip.on && c.lip.g > 0, f(c.lip.kcal) + ' kkal');\n    setText('rParK', f(c.parK) + ' kkal');\n    var lipLine = '';\n    if (c.lip.on && c.lip.g > 0) lipLine = 'Lipid dihitung sebagai infus terpisah (Y-site): \u00b1260\u2013270 mOsm/L, isotonik, boleh lewat perifer, CVC maupun PICC.';\n    $('osmLip').hidden = !lipLine;\n    $('osmLip').textContent = lipLine;\n\n    var ROUTE_TXT = { ok: 'Boleh', warn: 'Hati-hati', crit: 'Jangan' };\n    function setRt(id, st) {\n      var el = $(id);\n      el.className = 'rt ' + (st || '');\n      el.lastElementChild.textContent = st ? ROUTE_TXT[st] : '\u2013';\n    }\n    if (c.route) {\n      setText('osmVal', f(c.osm) + ' mOsm/L');\n      setText('osmD', 'D' + ft(c.D) + '%');\n      setRt('rtPeri', c.route.peri); setRt('rtCvc', 'ok'); setRt('rtPicc', 'ok');\n      var why;\n      if (c.route.peri === 'crit') why = 'Perifer tidak boleh karena ' + c.route.why.join(' dan ') + '. Gunakan CVC atau PICC dengan ujung di vena sentral.';\n      else if (c.route.peri === 'warn') why = 'Di atas 600 mOsm/L (batas infus perifer INS/ERPIUP), masih di bawah 900 (ASPEN). Perifer hanya jangka pendek dengan pantau flebitis dan ekstravasasi; CVC/PICC lebih aman.';\n      else why = 'Di bawah 600 mOsm/L dan dextrose tidak lebih dari 12,5%: aman untuk perifer, CVC, maupun PICC.';\n      setText('osmWhy', why);\n    } else {\n      setText('osmVal', '\u2013'); setText('osmD', '\u2013');\n      setRt('rtPeri', ''); setRt('rtCvc', ''); setRt('rtPicc', '');\n      setText('osmWhy', 'Isi target GIR (atau volume) untuk menghitung osmolaritas campuran utama.');\n    }\n\n    /* Bilah bawah */\n    setText('fOral', ok ? f(c.pO, 1) + '%' : '\u2013');\n    setText('fPar', ok ? f(c.pP, 1) + '%' : '\u2013');\n    setText('fTot', ok ? f(c.pT, 1) + '%' : '\u2013');\n  }\n\n  function update() { render(compute()); }\n\n  /* Baris oral */\n  $('orows').addEventListener('input', function (e) {\n    var el = e.target, row = el.closest('.orow');\n    if (!row || !el.getAttribute('data-f')) return;\n    var i = +row.getAttribute('data-i'), fld = el.getAttribute('data-f'), r = oralRows[i];\n    r[fld] = el.value;\n    if (fld === 'preset') {\n      if (PRESETS[el.value].k != null) {\n        r.k = String(PRESETS[el.value].k).replace('.', ',');\n        $('o_k_' + i).value = r.k;\n      }\n    } else if (fld === 'k' && r.preset !== 'custom') {\n      var pk = PRESETS[r.preset].k;\n      if (parse(el.value) !== pk) {\n        r.preset = 'custom';\n        $('o_pre_' + i).value = 'custom';\n      }\n    }\n    update();\n  });\n  $('orows').addEventListener('click', function (e) {\n    var b = e.target.closest('[data-act=\"del\"]');\n    if (!b) return;\n    var i = +b.closest('.orow').getAttribute('data-i');\n    if (oralRows.length > 1) oralRows.splice(i, 1);\n    else oralRows[0] = { name: '', preset: 'sufor', k: '1', vol: '', freq: '' };\n    renderRows();\n    update();\n  });\n  $('addRow').addEventListener('click', function () {\n    oralRows.push({ name: '', preset: 'sufor', k: '1', vol: '', freq: '' });\n    renderRows();\n    update();\n  });\n\n  /* Mode parenteral */\n  function setMode() {\n    var m = qs('input[name=mode]:checked').value;\n    $('girBox').hidden = m !== 'gir';\n    $('manBox').hidden = m !== 'manual';\n    if (m === 'manual' && last && last.V > 0 && !$('m_p').value && !$('m_b').value) {\n      $('m_p').value = ft(last.xr);\n      $('m_b').value = ft(last.yr);\n    }\n    update();\n  }\n  Array.prototype.forEach.call(document.querySelectorAll('input[name=mode]'), function (r) { r.addEventListener('change', setMode); });\n\n  /* Input umum */\n  ['age_y', 'age_m', 'wt', 'ht', 'need_manual', 'fl_need', 'meds', 'gir', 'iv_vol', 'm_p', 'm_b', 'conc', 'base', 'kfac', 'add_meq', 'lip_conc', 'lip_dose', 'aa_conc', 'aa_dose', 'aa_kcal', 'ca_dose', 'chk_lip', 'chk_aa', 'chk_ca'].forEach(function (id) {\n    $(id).addEventListener('input', update);\n    $(id).addEventListener('change', update);\n  });\n  Array.prototype.forEach.call(document.querySelectorAll('input[name=sex]'), function (r) { r.addEventListener('change', update); });\n\n  /* Komponen opsional */\n  function syncOpts() {\n    $('bodyLip').hidden = !$('chk_lip').checked;\n    $('bodyAA').hidden = !$('chk_aa').checked;\n    $('bodyCa').hidden = !$('chk_ca').checked;\n  }\n  [['chk_lip', 'lip_dose', '1'], ['chk_aa', 'aa_dose', '1'], ['chk_ca', 'ca_dose', '']].forEach(function (t) {\n    $(t[0]).addEventListener('change', function () {\n      if ($(t[0]).checked && t[2] && !$(t[1]).value) $(t[1]).value = t[2];\n      syncOpts();\n      update();\n    });\n  });\n\n  /* Contoh dan kosongkan */\n  function setVals(v) {\n    $('sex' + v.sex).checked = true;\n    $('age_y').value = v.ay; $('age_m').value = v.am; $('wt').value = v.wt; $('ht').value = v.ht;\n    $('need_manual').value = ''; $('fl_need').value = v.fl; $('meds').value = v.meds;\n    $('modeGir').checked = true;\n    $('gir').value = v.gir; $('iv_vol').value = ''; $('m_p').value = ''; $('m_b').value = '';\n    $('conc').value = '0'; $('base').value = '0'; $('kfac').value = '4'; $('add_meq').value = v.meq || '';\n    ['lip', 'aa', 'ca'].forEach(function (k) { $('chk_' + k).checked = false; });\n    $('lip_conc').value = '20'; $('lip_dose').value = ''; $('aa_conc').value = '10'; $('aa_dose').value = ''; $('aa_kcal').checked = true; $('ca_dose').value = '';\n    syncOpts();\n    oralRows = v.rows;\n    renderRows();\n    setMode();\n  }\n  function sample() {\n    setVals({ sex: 'P', ay: '3', am: '6', wt: '10', ht: '62', fl: '', meds: '100', gir: '6',\n      rows: [{ name: 'Entrakid', preset: 'custom', k: '0,5', vol: '30', freq: '8' }] });\n  }\n  function clearAll() {\n    setVals({ sex: 'P', ay: '', am: '', wt: '', ht: '', fl: '', meds: '', gir: '',\n      rows: [{ name: '', preset: 'sufor', k: '1', vol: '', freq: '' }] });\n  }\n  $('btnSample').addEventListener('click', sample);\n  $('btnClear').addEventListener('click', clearAll);\n\n  /* Salin */\n  $('copy').addEventListener('click', function () {\n    var ta = $('report'), msg = $('copyMsg');\n    function manual() {\n      ta.focus(); ta.select();\n      msg.textContent = 'Teks terpilih, salin manual.';\n    }\n    try {\n      if (navigator.clipboard && navigator.clipboard.writeText) {\n        navigator.clipboard.writeText(ta.value).then(function () {\n          msg.textContent = 'Tersalin.';\n          setTimeout(function () { msg.textContent = ''; }, 2500);\n        }, manual);\n      } else { manual(); }\n    } catch (err) { manual(); }\n  });\n  $('toTop').addEventListener('click', function () {\n    try { $('result').scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { window.scrollTo(0, 0); }\n  });\n\n  /* Indeks */\n  var nav = $('index'), navBtns = Array.prototype.slice.call(nav.querySelectorAll('button'));\n  function mark(id) {\n    navBtns.forEach(function (b) {\n      var on = b.getAttribute('data-t') === id;\n      if (on) { b.setAttribute('aria-current', 'true'); nav.scrollLeft = Math.max(0, b.offsetLeft - 16); }\n      else b.removeAttribute('aria-current');\n    });\n  }\n  navBtns.forEach(function (b) {\n    b.addEventListener('click', function () {\n      var id = b.getAttribute('data-t'), el = $(id);\n      mark(id);\n      try { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { el.scrollIntoView(); }\n    });\n  });\n  var targets = navBtns.map(function (b) { return $(b.getAttribute('data-t')); });\n  function onScroll() {\n    var y = 70, cur = targets[0].id;\n    targets.forEach(function (t) { if (t.getBoundingClientRect().top <= y) cur = t.id; });\n    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = targets[targets.length - 1].id;\n    mark(cur);\n  }\n  window.addEventListener('scroll', onScroll, { passive: true });\n\n  fillSelects();\n  sample();\n  onScroll();\n  window.__calc = { compute: compute };\n})();\n<\/script>\n<\/body>\n<\/html>\n";
+let ckInit=false;
+function ckTheme(){
+ try{
+  const f=$('ckF'),d=f.contentDocument;if(!d||!d.documentElement)return;
+  const r=document.documentElement,dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
+  d.documentElement.dataset.theme=dark?'dark':'light';
+ }catch(e){}
+}
+function showCK(){
+ if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+ cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=true;$('ck').hidden=false;$('rw').hidden=true;$('st').hidden=true;$('back').hidden=true;$('hextra').hidden=true;
+ $('hicon').textContent='🍼';$('htitle').textContent='TPN + cakupan';
+ const f=$('ckF');
+ if(!ckInit){
+  ckInit=true;
+  f.addEventListener('load',ckTheme);
+  $('theme').addEventListener('click',()=>setTimeout(ckTheme,0));
+  f.srcdoc=CK_HTML;
+ }else ckTheme();
+ window.scrollTo(0,0);
+}
+/* ETIA JUNIOR: checklist syarat administrasi, tersimpan di localStorage perangkat. */
+const ET_KEY='etia_junior_v1';
+const ET_GROUPS=[
+ ['📄 Dokumen',[['kelengkapan','List kelengkapan stase','Ditandatangani perawat PICU dan dr. SM'],['dp','DP',''],['dt','DT',''],['self','Self assessment','']]],
+ ['📝 Penilaian',[['eval1','Nilai evaluasi berkala (dr. SM) 1',''],['eval2','Nilai evaluasi berkala (dr. SM) 2','']]],
+ ['🎬 Video',[['bhd','Video BHD','Kirim lewat email ke ilmiahppds'],['choking','Video Choking','Kirim lewat email ke ilmiahppds']]],
+ ['📒 Logbook',[['lb_picu','Logbook kasus PICU',''],['lb_hcu','Logbook kasus HCU Anak',''],['lb_jaga','Logbook jaga PICU','']]]
+];
+const ET_ALL=ET_GROUPS.reduce((a,g)=>a.concat(g[1].map(i=>i[0])),[]);
+function etLoad(){try{return JSON.parse(localStorage.getItem(ET_KEY))||{}}catch(e){return{}}}
+function etSave(o){try{localStorage.setItem(ET_KEY,JSON.stringify(o))}catch(e){}}
+function etSummary(){const d=etLoad();return {n:ET_ALL.filter(k=>d[k]).length,total:ET_ALL.length}}
+function etRefresh(){
+  const e=etSummary();
+  const n=$('etN');n.textContent=e.n+' dari '+e.total;n.appendChild(el('small',null,'syarat selesai'));
+  $('etBar').style.width=Math.round(e.n/e.total*100)+'%';
+  $('etDone').hidden=e.n<e.total;
+}
+function etRender(){
+  const d=etLoad(),g=$('etG');g.textContent='';
+  ET_GROUPS.forEach(([title,items])=>{
+    const box=el('div','group');box.appendChild(el('h2','sec',title));
+    const lst=el('div','lst');
+    items.forEach(([k,name,sub])=>{
+      const lb=el('label','eti'+(d[k]?' done':''));
+      const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!d[k];
+      cb.addEventListener('change',()=>{const o=etLoad();if(cb.checked)o[k]=true;else delete o[k];etSave(o);lb.classList.toggle('done',cb.checked);etRefresh()});
+      const tx=el('div','tx');tx.appendChild(el('b',null,name));if(sub)tx.appendChild(el('small',null,sub));
+      lb.append(cb,tx);lst.appendChild(lb);
+    });
+    box.appendChild(lst);g.appendChild(box);
+  });
+  etRefresh();
+}
+let etInit=false;
+function showET(){
+  if($('cSheet')){$('cSheet').hidden=true;document.body.style.overflow=''}
+  cur=null;$('home').hidden=true;$('calc').hidden=true;$('uskom').hidden=true;$('tpn').hidden=true;$('bc').hidden=true;$('bp').hidden=true;$('bn').hidden=true;$('et').hidden=false;$('ck').hidden=true;$('rw').hidden=true;$('st').hidden=true;$('back').hidden=true;$('hextra').hidden=true;
+  $('hicon').textContent='📋';$('htitle').textContent='ETIA Junior';
+  if(!etInit){
+    etInit=true;
+    $('etReset').addEventListener('click',e=>{
+      const t=e.currentTarget;
+      if(!t.classList.contains('sure')){t.classList.add('sure');t.textContent='Yakin?';setTimeout(()=>{t.classList.remove('sure');t.textContent='Kosongkan'},3000);return}
+      etSave({});t.classList.remove('sure');t.textContent='Kosongkan';etRender();
+    });
+  }
+  etRender();window.scrollTo(0,0);
 }
 $('back').addEventListener('click',showHome);
 $('nav').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
-  tab=b.dataset.tab;[...$('nav').children].forEach(x=>x.classList.toggle('on',x===b));if(tab==='uskom')showUskom();else if(tab==='tpn')showTPN();else showHome();
+  goTab(b.dataset.tab);
 });
 $('togSteps').addEventListener('click',()=>{
   stepsOpen=!stepsOpen;$('stepList').hidden=!stepsOpen;
@@ -1147,8 +2034,11 @@ $('theme').addEventListener('click',()=>{
   const r=document.documentElement;
   const dark=r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);
   r.dataset.theme=dark?'light':'dark';$('theme').textContent=dark?'🌙':'☀️';
+  try{localStorage.setItem('bp_theme_v1',dark?'light':'dark')}catch(e){}
+  if($('stDark'))$('stDark').checked=!dark;
 });
 if(matchMedia('(prefers-color-scheme: dark)').matches)$('theme').textContent='☀️';
+try{const sv=localStorage.getItem('bp_theme_v1');if(sv&&((sv==='dark')!==phIsDark()))$('theme').click()}catch(e){}
 $('sN').textContent=sections.length;
 showHome();
 
